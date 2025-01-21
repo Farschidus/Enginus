@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="Enginus.PuzzlePopups">
+    <Popups>
+      <Item>
+        <Id>1</Id>
+        <SceneName>Analyzer</SceneName>
+        <Background>Scenes/MiniBgs/Analyzer</Background>
+        <LoopAnimations />
+        <Forgrounds />
+        <Interactives>
+          <Item>
+            <Name>Pich</Name>
+            <Rectangle>535 624 147 151</Rectangle>
+            <Texture>Scenes/MiniBgs/Analyzer-Pich</Texture>
+            <LayerDepth>0.2</LayerDepth>
+          </Item>
+          <Item>
+            <Name>Pointer</Name>
+            <Rectangle>1038 608 88 70</Rectangle>
+            <Texture>Scenes/MiniBgs/Analyzer-Pointer</Texture>
+            <LayerDepth>0.3</LayerDepth>
+          </Item>
+          <Item>
+            <Name>Spot</Name>
+            <Rectangle>1098 587 101 124</Rectangle>
+            <Texture>Scenes/MiniBgs/Analyzer-Spot</Texture>
+            <LayerDepth>0.4</LayerDepth>
+          </Item>
+          <Item>
+            <Name>Peanut</Name>
+            <Rectangle>524 509 165 30</Rectangle>
+            <Texture>Scenes/MiniBgs/Analyzer-Peanut</Texture>
+            <LayerDepth>0.5</LayerDepth>
+          </Item>
+        </Interactives>
+      </Item>
+      <Item>
+        <Id>2</Id>
+        <SceneName>SafetyBox</SceneName>
+        <Background>Scenes/MiniBgs/SafetyBox</Background>
+        <LoopAnimations />
+        <Forgrounds />
+        <Interactives>
+          <Item>
+            <Name>BigLock</Name>
+            <Rectangle>911 509 94 96</Rectangle>
+            <Texture>Scenes/MiniBgs/SafetyBox-BigLock</Texture>
+            <LayerDepth>0.2</LayerDepth>
+          </Item>
+          <Item>
+            <Name>MidLock</Name>
+            <Rectangle>1041 450 78 79</Rectangle>
+            <Texture>Scenes/MiniBgs/SafetyBox-MidLock</Texture>
+            <LayerDepth>0.3</LayerDepth>
+          </Item>
+          <Item>
+            <Name>SmallLock</Name>
+            <Rectangle>1046 597 66 67</Rectangle>
+            <Texture>Scenes/MiniBgs/SafetyBox-SmallLock</Texture>
+            <LayerDepth>0.4</LayerDepth>
+          </Item>
+          <Item>
+            <Name>Pich</Name>
+            <Rectangle>929 469 172 182</Rectangle>
+            <Texture>Scenes/MiniBgs/SafetyBox-Pich</Texture>
+            <LayerDepth>0.5</LayerDepth>
+          </Item>
+        </Interactives>
+      </Item>
+      <Item>
+        <Id>3</Id>
+        <SceneName>DTMF</SceneName>
+        <Background>Scenes/MiniBgs/DTMF</Background>
+        <LoopAnimations />
+        <Forgrounds />
+        <Interactives>
+          <Item>
+            <Name>Switch</Name>
+            <Rectangle>1289 587 67 48</Rectangle>
+            <Texture>Scenes/MiniBgs/DTMF-Switch</Texture>
+            <LayerDepth>0.2</LayerDepth>
+          </Item>
+        </Interactives>
+      </Item>
+      <Item>
+        <Id>4</Id>
+        <SceneName>Panel</SceneName>
+        <Background>Scenes/MiniBgs/Panel</Background>
+        <LoopAnimations />
+        <Forgrounds />
+        <Interactives>
+          <Item>
+            <Name>LeftLever</Name>
+            <Rectangle>751 858 135 51</Rectangle>
+            <Texture>Scenes/MiniBgs/Panel-LeftLever</Texture>
+            <LayerDepth>0.2</LayerDepth>
+          </Item>
+          <Item>
+            <Name>MidtLever</Name>
+            <Rectangle>907 331 135 51</Rectangle>
+            <Texture>Scenes/MiniBgs/Panel-MidLever</Texture>
+            <LayerDepth>0.3</LayerDepth>
+          </Item>
+          <Item>
+            <Name>RightLever</Name>
+            <Rectangle>1064 858 135 51</Rectangle>
+            <Texture>Scenes/MiniBgs/Panel-RightLever</Texture>
+            <LayerDepth>0.4</LayerDepth>
+          </Item>
+          <Item>
+            <Name>GreenLights</Name>
+            <Rectangle>716 97 516 199</Rectangle>
+            <Texture>Scenes/MiniBgs/Panel-Green</Texture>
+            <LayerDepth>0.5</LayerDepth>
+          </Item>
+          <Item>
+            <Name>RedLights</Name>
+            <Rectangle>716 97 516 199</Rectangle>
+            <Texture>Scenes/MiniBgs/Panel-Red</Texture>
+            <LayerDepth>0.6</LayerDepth>
+          </Item>
+        </Interactives>
+      </Item>
+      <Item>
+        <Id>5</Id>
+        <SceneName>Cards</SceneName>
+        <Background>Scenes/MiniBgs/Cards</Background>
+        <LoopAnimations />
+        <Forgrounds />
+        <Interactives>
+          <Item>
+            <Name>Card1</Name>
+            <Rectangle>138 360 234 315</Rectangle>
+            <Texture>Scenes/MiniBgs/blank</Texture>
+            <LayerDepth>0.2</LayerDepth>
+          </Item>
+          <Item>
+            <Name>Card2</Name>
+            <Rectangle>428 390 234 315</Rectangle>
+            <Texture>Scenes/MiniBgs/blank</Texture>
+            <LayerDepth>0.3</LayerDepth>
+          </Item>
+          <Item>
+            <Name>Card3</Name>
+            <Rectangle>714 390 234 315</Rectangle>
+            <Texture>Scenes/MiniBgs/blank</Texture>
+            <LayerDepth>0.4</LayerDepth>
+          </Item>
+          <Item>
+            <Name>Card4</Name>
+            <Rectangle>988 356 234 315</Rectangle>
+            <Texture>Scenes/MiniBgs/blank</Texture>
+            <LayerDepth>0.5</LayerDepth>
+          </Item>
+          <Item>
+            <Name>Card5</Name>
+            <Rectangle>1282 376 234 315</Rectangle>
+            <Texture>Scenes/MiniBgs/blank</Texture>
+            <LayerDepth>0.6</LayerDepth>
+          </Item>
+          <Item>
+            <Name>Card6</Name>
+            <Rectangle>1572 376 234 315</Rectangle>
+            <Texture>Scenes/MiniBgs/blank</Texture>
+            <LayerDepth>0.7</LayerDepth>
+          </Item>
+        </Interactives>
+      </Item>
+      <Item>
+        <Id>6</Id>
+        <SceneName>MagicMenu</SceneName>
+        <Background>Scenes/MiniBgs/MagicMenu</Background>
+        <LoopAnimations />
+        <Forgrounds />
+        <Interactives>
+          <Item>
+            <Name>Menu1</Name>
+            <Rectangle>320 115 252 47</Rectangle>
+            <Texture>Scenes/MiniBgs/blank</Texture>
+            <LayerDepth>0.2</LayerDepth>
+          </Item>
+        </Interactives>
+      </Item>
+    </Popups>
+  </Asset>
+</XnaContent>

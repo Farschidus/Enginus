@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Generic="System.Collections.Generic">
+  <Asset Type="Generic:List[Enginus.Dialogue.Speaker]">
+    <Item>
+      <Position>500 500</Position>
+      <Width>300</Width>
+      <PointerType>Right</PointerType>
+      <HasContinue>true</HasContinue>
+      <Character>Mizuki</Character>
+      <Dialogue>Could you come over here?</Dialogue>
+      <AnswerIndex>1</AnswerIndex>
+      <VoiceFileName>SFX/1</VoiceFileName>
+      <AnimationName>NormalTalk</AnimationName>
+    </Item>
+    <Item>
+      <Position>300 300</Position>
+      <Width>100</Width>
+      <PointerType>Left</PointerType>
+      <HasContinue>true</HasContinue>
+      <Character>Mizuki</Character>
+      <Dialogue>NOP</Dialogue>
+      <AnswerIndex Null="true" />
+      <VoiceFileName>SFX/5</VoiceFileName>
+      <AnimationName>NormalTalk</AnimationName>
+    </Item>
+  </Asset>
+</XnaContent>

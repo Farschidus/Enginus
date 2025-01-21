@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
+		<PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Enginus.Control\Enginus.Control.csproj" />
+		<ProjectReference Include="..\Enginus.Global\Enginus.Global.csproj" />
+		<ProjectReference Include="..\Enginus.Sound\Enginus.Sound.csproj" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,850 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="Enginus.GameAssets">
+    <Scenes>
+      <Item>
+        <SceneName>SpaghettiOut</SceneName>
+        <Background>Scenes/Bgs/SpaghettiOut</Background>
+        <SceneMusic />
+        <Exits>
+          <Item>
+            <Rectangle>1087 770 30 15</Rectangle>
+            <NextSceneName>RatHole</NextSceneName>
+            <PlayerPosition>1400 1000</PlayerPosition>
+            <PlayerDirection>North</PlayerDirection>
+            <PlayerLayerDepth>0.9</PlayerLayerDepth>
+            <InitGroup />
+          </Item>
+          <Item>
+            <Rectangle>350 277 187 457</Rectangle>
+            <NextSceneName>SpaghettiHome</NextSceneName>
+            <PlayerPosition>1400 1000</PlayerPosition>
+            <PlayerDirection>North</PlayerDirection>
+            <PlayerLayerDepth>0.9</PlayerLayerDepth>
+            <InitGroup>
+              <![CDATA[if(!State.VarA){Actions.ChangeRender(SpaghettiHome, false)}]]>
+            </InitGroup>
+          </Item>
+        </Exits>
+        <LoopAnimations>
+          <Item>
+            <Name>FrontPlants</Name>
+            <LayerDepth>0.98</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>1204 788 702 214</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/09-</Texture>
+                  <Width>702</Width>
+                  <Height>214</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>0</StartNumber>
+                  <EndNumber>15</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>16</RowFrameCount>
+                <FileType>Seprate</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>Carousel</Name>
+            <LayerDepth>0.1</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Carousel</Name>
+                <Rectangle>1219 212 350 355</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/09-</Texture>
+                  <Width>350</Width>
+                  <Height>355</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>16</StartNumber>
+                  <EndNumber>16</EndNumber>
+                </FramesRange>
+                <Fps>9</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>5 5 5 5 4</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>Balloon</Name>
+            <LayerDepth>0.09</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Balloon</Name>
+                <Rectangle>1623 416 50 34</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/09-</Texture>
+                  <Width>50</Width>
+                  <Height>34</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>17</StartNumber>
+                  <EndNumber>17</EndNumber>
+                </FramesRange>
+                <Fps>6</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>40</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>Lizard</Name>
+            <LayerDepth>0.3</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Walk</Name>
+                <Rectangle>682 617 20 47</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/09-</Texture>
+                  <Width>20</Width>
+                  <Height>47</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>18</StartNumber>
+                  <EndNumber>18</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>8</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>true</IsMoving>
+                <MoveSpeed>1</MoveSpeed>
+                <Destination>682 222</Destination>
+              </Item>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>682 223 19 46</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/09-</Texture>
+                  <Width>19</Width>
+                  <Height>46</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>19</StartNumber>
+                  <EndNumber>19</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>13</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>FrontPlant</Name>
+            <LayerDepth>0.99</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>1425 687 496 393</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/09-</Texture>
+                  <Width>496</Width>
+                  <Height>393</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>20</StartNumber>
+                  <EndNumber>20</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>4 4 4 4</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+        </LoopAnimations>
+        <NPCs />
+        <Forgrounds>
+          <Item>
+            <Name>Home</Name>
+            <Rectangle>0 0 1920 1080</Rectangle>
+            <Texture>Scenes/Forgrounds/SpaghettiOut-Home</Texture>
+            <LayerDepth>0.2</LayerDepth>
+            <InitGroup />
+          </Item>
+          <Item>
+            <Name>Fence</Name>
+            <Rectangle>508 825 961 255</Rectangle>
+            <Texture>Scenes/Forgrounds/SpaghettiOut-Narde</Texture>
+            <LayerDepth>0.96</LayerDepth>
+            <InitGroup />
+          </Item>
+          <Item>
+            <Name>Plants</Name>
+            <Rectangle>1099 761 821 313</Rectangle>
+            <Texture>Scenes/Forgrounds/SpaghettiOut-Plants</Texture>
+            <LayerDepth>0.97</LayerDepth>
+            <InitGroup />
+          </Item>
+        </Forgrounds>
+        <Interactives />
+        <InventoryItems>
+          <Item>
+            <ItemId>8</ItemId>
+            <Name>PlantRat</Name>
+            <Rectangle>1045 660 46 117</Rectangle>
+            <Texture>Scenes/InventoryItems/PlantRat</Texture>
+            <LayerDepth>0.89</LayerDepth>
+            <InitGroup />
+          </Item>
+        </InventoryItems>
+        <Particles />
+        <MiniGameTrigers>
+          <Item>
+            <MiniGameID>1</MiniGameID>
+            <Name>Analyzer</Name>
+            <Rectangle>867 677 205 96</Rectangle>
+            <Texture>Scenes/MiniGameTrigers/Analyzor</Texture>
+            <LayerDepth>0.6</LayerDepth>
+            <InitGroup />
+          </Item>
+        </MiniGameTrigers>
+        <MeshPolygons>
+          <Item>
+            <Vertices>0 0 1920 0 1920 1080 0 1080</Vertices>
+            <Edges />
+          </Item>
+        </MeshPolygons>
+        <MeshLinks />
+      </Item>
+      <Item>
+        <SceneName>SpaghettiHome</SceneName>
+        <Background>Scenes/Bgs/SpaghettiHome</Background>
+        <SceneMusic />
+        <Exits>
+          <Item>
+            <Rectangle>1850 600 70 480</Rectangle>
+            <NextSceneName>SpaghettiOut</NextSceneName>
+            <PlayerPosition>1130 895</PlayerPosition>
+            <PlayerDirection>South</PlayerDirection>
+            <PlayerLayerDepth>0.9</PlayerLayerDepth>
+            <InitGroup />
+          </Item>
+        </Exits>
+        <LoopAnimations>
+          <Item>
+            <Name>Pot</Name>
+            <LayerDepth>0.4</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>1696 655 98 46</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>98</Width>
+                  <Height>46</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>0</StartNumber>
+                  <EndNumber>0</EndNumber>
+                </FramesRange>
+                <Fps>10</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>4</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>PotCap</Name>
+            <LayerDepth>0.25</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>1696 637 98 16</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>98</Width>
+                  <Height>16</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>1</StartNumber>
+                  <EndNumber>1</EndNumber>
+                </FramesRange>
+                <Fps>10</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>4</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>Fire</Name>
+            <LayerDepth>0.1</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>441 685 80 90</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>58</Width>
+                  <Height>102</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>2</StartNumber>
+                  <EndNumber>2</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>18</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>BadGuy</Name>
+            <LayerDepth>0.35</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>1640 955 355 125</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>355</Width>
+                  <Height>125</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>6</StartNumber>
+                  <EndNumber>6</EndNumber>
+                </FramesRange>
+                <Fps>10</Fps>
+                <Delay>5</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>4 4 4 4 4 4 4 4 3</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+        </LoopAnimations>
+        <NPCs>
+          <Item>
+            <Name>SpaghettiMan</Name>
+            <LayerDepth>0.3</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>1607 437 214 400</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>214</Width>
+                  <Height>400</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>5</StartNumber>
+                  <EndNumber>5</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>8 8 8</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+              <Item>
+                <Name>Dialogue</Name>
+                <Rectangle>1607 438 112 399</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>112</Width>
+                  <Height>399</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>4</StartNumber>
+                  <EndNumber>4</EndNumber>
+                </FramesRange>
+                <Fps>5</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>9</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+              <Item>
+                <Name>Give2</Name>
+                <Rectangle>1473 438 246 399</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>246</Width>
+                  <Height>399</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>3</StartNumber>
+                  <EndNumber>3</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>6 5</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+              <Item>
+                <Name>Give</Name>
+                <Rectangle>1607 437 113 400</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>113</Width>
+                  <Height>400</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>7</StartNumber>
+                  <EndNumber>7</EndNumber>
+                </FramesRange>
+                <Fps>5</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>18</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+            <InitGroup />
+            <IdleGroup />
+          </Item>
+          <Item>
+            <Name>Elephent</Name>
+            <LayerDepth>0.3</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>597 540 224 359</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>224</Width>
+                  <Height>359</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>8</StartNumber>
+                  <EndNumber>8</EndNumber>
+                </FramesRange>
+                <Fps>5</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>6 6</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+              <Item>
+                <Name>Dialogue</Name>
+                <Rectangle>548 540 273 359</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>273</Width>
+                  <Height>359</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>9</StartNumber>
+                  <EndNumber>53</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>1</LoopCount>
+                <RowFrameCount>44</RowFrameCount>
+                <FileType>Seprate</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+              <Item>
+                <Name>Give</Name>
+                <Rectangle>600 539 221 360</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>221</Width>
+                  <Height>360</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>54</StartNumber>
+                  <EndNumber>54</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>8 8 8 8 8</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+            <InitGroup />
+            <IdleGroup />
+          </Item>
+          <Item>
+            <Name>Moose</Name>
+            <LayerDepth>0.3</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>422 317 118 168</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>118</Width>
+                  <Height>168</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>55</StartNumber>
+                  <EndNumber>55</EndNumber>
+                </FramesRange>
+                <Fps>10</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>10 10 10 9</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+              <Item>
+                <Name>Dialogue</Name>
+                <Rectangle>422 317 118 168</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>118</Width>
+                  <Height>168</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>56</StartNumber>
+                  <EndNumber>56</EndNumber>
+                </FramesRange>
+                <Fps>10</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>13</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+              <Item>
+                <Name>Give</Name>
+                <Rectangle>422 317 118 168</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/10-</Texture>
+                  <Width>118</Width>
+                  <Height>168</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>55</StartNumber>
+                  <EndNumber>55</EndNumber>
+                </FramesRange>
+                <Fps>10</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>10 10 10 9</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+            <InitGroup />
+            <IdleGroup />
+          </Item>
+        </NPCs>
+        <Forgrounds>
+          <Item>
+            <Name>CouchPart</Name>
+            <Rectangle>758 699 72 88</Rectangle>
+            <Texture>Scenes/Forgrounds/SpaghttiHome-CouchPart</Texture>
+            <LayerDepth>0.4</LayerDepth>
+            <InitGroup />
+          </Item>
+          <Item>
+            <Name>MileShomine</Name>
+            <Rectangle>387 701 179 102</Rectangle>
+            <Texture>Scenes/Forgrounds/SpaghttiHome-MileShomine</Texture>
+            <LayerDepth>0.2</LayerDepth>
+            <InitGroup />
+          </Item>
+          <Item>
+            <Name>Table</Name>
+            <Rectangle>1416 641 504 298</Rectangle>
+            <Texture>Scenes/Forgrounds/SpaghttiHome-Table</Texture>
+            <LayerDepth>0.5</LayerDepth>
+            <InitGroup />
+          </Item>
+          <Item>
+            <Name>Window</Name>
+            <Rectangle>1574 971 346 109</Rectangle>
+            <Texture>Scenes/Forgrounds/SpaghttiHome-Window</Texture>
+            <LayerDepth>0.36</LayerDepth>
+            <InitGroup />
+          </Item>
+        </Forgrounds>
+        <Interactives />
+        <InventoryItems>
+          <Item>
+            <ItemId>6</ItemId>
+            <Name>Matchbox</Name>
+            <Rectangle>378 618 26 23</Rectangle>
+            <Texture>Scenes/InventoryItems/Matchbox</Texture>
+            <LayerDepth>0.89</LayerDepth>
+            <InitGroup />
+          </Item>
+        </InventoryItems>
+        <Particles>
+          <Item>
+            <ClassName>PotSteamParticle</ClassName>
+          </Item>
+        </Particles>
+        <MiniGameTrigers />
+        <MeshPolygons>
+          <Item>
+            <Vertices>0 0 1920 0 1920 1080 0 1080</Vertices>
+            <Edges />
+          </Item>
+        </MeshPolygons>
+        <MeshLinks />
+      </Item>
+      <Item>
+        <SceneName>RatHole</SceneName>
+        <Background>Scenes/Bgs/RatHole</Background>
+        <SceneMusic />
+        <Exits>
+          <Item>
+            <Rectangle>0 0 1920 1080</Rectangle>
+            <NextSceneName>SpaghettiOut</NextSceneName>
+            <PlayerPosition>1635 910</PlayerPosition>
+            <PlayerDirection>South</PlayerDirection>
+            <PlayerLayerDepth>0.9</PlayerLayerDepth>
+            <InitGroup />
+          </Item>
+        </Exits>
+        <LoopAnimations>
+          <Item>
+            <Name>LeftPlant</Name>
+            <LayerDepth>0.1</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>410 546 487 470</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/43-</Texture>
+                  <Width>487</Width>
+                  <Height>470</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>0</StartNumber>
+                  <EndNumber>0</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>4 4 4 4</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>RightPlant</Name>
+            <LayerDepth>0.12</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Idle</Name>
+                <Rectangle>1009 528 378 501</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/43-</Texture>
+                  <Width>378</Width>
+                  <Height>501</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>1</StartNumber>
+                  <EndNumber>1</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>4 4 4 4</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>Worm</Name>
+            <LayerDepth>0.12</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Enter</Name>
+                <Rectangle>1270 205 93 104</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/43-</Texture>
+                  <Width>93</Width>
+                  <Height>104</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>2</StartNumber>
+                  <EndNumber>2</EndNumber>
+                </FramesRange>
+                <Fps>10</Fps>
+                <Delay>0</Delay>
+                <LoopCount>1</LoopCount>
+                <RowFrameCount>14</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+              <Item>
+                <Name>Move</Name>
+                <Rectangle>1255 246 76 69</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/43-</Texture>
+                  <Width>76</Width>
+                  <Height>69</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>3</StartNumber>
+                  <EndNumber>3</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>17</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>false</IsMoving>
+                <MoveSpeed>0</MoveSpeed>
+                <Destination>0 0</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+          <Item>
+            <Name>Rat</Name>
+            <LayerDepth>0.09</LayerDepth>
+            <AnimationSprites>
+              <Item>
+                <Name>Walk</Name>
+                <Rectangle>1050 672 406 278</Rectangle>
+                <SpriteFile>
+                  <Texture>Sprites/43-</Texture>
+                  <Width>406</Width>
+                  <Height>278</Height>
+                </SpriteFile>
+                <FramesRange>
+                  <StartNumber>4</StartNumber>
+                  <EndNumber>4</EndNumber>
+                </FramesRange>
+                <Fps>12</Fps>
+                <Delay>0</Delay>
+                <LoopCount>-1</LoopCount>
+                <RowFrameCount>4 4 4</RowFrameCount>
+                <FileType>Single</FileType>
+                <AnimType>Linear</AnimType>
+                <IsMoving>true</IsMoving>
+                <MoveSpeed>50</MoveSpeed>
+                <Destination>560 672</Destination>
+              </Item>
+            </AnimationSprites>
+          </Item>
+        </LoopAnimations>
+        <NPCs />
+        <Forgrounds>
+          <Item>
+            <Name>Frame</Name>
+            <Rectangle>0 0 1920 1080</Rectangle>
+            <Texture>Scenes/Forgrounds/RatHole-Frame</Texture>
+            <LayerDepth>0.99</LayerDepth>
+            <InitGroup />
+          </Item>
+        </Forgrounds>
+        <Interactives />
+        <InventoryItems />
+        <Particles />
+        <MiniGameTrigers />
+        <MeshPolygons>
+          <Item>
+            <Vertices>0 0 1920 0 1920 1080 0 1080</Vertices>
+            <Edges />
+          </Item>
+        </MeshPolygons>
+        <MeshLinks />
+      </Item>
+    </Scenes>
+</Asset>
+</XnaContent>

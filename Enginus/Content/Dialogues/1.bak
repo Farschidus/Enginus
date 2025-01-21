@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Generic="System.Collections.Generic">
+  <Asset Type="Generic:List[Enginus.DialogueSystem.Speaker]">
+    <Item>
+      <DialogueBox>25 25 200 200</DialogueBox>
+      <Type>Baloon</Type>
+      <Size>Medium</Size>
+      <Direction>None</Direction>
+      <Character>Mizuki</Character>
+      <Dialogue>Could you come over here?</Dialogue>
+      <AnswerIndex>1</AnswerIndex>
+      <VoiceFileName>SFX/1</VoiceFileName>
+    </Item>
+    <Item>
+      <DialogueBox>50 50 200 200</DialogueBox>
+      <Type>Baloon</Type>
+      <Size>Medium</Size>
+      <Direction>None</Direction>
+      <Character>Mizuki</Character>
+      <Dialogue>You talkin to me?</Dialogue>
+      <AnswerIndex>2</AnswerIndex>
+      <VoiceFileName>SFX/2</VoiceFileName>
+    </Item>
+    <Item>
+      <DialogueBox>100 100 200 200</DialogueBox>
+      <Type>Baloon</Type>
+      <Size>Medium</Size>
+      <Direction>None</Direction>
+      <Character>Mizuki</Character>
+      <Dialogue>I dont hate you !!!</Dialogue>
+      <AnswerIndex>3</AnswerIndex>
+      <VoiceFileName>SFX/3</VoiceFileName>
+    </Item>
+    <Item>
+      <DialogueBox>200 200 200 200</DialogueBox>
+      <Type>Baloon</Type>
+      <Size>Medium</Size>
+      <Direction>None</Direction>
+      <Character>Mizuki</Character>
+      <Dialogue>Ive got balls of steel :D</Dialogue>
+      <AnswerIndex>4</AnswerIndex>
+      <VoiceFileName>SFX/4</VoiceFileName>
+    </Item>
+    <Item>
+      <DialogueBox>300 300 100 100</DialogueBox>
+      <Type>Baloon</Type>
+      <Size>Medium</Size>
+      <Direction>None</Direction>
+      <Character>Mizuki</Character>
+      <Dialogue>WHY</Dialogue>
+      <AnswerIndex Null="true" />
+      <VoiceFileName>SFX/5</VoiceFileName>
+    </Item>
+  </Asset>
+</XnaContent>

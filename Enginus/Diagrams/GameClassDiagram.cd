@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Enginus.Program">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.Player" HideInheritanceLine="true">
+    <Position X="17.75" Y="1.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>gAYAQYCAAMAC4gFggEwTIIACAIAAAgCEAogAbAEAAAQ=</HashCode>
+      <FileName>Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.Animation.Animation">
+    <Position X="20.75" Y="1.25" Width="2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.Control.InputState">
+    <Position X="14.5" Y="1.25" Width="3" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.ParticleSystem.Particle">
+    <Position X="26.75" Y="1.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.ParticleSystem.ParticleEngine">
+    <Position X="23.5" Y="1.25" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.ParticleSystem.RadioMusicParticle">
+    <Position X="26.5" Y="5.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.Global.Helper">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.Global.Enums">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Enginus.Global.Enums.Characters" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+      <Class Name="Enginus.Global.Enums.Direction" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.Global.Constants">
+    <Position X="2.75" Y="4" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.Global.PlayerIndexEventArgs">
+    <Position X="2.75" Y="1.25" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.MenuScreens.MainMenuScreen">
+    <Position X="3.75" Y="13.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAiAAAAAAAAAAAAAAAAAAAAAABAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Menus\MainMenuScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.MenuScreens.PauseMenuScreen">
+    <Position X="7.25" Y="13.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Menus\PauseMenuScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.MenuScreens.OptionsMenuScreen">
+    <Position X="0.5" Y="13.75" Width="2.75" />
+    <NestedTypes>
+      <Enum Name="Enginus.MenuScreens.OptionsMenuScreen.Ungulate" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Menus\OptionsMenuScreen.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BBABAAAgAAAQAggAAAgAQAAAAAAABAAAAAAAABIACAA=</HashCode>
+      <FileName>Menus\OptionsMenuScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.MenuScreens.MenuEntry">
+    <Position X="0.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAgAAAAJABAAAAAAAAIAAAACEQAAAI=</HashCode>
+      <FileName>Menus\MenuEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.Scenes.GameScene">
+    <Position X="17.75" Y="11.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAEACAAAAAAgCAAAAAAAAAAAAAAEAAAEAACAAAAAQ=</HashCode>
+      <FileName>Scenes\GameScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.DialogueSystem.Speaker">
+    <Position X="28.25" Y="8.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.DialogueSystem.Dialogue">
+    <Position X="23.5" Y="8.5" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.SceneObject.SceneObject">
+    <Position X="31.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AARAAACAAAAAAgBAABRAIACABIAAAAAABJAAIAACBAA=</HashCode>
+      <FileName>SceneObjects\SceneObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Enginus.SceneObject.InteractiveObject">
+    <Position X="33.75" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SceneObjects\InteractiveObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.InventorySystem.Inventory">
+    <Position X="20.5" Y="9.75" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.InventorySystem.InventoryItem">
+    <Position X="20.5" Y="11" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.Screen.ScreenManager">
+    <Position X="8" Y="1.25" Width="2.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.Screen.GameScreen">
+    <Position X="11.25" Y="2.25" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Enginus.Screen.Screens.Background">
+    <Position X="3.75" Y="9.75" Width="2.5" />
+    <InheritanceLine Type="Enginus.Screen.GameScreen" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.5" Y="6.69" />
+        <Point X="12.5" Y="9.094" />
+        <Point X="4.812" Y="9.094" />
+        <Point X="4.812" Y="9.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQCEAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAQAAAQ=</HashCode>
+      <FileName>GameScreens\Background.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.Screen.Screens.MessageBox">
+    <Position X="9.5" Y="9.5" Width="3.5" />
+    <InheritanceLine Type="Enginus.Screen.GameScreen" ManuallyRouted="true">
+      <Path>
+        <Point X="12.5" Y="6.69" />
+        <Point X="12.5" Y="9.115" />
+        <Point X="11.25" Y="9.115" />
+        <Point X="11.25" Y="9.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAQQCAACAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAACQ=</HashCode>
+      <FileName>GameScreens\MessageBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.Screen.Screens.Loading">
+    <Position X="6.75" Y="9.75" Width="2.25" />
+    <InheritanceLine Type="Enginus.Screen.GameScreen" ManuallyRouted="true">
+      <Path>
+        <Point X="12.5" Y="6.69" />
+        <Point X="12.5" Y="9.104" />
+        <Point X="7.875" Y="9.104" />
+        <Point X="7.875" Y="9.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>ABQAgAAAAAAAAgAAAAAQAAEAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>GameScreens\Loading.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.Screen.Screens.Menu">
+    <Position X="0.5" Y="9.25" Width="2.75" />
+    <InheritanceLine Type="Enginus.Screen.GameScreen" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.5" Y="6.69" />
+        <Point X="12.5" Y="9.094" />
+        <Point X="1.688" Y="9.094" />
+        <Point X="1.688" Y="9.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>CQQAACGAAAAAAgAAAAAAgAAAAAAAAAAAAAAAAAQAAAQ=</HashCode>
+      <FileName>GameScreens\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.SceneObject.ExitObject">
+    <Position X="31.5" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAIIAAAIAAAAgAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>SceneObjects\ExitObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.SceneObject.ForgroundObject">
+    <Position X="29.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SceneObjects\ForgroundObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.SceneObject.AutoSpriteObject">
+    <Position X="29.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAQAKAAAEAACIgAAAAAAIIAQAAAAAAAAAQABDAAAACA=</HashCode>
+      <FileName>SceneObjects\AutoSpriteObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.SceneObject.NpcObject">
+    <Position X="33.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAQAIACAAABAAgAAAAAAAAAQAAAAAAAAAQAAIAAAACA=</HashCode>
+      <FileName>SceneObjects\NpcObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.Enginus" Collapsed="true">
+    <Position X="5.25" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAwAAAAAAAAABAAAAAAgAAAAAAEAAAAQ=</HashCode>
+      <FileName>Enginus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Enginus.Animation.AnimationPlayer">
+    <Position X="20.75" Y="3.75" Width="2" />
+    <TypeIdentifier />
+  </Struct>
+  <Enum Name="Enginus.DialogueSystem.Type">
+    <Position X="26.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="Enginus.DialogueSystem.Size">
+    <Position X="26.5" Y="10" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Enum Name="Enginus.InventorySystem.ItemsEnum" Collapsed="true">
+    <Position X="21" Y="9" Width="1.5" />
+    <TypeIdentifier />
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
