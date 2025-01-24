@@ -99,7 +99,7 @@ namespace Enginus.Sound
         {
             if (!string.IsNullOrEmpty(songName))
             {
-                if (_songs.ContainsKey(songName) && !songName.Equals(_currentSong))
+                if (!_songs.ContainsKey(songName) && !songName.Equals(_currentSong))
                 {
                     _songs.Add(songName, _content.Load<Song>(songPath));
                 }
@@ -156,14 +156,16 @@ namespace Enginus.Sound
         /// <param name="loop">True if song should loop, false otherwise</param>
         public void PlaySong(string songName, bool loop)
         {
-            if (_currentSong != default && CurrentSong != songName)
+            if (CurrentSong != songName)
             {
-                if (_currentSong != null)
+                if (_currentSong != null || string.IsNullOrEmpty(songName))
                 {
                     MediaPlayer.Stop();
+                    CurrentSong = null;
+                    return;
                 }
 
-                if (!_songs.TryGetValue(songName, out _currentSong))
+                if (!string.IsNullOrEmpty(songName) && !_songs.TryGetValue(songName, out _currentSong))
                 {
                     throw new ArgumentException(string.Format("Song '{0}' not found", songName));
                 }
