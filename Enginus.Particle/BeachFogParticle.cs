@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using Enginus.Global;
+using System;
 
 namespace Enginus.Particle
 {
@@ -87,7 +83,7 @@ namespace Enginus.Particle
         protected override void InitializeParticle(Particle p, Vector2 where)
         {
             base.InitializeParticle(p, where);
-            //p.Acceleration.X += Global.Helper.RandomBetween(10, 200);
+            p.Acceleration.X += Global.Helper.RandomBetween(10, 100);
             p.Acceleration.X += 0.7f;
         }
 

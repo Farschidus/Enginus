@@ -11,6 +11,7 @@ using Jint;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace Enginus
 {
@@ -243,11 +244,12 @@ namespace Enginus
                 nextScene.SceneForgrounds.Add(new ForgroundObject(forground.Name, forground.Rectangle, forground.Texture, content, forground.LayerDepth));
             foreach (ParticleClass particle in sceneAssets.Particles)
             {
-                //TODO: using DI/IoC here
+                //TODO: maybe using DI/IoC here
                 //ParticleEngine particleInstance = (ParticleEngine)(Activator.CreateInstance(Type.GetType(string.Format("Enginus.Particle.{0}", particle.ClassName), true)));
-                //particleInstance.content = content;
-                //particleInstance.Initialize();
-                //nextScene.SceneParticles.Add(particleInstance);
+                ParticleEngine particleInstance = GetParticaleInstance(particle.ClassName);
+                particleInstance.content = content;
+                particleInstance.Initialize();
+                nextScene.SceneParticles.Add(particleInstance);
             }
             foreach (ConvexPolygon polygon in sceneAssets.MeshPolygons)
             {
@@ -267,5 +269,23 @@ namespace Enginus
             }
             return nextScene;
         }
+
+        private static ParticleEngine GetParticaleInstance(string particleName)
+        {
+            return particleName switch
+            {
+                "AlleyParticle" => new AlleyParticle(),
+                "AlleyParticleUp" => new AlleyParticleUp(),
+                "BeachFogParticle" => new BeachFogParticle(),
+                "DreamFogParticle" => new DreamFogParticle(),
+                "FlowershopSpray" => new FlowershopSpray(),
+                "FlowerTest" => new FlowershopSpray(),
+                "FlyParticle" => new FlyParticle(),
+                "LighthouseFog" => new LighthouseFog(),
+                "MonkeyParticle" => new MonkeyParticle(),
+                "PotSteamParticle" => new PotSteamParticle(),
+                _ => throw new NotImplementedException(),
+            };
+         }
     }
 }

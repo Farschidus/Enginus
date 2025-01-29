@@ -88,7 +88,7 @@ namespace Enginus.Particle
 
             // the base is mostly good, but we want to simulate a little bit of wind
             // heading to the right.
-            //p.Acceleration.X += Global.Helper.RandomBetween(10, 200);
+            p.Acceleration.X += Global.Helper.RandomBetween(10, 200);
             p.Acceleration.X += 3f;
         }
 
