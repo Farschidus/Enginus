@@ -6,17 +6,17 @@ using Microsoft.Xna.Framework;
 
 namespace Enginus
 {
-	public class Enginus : Game
+    public class Enginus : Game
 	{
         #region Fields
 
-        GraphicsDeviceManager graphics;
-        ScreenManager screenManager;
-        AudioManager audio;
+        readonly GraphicsDeviceManager graphics;
+        readonly ScreenManager screenManager;
+        readonly AudioManager audio;
 
         // By preloading any assets used by UI rendering, we avoid framerate glitches
         // when they suddenly need to be loaded in the middle of a menu transition.
-        static readonly string[] preloadAssets = { "Menu/Bgs/MessageboxBg", };
+        static readonly string[] preloadAssets = { "Menu/Bgs/MessageboxBg", "Menu/Bgs/MainMenuBg" };
 
         #endregion
 
@@ -26,25 +26,28 @@ namespace Enginus
         {
             audio = new AudioManager(this, "Content");
 
-            graphics = new GraphicsDeviceManager(this);
-            //graphics.SynchronizeWithVerticalRetrace = true;
-            //this.IsFixedTimeStep = true;
+            graphics = new GraphicsDeviceManager(this)
+            {
+                SynchronizeWithVerticalRetrace = true
+            };
+            this.IsFixedTimeStep = true;
             Resolution.Init(ref graphics);
             Content.RootDirectory = "Content";
 
             Resolution.SetVirtualResolution(Constants.GameOriginalWidth, Constants.GameOriginalHeight);
-            Resolution.SetResolution(Constants.GameOriginalWidth, Constants.GameOriginalHeight, false); //(1280, 900, false);
+            Resolution.SetResolution(Constants.GameOriginalWidth, Constants.GameOriginalHeight, false);
             screenManager = new ScreenManager(this, audio);
 
             Components.Add(screenManager);
             Components.Add(audio);
+
             // Activate the first screens.
             screenManager.AddScreen(new Background(), null);
             screenManager.AddScreen(new MainMenu(), null);
         }
         protected override void Initialize()
         {
-            this.IsMouseVisible = false;
+            IsMouseVisible = false;
             base.Initialize();
         }
         protected override void LoadContent()

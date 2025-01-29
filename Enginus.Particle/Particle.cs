@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Enginus.Particle
 {
@@ -38,8 +34,7 @@ namespace Enginus.Particle
         }
 
         // the scale of this particle
-        private
-            float scale;
+        private float scale;
         public float Scale
         {
             get { return scale; }

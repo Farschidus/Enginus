@@ -69,8 +69,8 @@ namespace Enginus.Global
     public class Constants
     {
         //Integers
-        public const int GameOriginalWidth = 1920;
-        public const int GameOriginalHeight = 1080;
+        public const int GameOriginalWidth = 1920;  //2560 1920;
+        public const int GameOriginalHeight = 1080; //1440 1080;
         //Floats
         public const float FanSpeed = 0.070f;
         //Scene Names
