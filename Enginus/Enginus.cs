@@ -1,4 +1,5 @@
-﻿using Enginus.Global;
+﻿using Enginus.Core;
+using Enginus.Core.Utilities;
 using Enginus.MenuScreens;
 using Enginus.Screen;
 using Enginus.Sound;
@@ -16,7 +17,11 @@ namespace Enginus
 
         // By preloading any assets used by UI rendering, we avoid framerate glitches
         // when they suddenly need to be loaded in the middle of a menu transition.
-        static readonly string[] preloadAssets = { "Menu/Bgs/MessageboxBg", "Menu/Bgs/MainMenuBg" };
+        static readonly string[] preloadAssets =
+        {
+            Constants.ASSET_BG_MESSAGE_BOX,
+            Constants.ASSET_BG_MAIN_MENU 
+        };
 
         #endregion
 
@@ -24,6 +29,7 @@ namespace Enginus
 
         public Enginus()
         {
+            IsMouseVisible = false;
             audio = new AudioManager(this, "Content");
 
             graphics = new GraphicsDeviceManager(this)
@@ -34,8 +40,8 @@ namespace Enginus
             Resolution.Init(ref graphics);
             Content.RootDirectory = "Content";
 
-            Resolution.SetVirtualResolution(Constants.GameOriginalWidth, Constants.GameOriginalHeight);
-            Resolution.SetResolution(Constants.GameOriginalWidth, Constants.GameOriginalHeight, false);
+            Resolution.SetVirtualResolution(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+            Resolution.SetResolution(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, Constants.FULL_SCREEN);
             screenManager = new ScreenManager(this, audio);
 
             Components.Add(screenManager);
@@ -45,11 +51,12 @@ namespace Enginus
             screenManager.AddScreen(new Background(), null);
             screenManager.AddScreen(new MainMenu(), null);
         }
+
         protected override void Initialize()
         {
-            IsMouseVisible = false;
             base.Initialize();
         }
+
         protected override void LoadContent()
         {
             foreach (string asset in preloadAssets)
