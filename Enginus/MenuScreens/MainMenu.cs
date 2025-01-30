@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
-using Enginus.Global;
 using Enginus.Screen;
+using Enginus.Core.Utilities;
 
 namespace Enginus.MenuScreens
 {
@@ -44,24 +44,24 @@ namespace Enginus.MenuScreens
         {
             //TODO: AddGameSceneLoader static function to load assets for the scene from the XML file [[ LOVE ITTTTTT :]]
             //TODO: replace the player posiition with the saved GameState of the player profile. (the GameState has the initial values for the game start ;)
-            Loading.Load(ScreenManager, true, e.PlayerIndex, GameSceneManager.InitNextScene("CitySquare", ScreenManager, ScreenManager.State.PlayerPosition, ScreenManager.State.PlayerDirection, ScreenManager.State.PlayerLayerDepth));
+            Loading.Load(ScreenManager, true, GameSceneManager.InitNextScene("CitySquare", ScreenManager, ScreenManager.State.PlayerPosition, ScreenManager.State.PlayerDirection, ScreenManager.State.PlayerLayerDepth));
         }
         /// <summary>
         /// Event handler for when the Options menu entry is selected.
         /// </summary>
         void OptionsMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            ScreenManager.AddScreen(new OptionsMenu(), e.PlayerIndex);
+            ScreenManager.AddScreen(new OptionsMenu());
         }        
         /// <summary>
         /// When the user cancels the main menu, ask if they want to exit the sample.
         /// </summary>
-        protected override void OnCancel(PlayerIndex playerIndex)
+        protected override void OnCancel()
         {
             const string message = "Are you sure you want to exit?";
-            MessageBox confirmExitMessageBox = new MessageBox(message);
+            var confirmExitMessageBox = new MessageBox(message);
             confirmExitMessageBox.Accepted += ConfirmExitMessageBoxAccepted;
-            ScreenManager.AddScreen(confirmExitMessageBox, playerIndex);
+            ScreenManager.AddScreen(confirmExitMessageBox);
         }        
         /// <summary>
         /// Event handler for when the user selects ok on the "are you sure

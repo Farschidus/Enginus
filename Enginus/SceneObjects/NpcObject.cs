@@ -1,6 +1,6 @@
 using Enginus.Animation;
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace Enginus.SceneObject
 {
-	public class NpcObject : SceneObject
+    public class NpcObject : SceneObject
     {
         public AnimationPlayer AnimationPlayer;
         public List<Animator> Animations;

@@ -8,6 +8,5 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Enginus.Control\Enginus.Control.csproj" />
-		<ProjectReference Include="..\Enginus.Global\Enginus.Global.csproj" />
  </ItemGroup>
 </Project>

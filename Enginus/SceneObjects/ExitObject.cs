@@ -1,5 +1,5 @@
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
 using Enginus.Screen;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -9,11 +9,11 @@ namespace Enginus.SceneObject
 	public class ExitObject : SceneObject
     {
         public Vector2 PlayerPosition;
-        public Enums.Direction PlayerDirection;
+        public Direction PlayerDirection;
         public float PlayerLayerDepth;
         bool quickExit;
 
-        public ExitObject(Rectangle recSprite, ContentManager content, string texture, string sceneName, Vector2 playerPosition, Enums.Direction playerDirection, float playerLayerDepth, string initGroup)
+        public ExitObject(Rectangle recSprite, ContentManager content, string texture, string sceneName, Vector2 playerPosition, Direction playerDirection, float playerLayerDepth, string initGroup)
             : base(sceneName, recSprite, texture, content, CursorTexturType.Exit, 0.99f, initGroup)
         {
             PlayerPosition = playerPosition;

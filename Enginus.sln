@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enginus.Editor", "Enginus.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enginus.GameState", "Enginus.GameState\Enginus.GameState.csproj", "{B9AE1007-1C88-45B9-9A0C-2050D5336B34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enginus.Global", "Enginus.Global\Enginus.Global.csproj", "{BC02C7AF-9A35-4888-A337-253887AC3917}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enginus.Inventory", "Enginus.Inventory\Enginus.Inventory.csproj", "{CE23CD49-C564-48C1-BFE7-B64B82A7D5C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enginus.Particle", "Enginus.Particle\Enginus.Particle.csproj", "{BF827319-6621-41C7-8EED-A8B3BA698CB7}"
@@ -59,10 +57,6 @@ Global
 		{B9AE1007-1C88-45B9-9A0C-2050D5336B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9AE1007-1C88-45B9-9A0C-2050D5336B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9AE1007-1C88-45B9-9A0C-2050D5336B34}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC02C7AF-9A35-4888-A337-253887AC3917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC02C7AF-9A35-4888-A337-253887AC3917}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC02C7AF-9A35-4888-A337-253887AC3917}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC02C7AF-9A35-4888-A337-253887AC3917}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE23CD49-C564-48C1-BFE7-B64B82A7D5C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE23CD49-C564-48C1-BFE7-B64B82A7D5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE23CD49-C564-48C1-BFE7-B64B82A7D5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU

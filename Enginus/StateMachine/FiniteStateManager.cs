@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Enginus.Core;
+using System;
 using System.Collections.Generic;
 
 namespace Enginus.StateMachine

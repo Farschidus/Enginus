@@ -1,12 +1,12 @@
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
 using Enginus.Screen;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
 namespace Enginus.SceneObject
 {
-	public class PopupTriggerObject : SceneObject
+    public class PopupTriggerObject : SceneObject
     {
         public int Id;
         public PopupTriggerObject(int id, string name, Rectangle recSprite, string texture, ContentManager content, float layerDepth)
@@ -26,11 +26,11 @@ namespace Enginus.SceneObject
                 Activated = false;
             }
         }
-        public void Update(Screen.GameScene gameScene)
+        public void Update(GameScene gameScene)
         {
             if (Activated)
             {
-                gameScene.ScreenManager.AddScreen(InitMiniScene(Id, gameScene.ScreenManager), null);
+                gameScene.ScreenManager.AddScreen(InitMiniScene(Id, gameScene.ScreenManager));
                 Activated = false;
             }
         }
@@ -39,7 +39,7 @@ namespace Enginus.SceneObject
         public static PuzzleScene InitMiniScene(int Id, Screen.ScreenManager screenManager)
         {
             ContentManager content = new ContentManager(screenManager.Game.Services, "Content");
-            PuzzlePopups puzzlePopupList = content.Load<PuzzlePopups>(Constants.Scenes_PuzzlePopups_File);
+            PuzzlePopups puzzlePopupList = content.Load<PuzzlePopups>(Constants.PUZZLES_ASSETS_FILE);
             PuzzlePopup puzzlePopup = puzzlePopupList.Popups.Find(asset => asset.Id.Equals(Id));
             PuzzleScene miniScene = new PuzzleScene(puzzlePopup.SceneName, puzzlePopup.Background);
 

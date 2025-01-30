@@ -1,29 +1,27 @@
+using Enginus.Control;
+using Enginus.Core;
+using Enginus.Core.Utilities;
+using Enginus.MenuScreens;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Enginus.Control;
-using Enginus.Global;
-using Enginus.MenuScreens;
 using System;
 using System.Collections.Generic;
 
 namespace Enginus.Screen
 {
-	/// <summary>
-	/// Base class for screens that contain a menu of options. The user can
-	/// move up and down to select an entry, or cancel to back out of the screen.
-	/// </summary>
-	abstract class Menu : GameScreen
+    /// <summary>
+    /// Base class for screens that contain a menu of options. The user can
+    /// move up and down to select an entry, or cancel to back out of the screen.
+    /// </summary>
+    abstract class Menu : GameScreen
     {
-        #region Fields
+        #region Fields and Properties
 
-        List<MenuEntry> menuEntries = new List<MenuEntry>();
-        int selectedEntry = 0;
-        string menuTitle;
+        private int selectedEntry = 0;
+        private readonly string menuTitle;
 
-        #endregion
 
-        #region Properties
-
+        private readonly List<MenuEntry> menuEntries = [];
         /// <summary>
         /// Gets the list of menu entries, so derived classes can add
         /// or change the menu contents.
@@ -63,7 +61,7 @@ namespace Enginus.Screen
         public override void HandleInput(InputState input)
         {
             // Move to the previous menu entry?
-            if (input.IsMenuUp(ControllingPlayer))
+            if (input.IsMenuUp())
             {
                 selectedEntry--;
 
@@ -72,7 +70,7 @@ namespace Enginus.Screen
             }
 
             // Move to the next menu entry?
-            if (input.IsMenuDown(ControllingPlayer))
+            if (input.IsMenuDown())
             {
                 selectedEntry++;
 
@@ -80,33 +78,26 @@ namespace Enginus.Screen
                     selectedEntry = 0;
             }
 
-            // Accept or cancel the menu? We pass in our ControllingPlayer, which may
-            // either be null (to accept input from any player) or a specific index.
-            // If we pass a null controlling player, the InputState helper returns to
-            // us which player actually provided the input. We pass that through to
-            // OnSelectEntry and OnCancel, so they can tell which player triggered them.
-            PlayerIndex playerIndex;
-
-            if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
+            if (input.IsMenuSelect())
             {
-                OnSelectEntry(selectedEntry, playerIndex);
+                OnSelectEntry(selectedEntry);
             }
-            else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
+            else if (input.IsMenuCancel())
             {
-                OnCancel(playerIndex);
+                OnCancel();
             }
         }
         /// <summary>
         /// Handler for when the user has chosen a menu entry.
         /// </summary>
-        protected virtual void OnSelectEntry(int entryIndex, PlayerIndex playerIndex)
+        protected virtual void OnSelectEntry(int entryIndex)
         {
-            menuEntries[entryIndex].OnSelectEntry(playerIndex);
+            menuEntries[entryIndex].OnSelectEntry();
         }
         /// <summary>
         /// Handler for when the user has cancelled the menu.
         /// </summary>
-        protected virtual void OnCancel(PlayerIndex playerIndex)
+        protected virtual void OnCancel()
         {
             ExitScreen();
         }
@@ -115,7 +106,7 @@ namespace Enginus.Screen
         /// </summary>
         protected void OnCancel(object sender, PlayerIndexEventArgs e)
         {
-            OnCancel(e.PlayerIndex);
+            OnCancel();
         }
 
         #endregion
@@ -131,10 +122,10 @@ namespace Enginus.Screen
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
             // the movement slow down as it nears the end).
-            float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
+            var transitionOffset = (float)Math.Pow(TransitionPosition, 2);
 
             // start at Y = 175; each X value is generated per entry
-            Vector2 position = new Vector2(0f, 175f);
+            var position = new Vector2(0f, 175f);
 
             // update each menu entry's location in turn
             for (int i = 0; i < menuEntries.Count; i++)
@@ -142,7 +133,7 @@ namespace Enginus.Screen
                 MenuEntry menuEntry = menuEntries[i];
                 
                 // each entry is to be centered horizontally
-                position.X = Constants.GameOriginalWidth / 2 - menuEntry.GetWidth(this) / 2;
+                position.X = Constants.SCREEN_WIDTH / 2 - menuEntry.GetWidth(this) / 2;
 
                 if (ScreenState == ScreenState.TransitionOn)
                     position.X -= transitionOffset * 256;
@@ -181,7 +172,7 @@ namespace Enginus.Screen
 
             SpriteFont font = ScreenManager.Font;
 
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
 
             // Draw each menu entry in turn.
             for (int i = 0; i < menuEntries.Count; i++)
@@ -199,8 +190,8 @@ namespace Enginus.Screen
             float transitionOffset = (float)Math.Pow(TransitionPosition, 2);
 
             // Draw the menu title centered on the screen
-            Vector2 titlePosition = new Vector2(Constants.GameOriginalWidth / 2, 80);
-            Vector2 titleOrigin = font.MeasureString(menuTitle) / 2;
+            var titlePosition = new Vector2(Constants.SCREEN_WIDTH / 2, 80);
+            var titleOrigin = font.MeasureString(menuTitle) / 2;
             Color titleColor = new Color(192, 192, 192) * TransitionAlpha;
             float titleScale = 1.25f;
 

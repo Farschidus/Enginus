@@ -8,7 +8,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Enginus.Control\Enginus.Control.csproj" />
-		<ProjectReference Include="..\Enginus.Global\Enginus.Global.csproj" />
+		<ProjectReference Include="..\Enginus.Core\Enginus.Core.csproj" />
 		<ProjectReference Include="..\Enginus.Sound\Enginus.Sound.csproj" />
 	</ItemGroup>
 </Project>

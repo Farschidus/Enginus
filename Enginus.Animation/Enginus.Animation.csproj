@@ -6,4 +6,7 @@
 		<PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
 		<PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
 	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Enginus.Core\Enginus.Core.csproj" />
+	</ItemGroup>
 </Project>

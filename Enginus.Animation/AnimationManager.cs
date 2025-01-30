@@ -1,24 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Enginus.Core;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace Enginus.Animation
 {
-	#region Enums
-
-	public enum AnimationFileType
-    {
-        Single,
-        Seprate
-    }
-    public enum AnimationType
-    {
-        Linear,
-        Random
-    }
-
-    #endregion
     public struct FrameRange
     {
         public int StartNumber { get; set; }

@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
+using Enginus.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Enginus.Global;
-using Enginus.Control;
 
 namespace Enginus.SceneObject
 {

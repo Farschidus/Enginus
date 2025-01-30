@@ -1,13 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Enginus.Core;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace Enginus.Animation
 {
-	/// <summary>
-	/// Controls playback of an Animation.
-	/// </summary>
-	public struct AnimationPlayer
+    /// <summary>
+    /// Controls playback of an Animation.
+    /// </summary>
+    public struct AnimationPlayer
     {
         #region Properties
 

@@ -1,5 +1,6 @@
 ﻿using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
+using Enginus.Core.Utilities;
 using Enginus.Inventory;
 using Enginus.InventorySystem;
 using Enginus.Navigation;
@@ -15,11 +16,11 @@ using System;
 
 namespace Enginus
 {
-	public class GameSceneManager : GameScene
+    public class GameSceneManager : GameScene
     {
         Icon InventoryIcon;
         MapIcon mapIcon;
-        public GameSceneManager(string sceneName, string background, string music, Vector2 playerPosition, Enums.Direction playerDirection, float playerLayerDepth)
+        public GameSceneManager(string sceneName, string background, string music, Vector2 playerPosition, Direction playerDirection, float playerLayerDepth)
             : base(sceneName, background, music, playerPosition, playerDirection, playerLayerDepth)
         {
         }
@@ -108,12 +109,12 @@ namespace Enginus
             InventoryIcon.HandleInput(input);
             if (InventoryIcon.IsHover && input.MouseClicked)
             {
-                ScreenManager.AddScreen(new Screen.Inventory(), ControllingPlayer);
+                ScreenManager.AddScreen(new Screen.Inventory());
             }
             mapIcon.HandleInput(input);
             if (mapIcon.IsHover && input.MouseClicked)
             {
-                ScreenManager.AddScreen(new Map(), ControllingPlayer);
+                ScreenManager.AddScreen(new Map());
             }
         }
         public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputState input)
@@ -158,7 +159,7 @@ namespace Enginus
         }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
 
             spriteBatch.Draw(backgroundTexture, backgroundRectangle, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, 0.05f);
             //Dialogue.Draw(spriteBatch);
@@ -206,10 +207,10 @@ namespace Enginus
             base.Draw(gameTime, spriteBatch);
         }
 
-        public static GameScene InitNextScene(string SceneName, ScreenManager screenManager, Vector2 playerPosition, Enums.Direction playerDirection, float playerLayerDepth)
+        public static GameScene InitNextScene(string SceneName, ScreenManager screenManager, Vector2 playerPosition, Direction playerDirection, float playerLayerDepth)
         {
             ContentManager content = new ContentManager(screenManager.Game.Services, "Content");
-            GameAssets gameAssets = content.Load<GameAssets>(Constants.Scenes_GameAssets_File);
+            GameAssets gameAssets = content.Load<GameAssets>(Constants.GAME_ASSETS_FILE);
             Scene sceneAssets = gameAssets.Scenes.Find(x => x.SceneName.Equals(SceneName));
             GameSceneManager nextScene = new GameSceneManager(sceneAssets.SceneName, sceneAssets.Background, sceneAssets.SceneMusic, playerPosition, playerDirection, playerLayerDepth);
 

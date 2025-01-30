@@ -1,13 +1,13 @@
-using Enginus.Global;
+using Enginus.Core;
 using Microsoft.Xna.Framework;
 using System;
 
 namespace Enginus.GameState
 {
-	public class StateManager
+    public class StateManager
     {
         public Vector2 PlayerPosition => PalyerProfile.PlayerPosition;
-        public Enums.Direction PlayerDirection => PalyerProfile.PlayerDirection;
+        public Direction PlayerDirection => PalyerProfile.PlayerDirection;
         public float PlayerLayerDepth => PalyerProfile.PlayerLayerDepth;
         public bool VarA { get; set; }
 

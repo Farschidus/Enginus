@@ -1,5 +1,6 @@
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
+using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,7 +8,7 @@ using System;
 
 namespace Enginus.Screen
 {
-	class MessageBox : GameScreen
+    class MessageBox : GameScreen
     {
         #region Fields
 
@@ -72,21 +73,19 @@ namespace Enginus.Screen
         /// </summary>
         public override void HandleInput(InputState input)
         {
-            PlayerIndex playerIndex;
-
-            if (input.IsMenuSelect(ControllingPlayer, out playerIndex))
+            if (input.IsMenuSelect())
             {
                 // Raise the accepted event, then exit the message box.
                 if (Accepted != null)
-                    Accepted(this, new PlayerIndexEventArgs(playerIndex));
+                    Accepted(this, new PlayerIndexEventArgs(PlayerIndex.One));
 
                 ExitScreen();
             }
-            else if (input.IsMenuCancel(ControllingPlayer, out playerIndex))
+            else if (input.IsMenuCancel())
             {
                 // Raise the cancelled event, then exit the message box.
                 if (Cancelled != null)
-                    Cancelled(this, new PlayerIndexEventArgs(playerIndex));
+                    Cancelled(this, new PlayerIndexEventArgs(PlayerIndex.One));
 
                 ExitScreen();
             }
@@ -107,7 +106,7 @@ namespace Enginus.Screen
             ScreenManager.FadeBackBufferToBlack(TransitionAlpha * 2 / 3);
 
             // Center the message text in the viewport.
-            Vector2 viewportSize = new Vector2(Constants.GameOriginalWidth, Constants.GameOriginalHeight);
+            Vector2 viewportSize = new Vector2(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
             Vector2 textSize = font.MeasureString(message);
             Vector2 textPosition = (viewportSize - textSize) / 2;
 
@@ -123,7 +122,7 @@ namespace Enginus.Screen
             // Fade the popup alpha during transitions.
             Color color = Color.White * TransitionAlpha;
 
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
 
             // Draw the background rectangle.
             spriteBatch.Draw(gradientTexture, backgroundRectangle, null, color, 0, Vector2.Zero, SpriteEffects.None, 0);

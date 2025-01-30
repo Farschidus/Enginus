@@ -1,5 +1,6 @@
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
+using Enginus.Core.Utilities;
 using Enginus.SceneObject;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -9,7 +10,7 @@ using System.Collections.Generic;
 
 namespace Enginus.Screen
 {
-	public class PuzzleScene : GameScreen
+    public class PuzzleScene : GameScreen
     {
         const int closeDimension = 70;
         const int closeMargin = 20;
@@ -42,9 +43,9 @@ namespace Enginus.Screen
             base.LoadContent();
             ContentManager content = ScreenManager.Game.Content;
             backgroundTexture = content.Load<Texture2D>(bgTexture);
-            backgroundRectangle = new Rectangle(0, 0, Constants.GameOriginalWidth, Constants.GameOriginalHeight);
+            backgroundRectangle = new Rectangle(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
             closeTexture = content.Load<Texture2D>(Constants.Image_DialogueBg);
-            closeRectangle = new Rectangle(Constants.GameOriginalWidth - closeMargin - closeDimension, closeMargin, closeDimension, closeDimension);
+            closeRectangle = new Rectangle(Constants.SCREEN_WIDTH - closeMargin - closeDimension, closeMargin, closeDimension, closeDimension);
         }
         public override void UnloadContent()
         {
@@ -76,7 +77,7 @@ namespace Enginus.Screen
             ScreenManager.FadeBackBufferToBlack(TransitionAlpha * 2 / 3);
             // Fade the popup alpha during transitions.
             Color color = Color.White * TransitionAlpha;
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
 
             spriteBatch.Draw(backgroundTexture, backgroundRectangle, null, color, 0, Vector2.Zero, SpriteEffects.None, 0);
             spriteBatch.Draw(closeTexture, closeRectangle, null, color, 0, Vector2.Zero, SpriteEffects.None, 1);

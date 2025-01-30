@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using Enginus.Global;
+using System;
 
 namespace Enginus.Particle
 {
@@ -72,7 +69,7 @@ namespace Enginus.Particle
         protected override Vector2 PickRandomDirection()
         {
             // tweak this to make the smoke have more or less spread.
-            float radians = Global.Helper.RandomBetween(MathHelper.ToRadians(80), MathHelper.ToRadians(100));
+            float radians = Utils.RandomBetween(MathHelper.ToRadians(80), MathHelper.ToRadians(100));
 
             Vector2 direction = Vector2.Zero;
             // from the unit circle, cosine is the x coordinate and sine is the
@@ -91,8 +88,8 @@ namespace Enginus.Particle
         {
             base.InitializeParticle(p, where);
             // the base is mostly good, but we want to simulate a little bit of wind.
-            p.Acceleration.X += Global.Helper.RandomBetween(100, 120);
-            p.Acceleration.Y += Global.Helper.RandomBetween(-20, 20);
+            p.Acceleration.X += Utils.RandomBetween(100, 120);
+            p.Acceleration.Y += Utils.RandomBetween(-20, 20);
         }
 
         public override void Update(GameTime gameTime)

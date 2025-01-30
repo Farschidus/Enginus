@@ -40,7 +40,6 @@
     <ProjectReference Include="..\Enginus.Core\Enginus.Core.csproj" />
     <ProjectReference Include="..\Enginus.Dialogue\Enginus.Dialogue.csproj" />
     <ProjectReference Include="..\Enginus.Editor\Enginus.Editor.csproj" />
-    <ProjectReference Include="..\Enginus.Global\Enginus.Global.csproj" />
     <ProjectReference Include="..\Enginus.Particle\Enginus.Particle.csproj" />
     <ProjectReference Include="..\Enginus.PathFinder\Enginus.PathFinder.csproj" />
     <ProjectReference Include="..\Enginus.Screen\Enginus.Screen.csproj" />

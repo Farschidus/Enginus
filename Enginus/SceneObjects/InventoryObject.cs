@@ -1,10 +1,11 @@
 using Enginus.Control;
+using Enginus.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
 namespace Enginus.SceneObject
 {
-	public class InventoryObject : SceneObject
+    public class InventoryObject : SceneObject
     {
         public int itemId;
         public InventoryObject(int id, string name, Rectangle recSprite, string texture, ContentManager content, float layerDepth)

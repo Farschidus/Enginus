@@ -1,21 +1,11 @@
+using Enginus.Control;
+using Enginus.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Enginus.Control;
 using System;
 
 namespace Enginus.Screen
 {
-	/// <summary>
-	/// Enum describes the screen transition state.
-	/// </summary>
-	public enum ScreenState
-    {
-        TransitionOn,
-        Active,
-        TransitionOff,
-        Hidden,
-    }
-
     /// <summary>
     /// A screen is a single layer that has update and draw logic, and which
     /// can be combined with other layers to build up a complex menu system.
@@ -109,7 +99,7 @@ namespace Enginus.Screen
 		/// this menu is given control over all subsequent screens, so other gamepads
 		/// are inactive until the controlling player returns to the main menu.
 		/// </summary>
-		public PlayerIndex? ControllingPlayer { get; internal set; }
+		//public PlayerIndex? ControllingPlayer { get; internal set; }
 
 		///// <summary>
 		///// set two viewport: one for screen and another for game,

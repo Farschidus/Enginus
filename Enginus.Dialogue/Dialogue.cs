@@ -1,4 +1,5 @@
 ﻿using Enginus.Control;
+using Enginus.Core;
 using Enginus.Sound;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -8,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Enginus.Dialogue
 {
-	public static class Dialogue
+    public static class Dialogue
     {
         #region Properties
 

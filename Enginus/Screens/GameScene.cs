@@ -1,20 +1,20 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Enginus.Animation;
+﻿using Enginus.Animation;
 using Enginus.Control;
+using Enginus.Core;
 using Enginus.Editor;
-using Enginus.Global;
 using Enginus.MenuScreens;
 using Enginus.Navigation;
 using Enginus.Particle;
 using Enginus.SceneObject;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
 namespace Enginus.Screen
 {
-	public abstract class GameScene : GameScreen
+    public abstract class GameScene : GameScreen
     {
         #region Fields And Properties
 
@@ -51,14 +51,14 @@ namespace Enginus.Screen
 
         public Plotter plotter;
         Vector2 playerPosition;
-        Enums.Direction playerDirection;
+        Direction playerDirection;
         float playerLayerDepth;
 
         #endregion
 
         #region Methods
 
-        public GameScene(string sceneName, string background, string sceneMusic, Vector2 playerPosition, Enums.Direction playerDirection, float playerLayerDepth)
+        public GameScene(string sceneName, string background, string sceneMusic, Vector2 playerPosition, Direction playerDirection, float playerLayerDepth)
         { 
             SceneName = sceneName;
             BackgroundTexture = background;
@@ -87,7 +87,7 @@ namespace Enginus.Screen
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
             ScreenManager.Game.ResetElapsedTime();
             backgroundTexture = content.Load<Texture2D>(BackgroundTexture);
-            backgroundRectangle = new Rectangle(0, 0, Global.Constants.GameOriginalWidth, Global.Constants.GameOriginalHeight);
+            backgroundRectangle = new Rectangle(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
             player = new Player(this, playerPosition, playerDirection, playerLayerDepth);
             ScreenManager.Audio.LoadSong(SceneMusic);
             ScreenManager.Audio.PlaySong(SceneMusic, true);
@@ -118,9 +118,10 @@ namespace Enginus.Screen
         {
             if (input == null)
                 throw new ArgumentNullException("InputState Is Null");
-            if (input.IsPauseGame(ControllingPlayer))
+
+            if (input.IsPauseGame(null))
             {
-                ScreenManager.AddScreen(new PauseMenu(), ControllingPlayer);
+                ScreenManager.AddScreen(new PauseMenu());
                 isGamePause = true;
             }
             else

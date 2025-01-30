@@ -1,18 +1,18 @@
-using Enginus.Global;
+using Enginus.Core;
+using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Enginus.Control
 {
-	public class Cursor
+	public class Cursor(ContentManager Content)
     {
-        Texture2D cursorTexture;
-        ContentManager content;
-        CursorTexturType cursorType;
-        Vector2 cursorPosition;
-        bool isVisible;
-        object activeInventoryItemName;
+        private Texture2D cursorTexture = Content.Load<Texture2D>(Constants.Cursor_Pointer);
+        private CursorTexturType cursorType = CursorTexturType.Pointer;
+        private Vector2 cursorPosition;
+        private bool isVisible = false;
+        private object activeInventoryItemName;
 
         public Texture2D CursorTexture;
         public CursorTexturType CursorType
@@ -41,14 +41,6 @@ namespace Enginus.Control
             }
         }
 
-        public Cursor(ContentManager Content)
-        {
-            content = Content;
-            cursorType = CursorTexturType.Pointer;
-            isVisible = false;
-
-            cursorTexture = Content.Load<Texture2D>(Constants.Cursor_Pointer);
-        }
         public void Update(InputState input)
         {
             if (!isVisible) 
@@ -58,55 +50,31 @@ namespace Enginus.Control
             cursorPosition.Y = input.CurrentMousePoint.Y;
             cursorPosition.X = input.CurrentMousePoint.X;
 
-            mSetCursorTexture();
+            SetCursorTexture();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isVisible)
             {
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
                 spriteBatch.Draw(cursorTexture, cursorPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
                 spriteBatch.End();
             }
         }
 
-        private void mSetCursorTexture()
+        private void SetCursorTexture()
         {
-            switch (cursorType)
+            cursorTexture = cursorType switch
             {
-                case CursorTexturType.Pointer:                    
-                        cursorTexture = content.Load<Texture2D>(Constants.Cursor_Pointer);
-                        break;
-                case CursorTexturType.Intract:
-                        cursorTexture = content.Load<Texture2D>(Constants.Cursor_Intract);
-                        break;
-                case CursorTexturType.Talk:
-                        cursorTexture = content.Load<Texture2D>(Constants.Cursor_Talk);
-                        break;
-                case CursorTexturType.Walk:
-                        cursorTexture = content.Load<Texture2D>(Constants.Cursor_Walk);
-                        break;
-                case CursorTexturType.Exit:
-                        cursorTexture = content.Load<Texture2D>(Constants.Cursor_Exit);
-                        break;
-                case CursorTexturType.Texture:
-                        cursorTexture = CursorTexture;
-                        break;
-                default:
-                        cursorTexture = content.Load<Texture2D>(Constants.Cursor_Pointer);
-                        break;
-            }
+                CursorTexturType.Pointer => Content.Load<Texture2D>(Constants.Cursor_Pointer),
+                CursorTexturType.Intract => Content.Load<Texture2D>(Constants.Cursor_Intract),
+                CursorTexturType.Talk => Content.Load<Texture2D>(Constants.Cursor_Talk),
+                CursorTexturType.Walk => Content.Load<Texture2D>(Constants.Cursor_Walk),
+                CursorTexturType.Exit => Content.Load<Texture2D>(Constants.Cursor_Exit),
+                CursorTexturType.Texture => CursorTexture,
+                _ => Content.Load<Texture2D>(Constants.Cursor_Pointer),
+            };
             cursorType = CursorTexturType.Pointer;
         }
-    }
-
-    public enum CursorTexturType
-    {
-        Pointer,
-        Intract,
-        Talk,
-        Walk,
-        Exit,
-        Texture
     }
 }

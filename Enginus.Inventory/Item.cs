@@ -1,25 +1,11 @@
 using Enginus.Control;
+using Enginus.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Enginus.Inventory
 {
-	public enum ItemsEnum
-    {
-        Bamboo = 1,
-        EmptyBucket = 2,
-        Flag = 3,
-        GrassDried = 4,
-        Shell = 5,
-        Matchbox = 6,
-        Juice = 7,
-        PlantRat = 8,
-        Watch = 9,
-        QardashMap = 10,
-        Rope = 11
-    }
-
     public class Item
     {
         public ItemsEnum ItemName

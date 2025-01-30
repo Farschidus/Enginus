@@ -1,4 +1,4 @@
-﻿using Enginus.Global;
+﻿using Enginus.Core;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
@@ -7,7 +7,7 @@ namespace Enginus.GameState
 	public class PalyerProfile
     {
         public static Vector2 PlayerPosition => new(1425, 960); // Initial player position in Bakery when start a new game
-        public static Enums.Direction PlayerDirection => Enums.Direction.East;
+        public static Direction PlayerDirection => Direction.East;
         public static float PlayerLayerDepth => 0.9f;
         public Dictionary<string, bool> Checkers { get; set; }
 

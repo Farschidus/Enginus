@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Enginus.Core;
+using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
 
 namespace Enginus.Inventory

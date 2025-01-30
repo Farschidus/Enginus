@@ -1,5 +1,6 @@
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
+using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,12 +8,12 @@ using System;
 
 namespace Enginus.Screen
 {
-	/// <summary>
-	/// The background screen sits behind all the other menu screens.
-	/// It draws a background image that remains fixed in place regardless
-	/// of whatever transitions the screens on top of it may be doing.
-	/// </summary>
-	class Background : GameScreen
+    /// <summary>
+    /// The background screen sits behind all the other menu screens.
+    /// It draws a background image that remains fixed in place regardless
+    /// of whatever transitions the screens on top of it may be doing.
+    /// </summary>
+    class Background : GameScreen
     {
         #region Fields
 
@@ -43,7 +44,7 @@ namespace Enginus.Screen
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
             backgroundTexture = content.Load<Texture2D>("Menu/Bgs/MainMenuBg");
-            backgroundRectangle = new Rectangle(0, 0, Constants.GameOriginalWidth, Constants.GameOriginalHeight);
+            backgroundRectangle = new Rectangle(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         }        
         /// <summary>
         /// Unloads graphics content for this screen.
@@ -74,7 +75,7 @@ namespace Enginus.Screen
         /// </summary>
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
 
             spriteBatch.Draw(backgroundTexture, backgroundRectangle, new Color(TransitionAlpha, TransitionAlpha, TransitionAlpha));
 

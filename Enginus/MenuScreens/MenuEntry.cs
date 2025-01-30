@@ -1,8 +1,8 @@
-using System;
+using Enginus.Core.Utilities;
+using Enginus.Screen;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Enginus.Global;
-using Enginus.Screen;
+using System;
 
 namespace Enginus.MenuScreens
 {
@@ -65,10 +65,9 @@ namespace Enginus.MenuScreens
         /// <summary>
         /// Method for raising the Selected event.
         /// </summary>
-        protected internal virtual void OnSelectEntry(PlayerIndex playerIndex)
+        protected internal virtual void OnSelectEntry()
         {
-            if (Selected != null)
-                Selected(this, new PlayerIndexEventArgs(playerIndex));
+            Selected?.Invoke(this, new PlayerIndexEventArgs(PlayerIndex.One));
         }
         
         #endregion

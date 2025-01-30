@@ -1,3 +1,4 @@
+using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -65,7 +66,7 @@ namespace Enginus.Particle
         protected override Vector2 PickRandomDirection()
         {
             // tweak this to make the smoke have more or less spread.
-            float radians = Global.Helper.RandomBetween(MathHelper.ToRadians(80), MathHelper.ToRadians(100));
+            float radians = Utils.RandomBetween(MathHelper.ToRadians(80), MathHelper.ToRadians(100));
 
             Vector2 direction = Vector2.Zero;
             // from the unit circle, cosine is the x coordinate and sine is the
@@ -83,7 +84,7 @@ namespace Enginus.Particle
         protected override void InitializeParticle(Particle p, Vector2 where)
         {
             base.InitializeParticle(p, where);
-            p.Acceleration.X += Global.Helper.RandomBetween(10, 100);
+            p.Acceleration.X += Utils.RandomBetween(10, 100);
             p.Acceleration.X += 0.7f;
         }
 
@@ -93,8 +94,8 @@ namespace Enginus.Particle
             if (timeTillPuff < 0)
             {
                 Vector2 where = Vector2.Zero;
-                where.X = Global.Helper.RandomBetween(0, 1920);
-                where.Y = Global.Helper.RandomBetween(378, 580);
+                where.X = Utils.RandomBetween(0, 1920);
+                where.Y = Utils.RandomBetween(378, 580);
                 base.AddParticles(where);
                 // and then reset the timer.
                 timeTillPuff = TimeBetweenParticlesPuff;

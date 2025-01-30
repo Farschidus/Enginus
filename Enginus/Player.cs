@@ -1,6 +1,6 @@
 using Enginus.Animation;
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
 using Enginus.Navigation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -10,10 +10,10 @@ using System.Linq;
 
 namespace Enginus
 {
-	/// <summary>
-	/// Our Amnesiac adventurer!
-	/// </summary>
-	public class Player
+    /// <summary>
+    /// Our Amnesiac adventurer!
+    /// </summary>
+    public class Player
     {
         float layerDepth;
         // Animations
@@ -78,13 +78,13 @@ namespace Enginus
         }
 
         private SpriteFont font;
-        private Enums.Direction normalizedDirection;
+        private Direction normalizedDirection;
 
         #endregion
 
         #region Methods
 
-        public Player(Screen.GameScene scene, Vector2 position, Enums.Direction playerDirection, float layerDepth)
+        public Player(Screen.GameScene scene, Vector2 position, Direction playerDirection, float layerDepth)
         {
             MizukiScale = 0.65f;
             this.layerDepth = layerDepth;
@@ -100,44 +100,45 @@ namespace Enginus
             font = Scene.Content.Load<SpriteFont>("Fonts/DialoguesTahoma");
             idleAnimation = new Animator("MizukiIdle", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/Idles", Width = playerWidth, Height = playerHeight } }, 0.1f, 0, 0, new int[1] { 8 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
 
-            northWalkAnimation = new Animator("MizukiNorthWalk", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/North", Width = 185, Height = 690 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            southWalkAnimation = new Animator("MizukiSouthWalk", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/South", Width = 214, Height = 700 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            westWalkAnimation = new Animator("MizukiWestWalk", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/West", Width = 262, Height = 704 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            northWestWalkAnimation = new Animator("MizukiNorthWestWalk", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/NorthWest", Width = 255, Height = 706 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            southWestWalkAnimation = new Animator("MizukiSouthWestWalk", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/SouthWest", Width = 258, Height = 699 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            eastWalkAnimation = new Animator("MizukiEastWalk", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/East", Width = 261, Height = 703 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            northEastWalkAnimation = new Animator("MizukiNorthEastWalk", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/NorthEast", Width = 254, Height = 709 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            southEastWalkAnimation = new Animator("MizukiSouthEastWalk", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/SouthEast", Width = 259, Height = 699 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            northWalkAnimation = new Animator("MizukiNorthWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/North", Width = 185, Height = 690 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            southWalkAnimation = new Animator("MizukiSouthWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/South", Width = 214, Height = 700 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            westWalkAnimation = new Animator("MizukiWestWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/West", Width = 262, Height = 704 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            northWestWalkAnimation = new Animator("MizukiNorthWestWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/NorthWest", Width = 255, Height = 706 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            southWestWalkAnimation = new Animator("MizukiSouthWestWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/SouthWest", Width = 258, Height = 699 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            eastWalkAnimation = new Animator("MizukiEastWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/East", Width = 261, Height = 703 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            northEastWalkAnimation = new Animator("MizukiNorthEastWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/NorthEast", Width = 254, Height = 709 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            southEastWalkAnimation = new Animator("MizukiSouthEastWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/SouthEast", Width = 259, Height = 699 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
         }
         public void IdleAnimation()
         {
             currentAnimation = idleAnimation;
             scene.AnimationPlayer.LoadPlayer(idleAnimation);
             scene.AnimationPlayer.Origin = new Vector2(scene.AnimationPlayer.Animation.FrameWidth / 2, scene.AnimationPlayer.Animation.FrameHeight - 10);
+
             switch (normalizedDirection)
             {
-                case Enums.Direction.North:
+                case Direction.North:
                     scene.AnimationPlayer.SetFrame(2);
                     return;
-                case Enums.Direction.South:
+                case Direction.South:
                     scene.AnimationPlayer.SetFrame(0);
                     return;
-                case Enums.Direction.NorthEast:
+                case Direction.NorthEast:
                     scene.AnimationPlayer.SetFrame(3);
                     return;
-                case Enums.Direction.NorthWest:
+                case Direction.NorthWest:
                     scene.AnimationPlayer.SetFrame(0);
                     return;
-                case Enums.Direction.SouthEast:
+                case Direction.SouthEast:
                     scene.AnimationPlayer.SetFrame(0);
                     return;
-                case Enums.Direction.SouthWest:
+                case Direction.SouthWest:
                     scene.AnimationPlayer.SetFrame(1);
                     return;
-                case Enums.Direction.East:
+                case Direction.East:
                     scene.AnimationPlayer.SetFrame(5);
                     return;
-                case Enums.Direction.West:
+                case Direction.West:
                     scene.AnimationPlayer.SetFrame(4);
                     return;
                 default:
@@ -177,7 +178,7 @@ namespace Enginus
             spriteBatch.DrawString(font, normalizedDirection.ToString(), new Vector2(10, 100), Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0.999f);
         }
 
-        private Enums.Direction VectorToDirection(Vector2 direction)
+        private Direction VectorToDirection(Vector2 direction)
         {
             Vector2 north = new Vector2(0, -1);
             Vector2 south = new Vector2(0, 1);
@@ -205,45 +206,45 @@ namespace Enginus
             if (smallest == northEastDiff)
             {
                 runAnimation = northEastWalkAnimation;
-                return Enums.Direction.NorthEast;
+                return Direction.NorthEast;
             }
             else if (smallest == northWestDiff)
             {
                 runAnimation = northWestWalkAnimation;
-                return Enums.Direction.NorthWest;
+                return Direction.NorthWest;
             }
             else if (smallest == southEastDiff)
             {
                 runAnimation = southEastWalkAnimation;
-                return Enums.Direction.SouthEast;
+                return Direction.SouthEast;
             }
             else if (smallest == southWestDiff)
             {
                 runAnimation = southWestWalkAnimation;
-                return Enums.Direction.SouthWest;
+                return Direction.SouthWest;
             }
             else if (smallest == northDiff)
             {
                 runAnimation = northWalkAnimation;
-                return Enums.Direction.North;
+                return Direction.North;
             }
             else if (smallest == southDiff)
             {
                 runAnimation = southWalkAnimation;
-                return Enums.Direction.South;
+                return Direction.South;
             }
             else if (smallest == westDiff)
             {
                 runAnimation = westWalkAnimation;
-                return Enums.Direction.West;
+                return Direction.West;
             }
             else if (smallest == eastDiff)
             {
                 runAnimation = eastWalkAnimation;
-                return Enums.Direction.East;
+                return Direction.East;
             }
             else
-                return Enums.Direction.Unknown;
+                return Direction.Unknown;
 
         }
         private double AcosDotProduct(Vector2 direction, Vector2 unitVector)

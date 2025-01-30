@@ -1,26 +1,27 @@
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
+using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace Enginus.Screen
 {
-	/// <summary>
-	/// The loading screen coordinates transitions between the menu system and the
-	/// game itself. Normally one screen will transition off at the same time as
-	/// the next screen is transitioning on, but for larger transitions that can
-	/// take a longer time to load their data, we want the menu system to be entirely
-	/// gone before we start loading the game. This is done as follows:
-	/// 
-	/// - Tell all the existing screens to transition off.
-	/// - Activate a loading screen, which will transition on at the same time.
-	/// - The loading screen watches the state of the previous screens.
-	/// - When it sees they have finished transitioning off, it activates the real
-	///   next screen, which may take a long time to load its data. The loading
-	///   screen will be the only thing displayed while this load is taking place.
-	/// </summary>
-	class Loading : GameScreen
+    /// <summary>
+    /// The loading screen coordinates transitions between the menu system and the
+    /// game itself. Normally one screen will transition off at the same time as
+    /// the next screen is transitioning on, but for larger transitions that can
+    /// take a longer time to load their data, we want the menu system to be entirely
+    /// gone before we start loading the game. This is done as follows:
+    /// 
+    /// - Tell all the existing screens to transition off.
+    /// - Activate a loading screen, which will transition on at the same time.
+    /// - The loading screen watches the state of the previous screens.
+    /// - When it sees they have finished transitioning off, it activates the real
+    ///   next screen, which may take a long time to load its data. The loading
+    ///   screen will be the only thing displayed while this load is taking place.
+    /// </summary>
+    class Loading : GameScreen
     {
         #region Fields
 
@@ -51,7 +52,7 @@ namespace Enginus.Screen
         /// <summary>
         /// Activates the loading screen.
         /// </summary>
-        public static void Load(ScreenManager screenManager, bool loadingIsSlow, PlayerIndex? controllingPlayer, params GameScreen[] screensToLoad)
+        public static void Load(ScreenManager screenManager, bool loadingIsSlow, params GameScreen[] screensToLoad)
         {
             // Tell all the current screens to transition off.
             foreach (GameScreen screen in screenManager.GetScreens())
@@ -60,7 +61,7 @@ namespace Enginus.Screen
             // Create and activate the loading screen.
             Loading loadingScreen = new Loading(loadingIsSlow, screensToLoad);
 
-            screenManager.AddScreen(loadingScreen, controllingPlayer);
+            screenManager.AddScreen(loadingScreen);
         }
         
         #endregion
@@ -84,7 +85,7 @@ namespace Enginus.Screen
                 {
                     if (screen != null)
                     {
-                        ScreenManager.AddScreen(screen, ControllingPlayer);
+                        ScreenManager.AddScreen(screen);
                     }
                 }
 
@@ -122,14 +123,14 @@ namespace Enginus.Screen
                 const string message = "Loading...";
 
                 // Center the text in the viewport.
-                Vector2 viewportSize = new Vector2(Constants.GameOriginalWidth, Constants.GameOriginalHeight);
+                Vector2 viewportSize = new Vector2(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
                 Vector2 textSize = font.MeasureString(message);
                 Vector2 textPosition = (viewportSize - textSize) / 2;
 
                 Color color = Color.White * TransitionAlpha;
 
                 // Draw the text.
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
                 spriteBatch.DrawString(font, message, textPosition, color);
                 spriteBatch.End();
             }

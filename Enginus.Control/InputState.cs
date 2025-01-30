@@ -1,3 +1,4 @@
+using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -93,7 +94,7 @@ namespace Enginus.Control
             for (int i = 0; i < MaxInputs; i++)
             {
                 LastKeyboardStates[i] = CurrentKeyboardStates[i];
-                CurrentKeyboardStates[i] = Keyboard.GetState((PlayerIndex)i);
+                CurrentKeyboardStates[i] = Keyboard.GetState();
             }
             if (isFullScreen)
             {
@@ -110,32 +111,13 @@ namespace Enginus.Control
             lastMouseStates = currentMouseStates;
             currentMouseStates = Mouse.GetState();
 
-            Vector2 MouseStateVector = new Vector2(currentMouseStates.X - Global.Resolution.GameViewPort.X, currentMouseStates.Y - Global.Resolution.GameViewPort.Y);
-            MouseStateVector = Vector2.Transform(MouseStateVector, Matrix.Invert(Global.Resolution.getScaleMatrix()));
+            Vector2 MouseStateVector = new Vector2(currentMouseStates.X - Resolution.GameViewPort.X, currentMouseStates.Y - Resolution.GameViewPort.Y);
+            MouseStateVector = Vector2.Transform(MouseStateVector, Matrix.Invert(Resolution.GetScaleMatrix()));
             CurrentMousePoint = new Point((int)Math.Round(MouseStateVector.X), (int)Math.Round(MouseStateVector.Y));
 
-            mCheckMouseClick(gameTime);
+            CheckMouseClick(gameTime);
         }
-        private void mCheckMouseClick(GameTime gameTime)
-        {
-            timePassed = gameTime.TotalGameTime.Milliseconds - previousGameTime;
-            DoubleClick = ((SingleClick && 
-                (currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed)) &&
-                (timePassed > 0 && timePassed < TimerDelay));
 
-            if (DoubleClick)
-            {
-                SingleClick = false;
-                DoubleClick = true;
-            }
-            else if (currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed)
-            {
-                previousGameTime = gameTime.TotalGameTime.Milliseconds;
-                SingleClick = (currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed);
-                if(SingleClick)
-                    mouseClickedPoint = CurrentMousePoint;
-            }
-        }
         /// <summary>
         /// Helper for checking if a key was newly pressed during this update. The
         /// controllingPlayer parameter specifies which player to read input for.
@@ -157,22 +139,37 @@ namespace Enginus.Control
             else
             {
                 // Accept input from any player.
-                return (IsNewKeyPress(key, PlayerIndex.One, out playerIndex) ||
+                return IsNewKeyPress(key, PlayerIndex.One, out playerIndex) ||
                         IsNewKeyPress(key, PlayerIndex.Two, out playerIndex) ||
                         IsNewKeyPress(key, PlayerIndex.Three, out playerIndex) ||
-                        IsNewKeyPress(key, PlayerIndex.Four, out playerIndex));
+                        IsNewKeyPress(key, PlayerIndex.Four, out playerIndex);
             }
         }
+        /// <summary>
+        /// Helper for checking if a key was newly pressed during this update.
+        /// it will accept input from player one.
+        /// </summary>
+        public bool IsNewKeyPress(Keys key)
+        {
+            int playerIndex = (int)PlayerIndex.One;
+
+            return (CurrentKeyboardStates[playerIndex].IsKeyDown(key) &&
+                    LastKeyboardStates[playerIndex].IsKeyUp(key));
+        }
+
         /// <summary>
         /// Checks for a "menu select" input action.
         /// The controllingPlayer parameter specifies which player to read input for.
         /// If this is null, it will accept input from any player. When the action
         /// is detected, the output playerIndex reports which player pressed it.
         /// </summary>
-        public bool IsMenuSelect(PlayerIndex? controllingPlayer, out PlayerIndex playerIndex)
+        public bool IsMenuSelect(PlayerIndex? controllingPlayer = null)
         {
-            return IsNewKeyPress(Keys.Space, controllingPlayer, out playerIndex) ||
-                   IsNewKeyPress(Keys.Enter, controllingPlayer, out playerIndex);
+            if (controllingPlayer is not null)
+                return IsNewKeyPress(Keys.Space, controllingPlayer, out _) ||
+                       IsNewKeyPress(Keys.Enter, controllingPlayer, out _);
+            else
+                return IsNewKeyPress(Keys.Space) || IsNewKeyPress(Keys.Enter);
         }
         //public bool IsMenuSelectByMouse(List<MenuEntry> menuEntries)
         //{
@@ -198,43 +195,48 @@ namespace Enginus.Control
         /// If this is null, it will accept input from any player. When the action
         /// is detected, the output playerIndex reports which player pressed it.
         /// </summary>
-        public bool IsMenuCancel(PlayerIndex? controllingPlayer, out PlayerIndex playerIndex)
+        public bool IsMenuCancel(PlayerIndex? controllingPlayer = null)
         {
-            return IsNewKeyPress(Keys.Escape, controllingPlayer, out playerIndex);
-        }
-        public void CenterMousePosition()
-        {
-            Mouse.SetPosition(gameViewport.Width / 2, gameViewport.Height / 2);
+            if (controllingPlayer is not null)           
+                return IsNewKeyPress(Keys.Escape, controllingPlayer, out _);
+            else
+                return IsNewKeyPress(Keys.Escape);
         }
         /// <summary>
         /// Checks for a "menu up" input action.
         /// The controllingPlayer parameter specifies which player to read
         /// input for. If this is null, it will accept input from any player.
         /// </summary>
-        public bool IsMenuUp(PlayerIndex? controllingPlayer)
+        public bool IsMenuUp(PlayerIndex? controllingPlayer = null)
         {
-            PlayerIndex playerIndex;
-            return IsNewKeyPress(Keys.Up, controllingPlayer, out playerIndex);
+            if (controllingPlayer is not null)
+                return IsNewKeyPress(Keys.Up, controllingPlayer, out _);
+            else
+                return IsNewKeyPress(Keys.Up);
         }
         /// <summary>
         /// Checks for a "menu down" input action.
         /// The controllingPlayer parameter specifies which player to read
         /// input for. If this is null, it will accept input from any player.
         /// </summary>
-        public bool IsMenuDown(PlayerIndex? controllingPlayer)
+        public bool IsMenuDown(PlayerIndex? controllingPlayer = null)
         {
-            PlayerIndex playerIndex;
-            return IsNewKeyPress(Keys.Down, controllingPlayer, out playerIndex);
+            if (controllingPlayer is not null)
+                return IsNewKeyPress(Keys.Down, controllingPlayer, out _);
+            else
+                return IsNewKeyPress(Keys.Down);
         }
         /// <summary>
         /// Checks for a "pause the game" input action.
         /// The controllingPlayer parameter specifies which player to read
         /// input for. If this is null, it will accept input from any player.
         /// </summary>
-        public bool IsPauseGame(PlayerIndex? controllingPlayer)
+        public bool IsPauseGame(PlayerIndex? controllingPlayer = null)
         {
-            PlayerIndex playerIndex;
-            return IsNewKeyPress(Keys.Escape, controllingPlayer, out playerIndex);
+            if (controllingPlayer is not null)
+                return IsNewKeyPress(Keys.Escape, controllingPlayer, out _);
+            else
+                return IsNewKeyPress(Keys.Escape);
         }
 
         #endregion
@@ -243,38 +245,61 @@ namespace Enginus.Control
 
         public bool KeyS()
         {
-            PlayerIndex index = new PlayerIndex();
-            return IsNewKeyPress(Keys.S, null, out index);
+            return IsNewKeyPress(Keys.S);
         }
         public bool KeyA()
         {
-            PlayerIndex index = new PlayerIndex();
-            return IsNewKeyPress(Keys.A, null, out index);
+            return IsNewKeyPress(Keys.A);
         }
         public bool KeyE()
         {
-            PlayerIndex index = new PlayerIndex();
-            return IsNewKeyPress(Keys.E, null, out index);
+            return IsNewKeyPress(Keys.E);
         }
         public bool KeyD()
         {
-            PlayerIndex index = new PlayerIndex();
-            return IsNewKeyPress(Keys.D, null, out index);
+            return IsNewKeyPress(Keys.D);
         }
         public bool KeyN()
         {
-            PlayerIndex index = new PlayerIndex();
-            return IsNewKeyPress(Keys.N, null, out index);
+            return IsNewKeyPress(Keys.N);
         }
         public bool KeyL()
         {
-            PlayerIndex index = new PlayerIndex();
-            return IsNewKeyPress(Keys.L, null, out index);
+            return IsNewKeyPress(Keys.L);
         }
         public bool KeyM()
         {
-            PlayerIndex index = new PlayerIndex();
-            return IsNewKeyPress(Keys.M, null, out index);
+            return IsNewKeyPress(Keys.M);
+        }
+
+        #endregion
+
+        #region Mouse
+
+        private void CheckMouseClick(GameTime gameTime)
+        {
+            timePassed = gameTime.TotalGameTime.Milliseconds - previousGameTime;
+            DoubleClick = ((SingleClick &&
+                (currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed)) &&
+                (timePassed > 0 && timePassed < TimerDelay));
+
+            if (DoubleClick)
+            {
+                SingleClick = false;
+                DoubleClick = true;
+            }
+            else if (currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed)
+            {
+                previousGameTime = gameTime.TotalGameTime.Milliseconds;
+                SingleClick = (currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed);
+                if (SingleClick)
+                    mouseClickedPoint = CurrentMousePoint;
+            }
+        }
+
+        public void CenterMousePosition()
+        {
+            Mouse.SetPosition(gameViewport.Width / 2, gameViewport.Height / 2);
         }
 
         #endregion

@@ -1,11 +1,12 @@
 using Enginus.Control;
+using Enginus.Core;
 using Enginus.Screen;
 using System;
 using System.Collections.Generic;
 
 namespace Enginus.StateMachine
 {
-	/**
+    /**
     A Finite State Machine System based on Chapter 3.1 of Game Programming Gems 1 by Eric Dybsand
  
     Written by Roberto Cezar Bianchini, July 2010
@@ -45,35 +46,6 @@ namespace Enginus.StateMachine
     DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     */
-
-	/// <summary>
-	/// Place the labels for the Transitions in this enum.
-	/// Don't change the first label, NullTransition as FSMSystem class uses it.
-	/// </summary>
-	public enum Transition
-    {
-        NullTransition = 0, // Use this transition to represent a non-existing transition in your system
-        Init,
-        Idle,
-        Look,
-        Talk,
-        Use,
-        Take
-    }
-    /// <summary>
-    /// Place the labels for the States in this enum.
-    /// Don't change the first label, NullTransition as FSMSystem class uses it.
-    /// </summary>
-    public enum StateID
-    {
-        NullStateID = 0, // Use this ID to represent a non-existing State in your system
-        InitGroup,
-        IdleGroup,
-        LookGroup,
-        TalkGroup,
-        UseGroup,
-        TakeGroup
-    }
 
     /// <summary>
     /// This class represents the States in the Finite State System.

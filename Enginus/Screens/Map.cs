@@ -1,9 +1,10 @@
-using System;
+using Enginus.Control;
+using Enginus.Core;
+using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Enginus.Global;
-using Enginus.Control;
+using System;
 
 namespace Enginus.Screen
 {
@@ -27,8 +28,8 @@ namespace Enginus.Screen
             base.LoadContent();
             ContentManager content = ScreenManager.Game.Content;
             mapTexture = content.Load<Texture2D>(Constants.Image_MapBg);
-            mapRectangle = new Rectangle((Constants.GameOriginalWidth / 2) - (mapWidth / 2),
-                                         (Constants.GameOriginalHeight / 2) - (mapHeight / 2),
+            mapRectangle = new Rectangle((Constants.SCREEN_WIDTH / 2) - (mapWidth / 2),
+                                         (Constants.SCREEN_HEIGHT / 2) - (mapHeight / 2),
                                          mapWidth, mapHeight);
             lake = content.Load<Texture2D>(Constants.Image_PlaceHolder);
             LakeRectangle = new Rectangle(mapRectangle.X + 341, mapRectangle.Y + 230, 124, 84);
@@ -42,7 +43,7 @@ namespace Enginus.Screen
                 ScreenManager.Cursor.CursorType = CursorTexturType.Exit;
                 if (input.MouseClicked)
                 {
-                    Loading.Load(ScreenManager, false, null, GameSceneManager.InitNextScene("Beach", ScreenManager, new Vector2(1800, 900), Enums.Direction.SouthWest, 0.9f));
+                    Loading.Load(ScreenManager, false, null, GameSceneManager.InitNextScene("Beach", ScreenManager, new Vector2(1800, 900), Direction.SouthWest, 0.9f));
                     TransitionOnTime = TimeSpan.FromSeconds(0.1);
                     TransitionOffTime = TimeSpan.FromSeconds(0.1);
                 }
@@ -57,7 +58,7 @@ namespace Enginus.Screen
             // Fade the popup alpha during transitions.
             Color color = Color.White * TransitionAlpha;
 
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
 
             spriteBatch.Draw(mapTexture, mapRectangle, color);
             spriteBatch.Draw(lake, LakeRectangle, color);
@@ -74,7 +75,7 @@ namespace Enginus.Screen
 
             // update location of map
             // each entry is to be centered horizontally
-            mapRectangle.X = Constants.GameOriginalWidth / 2 - mapRectangle.Width / 2;
+            mapRectangle.X = Constants.SCREEN_WIDTH / 2 - mapRectangle.Width / 2;
 
             if (ScreenState == ScreenState.TransitionOn)
                 mapRectangle.X -= (int)(transitionOffset * 256);

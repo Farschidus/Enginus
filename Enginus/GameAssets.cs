@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Enginus.Animation;
-using Enginus.Global;
+using Enginus.Core;
 using Enginus.Navigation;
 using System.Collections.Generic;
 
@@ -33,7 +33,7 @@ namespace Enginus
         public Rectangle Rectangle;
         public string NextSceneName;
         public Vector2 PlayerPosition;
-        public Enums.Direction PlayerDirection;
+        public Direction PlayerDirection;
         public float PlayerLayerDepth;
         public string InitGroup;
     }

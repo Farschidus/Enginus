@@ -1,5 +1,5 @@
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;

@@ -1,30 +1,32 @@
+using Enginus.Control;
+using Enginus.Core;
+using Enginus.Core.Utilities;
+using Enginus.GameState;
+using Enginus.Inventory;
+using Enginus.Sound;
 using Jint;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Enginus.Control;
-using Enginus.GameState;
-using Enginus.Global;
-using Enginus.Inventory;
-using Enginus.Sound;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Enginus.Screen
 {
-	/// <summary>
-	/// The screen manager is a component which manages one or more GameScreen
-	/// instances. It maintains a stack of screens, calls their Update and Draw
-	/// methods at the appropriate times, and automatically routes input to the
-	/// topmost active screen.
-	/// </summary>
-	public class ScreenManager : DrawableGameComponent
+    /// <summary>
+    /// The screen manager is a component which manages one or more GameScreen
+    /// instances. It maintains a stack of screens, calls their Update and Draw
+    /// methods at the appropriate times, and automatically routes input to the
+    /// topmost active screen.
+    /// </summary>
+    public class ScreenManager : DrawableGameComponent
     {
         #region Fields
 
-        List<GameScreen> screens = new List<GameScreen>();
-        List<GameScreen> screensToUpdate = new List<GameScreen>();
-
-        InputState input;
+        private InputState input;
+        private bool isInitialized;
+        private Texture2D blankTexture;
+        private readonly List<GameScreen> screens = [];
+        private readonly List<GameScreen> screensToUpdate = [];
 
 		/// <summary>
 		/// A default SpriteBatch shared by all the screens. This saves
@@ -37,19 +39,16 @@ namespace Enginus.Screen
 		/// each screen having to bother loading their own local copy.
 		/// </summary>
 		public SpriteFont Font { get; private set; }
-		Texture2D blankTexture;
 
-        private bool isInitialized;
-
-		/// <summary>
-		/// If true, the manager prints out a list of all the screens
-		/// each time it is updated. This can be useful for making sure
-		/// everything is being added and removed at the right times.
-		/// </summary>
-		public bool TraceEnabled { get; set; }
+        /// <summary>
+        /// If true, the manager prints out a list of all the screens
+        /// each time it is updated. This can be useful for making sure
+        /// everything is being added and removed at the right times.
+        /// </summary>
+        public bool TraceEnabled { get; set; } = true;
 		public AudioManager Audio { get; }
-		public Engine JSEngine;
-		public StateManager State;
+		public Engine JSEngine = new();
+        public StateManager State;
 
 		public InventoryManager InventoryManager { get; private set; }
 		public Cursor Cursor { get; private set; }
@@ -61,13 +60,11 @@ namespace Enginus.Screen
 		/// <summary>
 		/// Constructs a new screen manager component.
 		/// </summary>
-		public ScreenManager(Game game, AudioManager audio)
-            : base(game)
+		public ScreenManager(Game game, AudioManager audio) : base(game)
         {
-            this.Audio = audio;
-            TraceEnabled = false;
-            JSEngine = new Engine();
+            Audio = audio;
         }
+
         /// <summary>
         /// Initializes the screen manager component.
         /// </summary>
@@ -76,6 +73,7 @@ namespace Enginus.Screen
             base.Initialize();
             isInitialized = true;
         }
+
         /// <summary>
         /// Load your graphics content.
         /// </summary>
@@ -99,6 +97,7 @@ namespace Enginus.Screen
                 screen.LoadContent();
             }
         }
+
         /// <summary>
         /// Unload your graphics content.
         /// </summary>
@@ -169,18 +168,20 @@ namespace Enginus.Screen
             if (TraceEnabled)
                 TraceScreens();
         }
+
         /// <summary>
         /// Prints a list of all the screens, for debugging.
         /// </summary>
         void TraceScreens()
         {
-            List<string> screenNames = new List<string>();
+            var screenNames = new List<string>();
 
             foreach (GameScreen screen in screens)
                 screenNames.Add(screen.GetType().Name);
             
             Debug.WriteLine(string.Join(", ", screenNames.ToArray()));
         }
+
         /// <summary>
         /// Tells each screen to draw itself.
         /// </summary>
@@ -202,9 +203,8 @@ namespace Enginus.Screen
         /// <summary>
         /// Adds a new screen to the screen manager.
         /// </summary>
-        public void AddScreen(GameScreen screen, PlayerIndex? controllingPlayer)
+        public void AddScreen(GameScreen screen)
         {
-            screen.ControllingPlayer = controllingPlayer;
             screen.ScreenManager = this;
             screen.IsExiting = false;
 
@@ -248,9 +248,9 @@ namespace Enginus.Screen
         /// </summary>
         public void FadeBackBufferToBlack(float alpha)
         {
-            SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+            SpriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
 
-            SpriteBatch.Draw(blankTexture, new Rectangle(0, 0, Constants.GameOriginalWidth, Constants.GameOriginalHeight), Color.Black * alpha);
+            SpriteBatch.Draw(blankTexture, new Rectangle(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT), Color.Black * alpha);
 
             SpriteBatch.End();
         }

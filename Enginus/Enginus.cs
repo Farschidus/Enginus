@@ -48,8 +48,8 @@ namespace Enginus
             Components.Add(audio);
 
             // Activate the first screens.
-            screenManager.AddScreen(new Background(), null);
-            screenManager.AddScreen(new MainMenu(), null);
+            screenManager.AddScreen(new Background());
+            screenManager.AddScreen(new MainMenu());
         }
 
         protected override void Initialize()

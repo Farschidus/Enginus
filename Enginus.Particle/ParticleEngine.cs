@@ -1,3 +1,4 @@
+using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -6,13 +7,13 @@ using System.Collections.Generic;
 
 namespace Enginus.Particle
 {
-	/// <summary>
-	/// ParticleSystem is an abstract class that provides the basic functionality to
-	/// create a particle effect. Different subclasses will have different effects,
-	/// such as fire, explosions, and plumes of smoke. To use these subclasses, 
-	/// simply call AddParticles, and pass in where the particles should exist
-	/// </summary>
-	public abstract class ParticleEngine
+    /// <summary>
+    /// ParticleSystem is an abstract class that provides the basic functionality to
+    /// create a particle effect. Different subclasses will have different effects,
+    /// such as fire, explosions, and plumes of smoke. To use these subclasses, 
+    /// simply call AddParticles, and pass in where the particles should exist
+    /// </summary>
+    public abstract class ParticleEngine
     {
         #region Fildes and Properties
 
@@ -189,7 +190,7 @@ namespace Enginus.Particle
         {
             // the number of particles we want for this effect is a random number
             // somewhere between the two constants specified by the subclasses.
-            int numParticles = (int)Global.Helper.RandomBetween(minNumParticles, maxNumParticles);
+            int numParticles = (int)Utils.RandomBetween(minNumParticles, maxNumParticles);
 
             // create that many particles, if you can.
             for (int i = 0; i < numParticles && freeParticles.Count > 0; i++)
@@ -215,11 +216,11 @@ namespace Enginus.Particle
             // will be moving. velocity and acceleration's values will come from this.
             Vector2 direction = PickRandomDirection();
             // pick some random values for our particle
-            float velocity = Global.Helper.RandomBetween(minInitialSpeed, maxInitialSpeed);
-            float acceleration = Global.Helper.RandomBetween(minAcceleration, maxAcceleration);
-            float lifetime = Global.Helper.RandomBetween(minLifetime, maxLifetime);
-            float scale = Global.Helper.RandomBetween(minScale, maxScale);
-            float rotationSpeed = Global.Helper.RandomBetween(minRotationSpeed, maxRotationSpeed);
+            float velocity = Utils.RandomBetween(minInitialSpeed, maxInitialSpeed);
+            float acceleration = Utils.RandomBetween(minAcceleration, maxAcceleration);
+            float lifetime = Utils.RandomBetween(minLifetime, maxLifetime);
+            float scale = Utils.RandomBetween(minScale, maxScale);
+            float rotationSpeed = Utils.RandomBetween(minRotationSpeed, maxRotationSpeed);
             // then initialize it with those random values. initialize will save those,
             // and make sure it is marked as active.
             p.Initialize(where, velocity * direction, acceleration * direction, lifetime, scale, rotationSpeed);
@@ -231,7 +232,7 @@ namespace Enginus.Particle
         /// </summary>
         protected virtual Vector2 PickRandomDirection()
         {
-            float angle = Global.Helper.RandomBetween(0, MathHelper.TwoPi);
+            float angle = Utils.RandomBetween(0, MathHelper.TwoPi);
             return new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
         }
         /// <summary>

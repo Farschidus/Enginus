@@ -1,9 +1,10 @@
 ﻿using Enginus.Control;
+using Enginus.Core;
 using Enginus.Screen;
 
 namespace Enginus.StateMachine
 {
-	public class InitGroupState : FiniteState
+    public class InitGroupState : FiniteState
     {
         public InitGroupState(SceneObject.SceneObject obj)
         {
@@ -18,7 +19,7 @@ namespace Enginus.StateMachine
         public override void Act(ScreenManager screenManager)
         {
             string Init = string.Empty;
-            if (sceneObj.GroupActions.TryGetValue(StateMachine.StateID.InitGroup, out Init))
+            if (sceneObj.GroupActions.TryGetValue(StateID.InitGroup, out Init))
                 screenManager.JSEngine.Execute(Init);
             //sceneObj.CurrentAnimation = sceneObj.Animations.Find(x => x.Name.Equals(Transition.Idle.ToString()));
             //if (sceneObj.CurrentAnimation != null)
@@ -43,7 +44,7 @@ namespace Enginus.StateMachine
             //if (a != null)
             //    a.AnimationPlayer.LoadPlayer(a.CurrentAnimation);
             string Idle = string.Empty;
-            if (sceneObj.GroupActions.TryGetValue(StateMachine.StateID.IdleGroup, out Idle))
+            if (sceneObj.GroupActions.TryGetValue(StateID.IdleGroup, out Idle))
                 screenManager.JSEngine.Execute(Idle);
         }
     }

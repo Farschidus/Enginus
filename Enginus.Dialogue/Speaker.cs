@@ -1,16 +1,8 @@
-using Enginus.Global;
+using Enginus.Core;
 using Microsoft.Xna.Framework;
 
 namespace Enginus.Dialogue
 {
-	public enum PointerType
-    {
-        None,
-        Left,
-        Right,
-        Center
-    }
-
     public class Speaker
     {
         #region Properties
@@ -19,7 +11,7 @@ namespace Enginus.Dialogue
         public int Width;
         public PointerType PointerType;
         public bool HasContinue;
-        public Enums.Characters Character;
+        public Characters Character;
         public string Dialogue;
         public int? AnswerIndex;
         public string VoiceFileName;
@@ -41,7 +33,7 @@ namespace Enginus.Dialogue
         /// <summary>
         /// Add a new Speaker to a Conversation
         /// </summary>
-        public Speaker(Vector2 BalloonPosition, int BalloonWidth, PointerType Type, bool hasContinue, Enums.Characters character, string dialogue, int? answerIndex, string voiceFileName, string animationName)
+        public Speaker(Vector2 BalloonPosition, int BalloonWidth, PointerType Type, bool hasContinue, Characters character, string dialogue, int? answerIndex, string voiceFileName, string animationName)
         {
             Position = BalloonPosition;
             Width = BalloonWidth;
@@ -62,7 +54,7 @@ namespace Enginus.Dialogue
             Width = 0;
             HasContinue = false;
             PointerType = PointerType.None;
-            Character = Enums.Characters.Mizuki;
+            Character = Characters.Mizuki;
             Dialogue = VoiceFileName = AnimationName = "";
             AnswerIndex = null;
         }

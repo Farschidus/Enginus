@@ -1,13 +1,13 @@
-using Enginus.Global;
+using Enginus.Core.Utilities;
 using Enginus.Screen;
 
 namespace Enginus.MenuScreens
 {
-	/// <summary>
-	/// The pause menu comes up over the top of the game,
-	/// giving the player options to resume or quit.
-	/// </summary>
-	class PauseMenu : Menu
+    /// <summary>
+    /// The pause menu comes up over the top of the game,
+    /// giving the player options to resume or quit.
+    /// </summary>
+    class PauseMenu : Menu
     {
         #region Initialization
 
@@ -44,7 +44,7 @@ namespace Enginus.MenuScreens
 
             confirmQuitMessageBox.Accepted += ConfirmQuitMessageBoxAccepted;
 
-            ScreenManager.AddScreen(confirmQuitMessageBox, ControllingPlayer);
+            ScreenManager.AddScreen(confirmQuitMessageBox);
         }
         /// <summary>
         /// Event handler for when the user selects ok on the "are you sure

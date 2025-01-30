@@ -1,5 +1,6 @@
 using Enginus.Control;
-using Enginus.Global;
+using Enginus.Core;
+using Enginus.Core.Utilities;
 using Enginus.Inventory;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -8,7 +9,7 @@ using System;
 
 namespace Enginus.Screen
 {
-	class Inventory : GameScreen
+    class Inventory : GameScreen
     {
         const int inventoryWidth = 1000;
         const int inventoryHeight = 1000;
@@ -28,8 +29,8 @@ namespace Enginus.Screen
             base.LoadContent();
             ContentManager content = ScreenManager.Game.Content;
             backgroundTexture = content.Load<Texture2D>(Constants.Inventory_Bg);
-            backgroundRectangle = new Rectangle((Constants.GameOriginalWidth / 2) - (inventoryWidth / 2),
-                                                (Constants.GameOriginalHeight / 2) - (inventoryHeight / 2),
+            backgroundRectangle = new Rectangle((Constants.SCREEN_WIDTH / 2) - (inventoryWidth / 2),
+                                                (Constants.SCREEN_HEIGHT / 2) - (inventoryHeight / 2),
                                                 inventoryWidth, 
                                                 inventoryHeight);
         }
@@ -55,7 +56,7 @@ namespace Enginus.Screen
             ScreenManager.FadeBackBufferToBlack(TransitionAlpha * 2 / 3);
             // Fade the popup alpha during transitions.
             Color color = Color.White * TransitionAlpha;
-            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.getScaleMatrix());
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
             spriteBatch.Draw(backgroundTexture, backgroundRectangle, null, color, 0, Vector2.Zero, SpriteEffects.None, 0);
 
             int xCounter, yCounter, recX, recY;
