@@ -37,7 +37,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Enginus.Animation\Enginus.Animation.csproj" />
     <ProjectReference Include="..\Enginus.Control\Enginus.Control.csproj" />
-    <ProjectReference Include="..\Enginus.Core\Enginus.Core.csproj" />
     <ProjectReference Include="..\Enginus.Dialogue\Enginus.Dialogue.csproj" />
     <ProjectReference Include="..\Enginus.Editor\Enginus.Editor.csproj" />
     <ProjectReference Include="..\Enginus.Particle\Enginus.Particle.csproj" />

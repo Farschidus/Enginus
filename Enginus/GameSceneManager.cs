@@ -209,7 +209,7 @@ namespace Enginus
 
         public static GameScene InitNextScene(string SceneName, ScreenManager screenManager, Vector2 playerPosition, Direction playerDirection, float playerLayerDepth)
         {
-            ContentManager content = new ContentManager(screenManager.Game.Services, "Content");
+            ContentManager content = new(screenManager.Game.Services, "Content");
             GameAssets gameAssets = content.Load<GameAssets>(Constants.GAME_ASSETS_FILE);
             Scene sceneAssets = gameAssets.Scenes.Find(x => x.SceneName.Equals(SceneName));
             GameSceneManager nextScene = new GameSceneManager(sceneAssets.SceneName, sceneAssets.Background, sceneAssets.SceneMusic, playerPosition, playerDirection, playerLayerDepth);

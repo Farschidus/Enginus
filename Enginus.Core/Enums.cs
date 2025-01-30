@@ -1,6 +1,5 @@
 ﻿namespace Enginus.Core;
 
-
 public enum Characters
 {
     Mizuki = 1,
