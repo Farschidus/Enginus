@@ -44,7 +44,13 @@ namespace Enginus.MenuScreens
         {
             //TODO: AddGameSceneLoader static function to load assets for the scene from the XML file [[ LOVE ITTTTTT :]]
             //TODO: replace the player posiition with the saved GameState of the player profile. (the GameState has the initial values for the game start ;)
-            Loading.Load(ScreenManager, true, GameSceneManager.InitNextScene("CitySquare", ScreenManager, ScreenManager.State.PlayerPosition, ScreenManager.State.PlayerDirection, ScreenManager.State.PlayerLayerDepth));
+            Loading.Load(ScreenManager, true, GameSceneManager.InitNextScene(
+                "CitySquare",
+                ScreenManager,
+                ScreenManager.State.PlayerPosition,
+                ScreenManager.State.PlayerDirection,
+                ScreenManager.State.PlayerLayerDepth
+            ));
         }
         /// <summary>
         /// Event handler for when the Options menu entry is selected.

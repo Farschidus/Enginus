@@ -4,22 +4,11 @@
     <Position X="1.75" Y="1" Width="2.75" />
     <TypeIdentifier />
   </Class>
-  <Class Name="Enginus.Animation.AnimationPlayer">
-    <Position X="5" Y="2" Width="2.25" />
-    <TypeIdentifier />
-  </Class>
   <Class Name="Enginus.SceneObject.LoopAnimationObject">
     <Position X="7.75" Y="1" Width="2.5" />
     <TypeIdentifier>
       <HashCode>IAQAKAAAEABCIgAAAAAAIAAQAAAAAAAAAACBDAAAACA=</HashCode>
       <FileName>SceneObjects\LoopAnimationObject.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Enginus.Screen.Scenes.Scene">
-    <Position X="5" Y="0.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>KIQCUAKAAwAAAggAAACAABAAAggAIBARQAQYAQUAgAQ=</HashCode>
-      <FileName>GameScreens\Scene.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Enginus.Screen.GameScene">
@@ -28,6 +17,10 @@
       <HashCode>KIQCUAKAAwAAAggAAACAABAAAggAIBARQAQYAQUAgAQ=</HashCode>
       <FileName>Screens\GameScene.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.Animation.AnimationPlayer">
+    <Position X="5" Y="2" Width="2.25" />
+    <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

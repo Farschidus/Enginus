@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="Enginus.Program">
-    <Position X="5.5" Y="0.5" Width="1.5" />
+    <Position X="3.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
@@ -22,37 +22,7 @@
     <TypeIdentifier />
   </Class>
   <Class Name="Enginus.Control.InputState">
-    <Position X="14.5" Y="1.25" Width="3" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="Enginus.Global.Helper">
-    <Position X="0.5" Y="2.25" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="Enginus.Global.Enums">
-    <Position X="5.5" Y="3.25" Width="2" />
-    <Compartments>
-      <Compartment Name="Nested Types" Collapsed="false" />
-    </Compartments>
-    <NestedTypes>
-      <Class Name="Enginus.Global.Enums.Characters" Collapsed="true">
-        <TypeIdentifier />
-      </Class>
-      <Class Name="Enginus.Global.Enums.Direction" Collapsed="true">
-        <TypeIdentifier />
-      </Class>
-    </NestedTypes>
-    <TypeIdentifier />
-  </Class>
-  <Class Name="Enginus.Global.Constants">
-    <Position X="3" Y="4" Width="2" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier />
-  </Class>
-  <Class Name="Enginus.Global.PlayerIndexEventArgs">
-    <Position X="2.75" Y="1.25" Width="2" />
+    <Position X="11.25" Y="0.5" Width="3" />
     <TypeIdentifier />
   </Class>
   <Class Name="Enginus.MenuScreens.MainMenu">
@@ -84,7 +54,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Enginus.MenuScreens.MenuEntry">
-    <Position X="0.5" Y="4" Width="2" />
+    <Position X="0.5" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAAgAgAAAAJABAAAAAAAAIAAAACEQAAAI=</HashCode>
       <FileName>MenuScreens\MenuEntry.cs</FileName>
@@ -129,11 +99,11 @@
     <TypeIdentifier />
   </Class>
   <Class Name="Enginus.Screen.ScreenManager">
-    <Position X="8" Y="1.25" Width="2.75" />
+    <Position X="5.5" Y="0.5" Width="2.75" />
     <TypeIdentifier />
   </Class>
   <Class Name="Enginus.Screen.GameScreen">
-    <Position X="11.25" Y="2.25" Width="2.5" />
+    <Position X="8.5" Y="0.5" Width="2.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="Enginus.Screen.Screens.Background">
@@ -225,7 +195,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Enginus.Enginus" Collapsed="true">
-    <Position X="5.25" Y="2" Width="2.5" />
+    <Position X="2.75" Y="2" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAwAAAAAAAAABAAAAAAgAAAAAAEAAAAQ=</HashCode>
       <FileName>Enginus.cs</FileName>

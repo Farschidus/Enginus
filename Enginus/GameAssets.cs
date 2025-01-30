@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Enginus.Animation;
+﻿using Enginus.Animation;
 using Enginus.Core;
 using Enginus.Navigation;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace Enginus
