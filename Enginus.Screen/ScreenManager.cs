@@ -45,7 +45,7 @@ namespace Enginus.Screen
         /// each time it is updated. This can be useful for making sure
         /// everything is being added and removed at the right times.
         /// </summary>
-        public bool TraceEnabled { get; set; } = true;
+        public bool TraceEnabled { get; set; } = Constants.TraceEnabled;
 		public AudioManager Audio { get; }
 		public Engine JSEngine = new();
         public StateManager State;
@@ -138,7 +138,7 @@ namespace Enginus.Screen
                 // Pop the topmost screen off the waiting list.
                 GameScreen screen = screensToUpdate[screensToUpdate.Count - 1];
                 screensToUpdate.RemoveAt(screensToUpdate.Count - 1);
-                                   
+
                 // Update the screen.
                 screen.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
                 Cursor.Update(input);

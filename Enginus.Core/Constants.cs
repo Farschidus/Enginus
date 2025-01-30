@@ -18,6 +18,7 @@ public class Constants
     public static bool DisplayCollisionBoxes = false;
     public static bool AnimationDebugMessages = false;
     public static bool EntityDebugMessages = false;
+    public static bool TraceEnabled = false;
 
     //-------------------------------------------------------------//
     //--------------------- `Asset Constants` ---------------------//
