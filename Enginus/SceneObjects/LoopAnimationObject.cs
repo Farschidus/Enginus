@@ -25,7 +25,7 @@ namespace Enginus.SceneObject
             get { return Vector2.Distance(position, destination); }
         }
         private AnimationPlayer AnimationPlayer;
-        public List<Animator> Animations;
+        public List<AnimatoionManager> Animations;
         public bool IsLooping;
         int currentAnimationIndex;
         bool isMoving;
@@ -41,12 +41,12 @@ namespace Enginus.SceneObject
             : base(name, null, Constants.Image_PlaceHolder, content, CursorTexturType.Talk, layerDepth, string.Empty)
         {
             IsLooping = isLooping;
-            Animations = new List<Animator>();
+            Animations = new List<AnimatoionManager>();
         }
         public void SetCurrentAnimation(int index)
         {
             currentAnimationIndex = index;
-            Animator currentAnimation = Animations[index];
+            AnimatoionManager currentAnimation = Animations[index];
             rectangle = currentAnimation.AnimRectangle;
             startPoint = new Point(currentAnimation.AnimRectangle.X, currentAnimation.AnimRectangle.Y);
             position = new Vector2(startPoint.X, startPoint.Y);
@@ -58,7 +58,7 @@ namespace Enginus.SceneObject
             }
             AnimationPlayer.LoadPlayer(currentAnimation);
         }
-        public void AddAnimation(Animator animation)
+        public void AddAnimation(AnimatoionManager animation)
         {
             Animations.Add(animation);
         }

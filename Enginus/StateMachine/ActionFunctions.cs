@@ -8,7 +8,7 @@ namespace Enginus.StateMachine
     {
         public void LoadAnimation(NpcObject npc, string animationName)
         {
-            Animator anim = npc.Animations.Find(x => x.Name.Equals(animationName));
+            AnimatoionManager anim = npc.Animations.Find(x => x.Name.Equals(animationName));
             npc.LoadAnimation(anim);
         }
         public void ChangeRender(SceneObject.SceneObject obj, bool render)

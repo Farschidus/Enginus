@@ -11,9 +11,9 @@ namespace Enginus.SceneObject
     public class NpcObject : SceneObject
     {
         public AnimationPlayer AnimationPlayer;
-        public List<Animator> Animations;
+        public List<AnimatoionManager> Animations;
         int currentAnimationIndex;
-        public Animator CurrentAnimation 
+        public AnimatoionManager CurrentAnimation 
         { 
             get {
                 return currentAnimation; 
@@ -23,20 +23,20 @@ namespace Enginus.SceneObject
                 currentAnimation = value; 
             } 
         }
-        Animator currentAnimation;
+        AnimatoionManager currentAnimation;
 
         public NpcObject(string name, ContentManager content, float layerDepth, string idleGroup)
             : base(name, null, Constants.Image_PlaceHolder, content, CursorTexturType.Talk, layerDepth, idleGroup)
         {
-            Animations = new List<Animator>();
+            Animations = new List<AnimatoionManager>();
         }
-        public void LoadAnimation(Animator animation)
+        public void LoadAnimation(AnimatoionManager animation)
         {
             Animations.Add(animation);
             CurrentAnimation = animation;
             AnimationPlayer.LoadPlayer(CurrentAnimation);
         }
-        public void AddAnimation(Animator animation)
+        public void AddAnimation(AnimatoionManager animation)
         {
             Animations.Add(animation);
             if (CurrentAnimation == null)
@@ -48,7 +48,7 @@ namespace Enginus.SceneObject
         public void mSetCurrentAnimation(int index)
         {
             currentAnimationIndex = index;
-            Animator currentAnimation = Animations[index];
+            AnimatoionManager currentAnimation = Animations[index];
             rectangle = currentAnimation.AnimRectangle;
             AnimationPlayer.LoadPlayer(currentAnimation);
         }

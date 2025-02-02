@@ -221,7 +221,7 @@ namespace Enginus
                 LoopAnimationObject loopAnimation = new LoopAnimationObject(auto.Name, content, true, auto.LayerDepth);
                 foreach (AnimationSprite animation in auto.AnimationSprites)
                 {
-                    loopAnimation.AddAnimation(new Animation.Animator(animation.Name, animation.Rectangle, content, animation.SpriteFile, animation.FramesRange, animation.Fps, animation.LoopCount, animation.Delay, animation.RowFrameCount, animation.FileType, animation.AnimType, animation.IsMoving, animation.MoveSpeed, animation.Destination, auto.LayerDepth));
+                    loopAnimation.AddAnimation(new Animation.AnimatoionManager(animation.Name, animation.Rectangle, content, animation.SpriteFile, animation.FramesRange, animation.Fps, animation.LoopCount, animation.Delay, animation.RowFrameCount, animation.FileType, animation.AnimType, animation.IsMoving, animation.MoveSpeed, animation.Destination, auto.LayerDepth));
                 }
                 loopAnimation.SetCurrentAnimation(0);
                 nextScene.SceneAutoSprites.Add(loopAnimation);
@@ -231,7 +231,7 @@ namespace Enginus
                 NpcObject character = new NpcObject(npc.Name, content, npc.LayerDepth, npc.IdleGroup);
                 foreach (AnimationSprite animation in npc.AnimationSprites)
                 {
-                    character.AddAnimation(new Animation.Animator(animation.Name, animation.Rectangle, content, animation.SpriteFile, animation.FramesRange, animation.Fps, animation.LoopCount, animation.Delay, animation.RowFrameCount, animation.FileType, animation.AnimType, animation.IsMoving, animation.MoveSpeed, animation.Destination, npc.LayerDepth));
+                    character.AddAnimation(new Animation.AnimatoionManager(animation.Name, animation.Rectangle, content, animation.SpriteFile, animation.FramesRange, animation.Fps, animation.LoopCount, animation.Delay, animation.RowFrameCount, animation.FileType, animation.AnimType, animation.IsMoving, animation.MoveSpeed, animation.Destination, npc.LayerDepth));
                 }
                 nextScene.SceneCharacters.Add(character);
             }

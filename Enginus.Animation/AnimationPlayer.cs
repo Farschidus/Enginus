@@ -15,11 +15,11 @@ namespace Enginus.Animation
         /// <summary>
         /// Gets the animation which is currently playing.
         /// </summary>
-        public Animator Animation
+        public AnimatoionManager Animator
         {
             get { return animation; }
         }
-        Animator animation;
+        AnimatoionManager animation;
         /// <summary>
         /// Gets the index of the current frame in the animation.
         /// </summary>
@@ -97,10 +97,10 @@ namespace Enginus.Animation
         /// <summary>
         /// Begins or continues playback of an animation.
         /// </summary>
-        public void LoadPlayer(Animator animation)
+        public void LoadPlayer(AnimatoionManager animation)
         {
             // If this animation is already running, do not restart it.
-            if (Animation == animation)
+            if (Animator == animation)
                 return;
             // Start the new animation.
             this.animation = animation;
@@ -112,7 +112,7 @@ namespace Enginus.Animation
             randomRow = 0;
             rowIndex = 0;
             frameIndex = 0;
-            spriteFile = Animation.SpriteFiles[0];
+            spriteFile = Animator.SpriteFiles[0];
             isFrameSet = false;
             loopCounter = 0;
         }
@@ -123,7 +123,7 @@ namespace Enginus.Animation
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Rectangle? destRectangle, SpriteEffects spriteEffects)
         {
-            if (Animation == null || Animation.RowsFrameCount == null)
+            if (Animator == null || Animator.RowsFrameCount == null)
                 throw new NotSupportedException("No animation is currently playing or animation is not initialized properly");
 
             Rectangle destinationRectangle = (destRectangle.HasValue) ? destRectangle.Value : animation.AnimRectangle;
@@ -157,23 +157,23 @@ namespace Enginus.Animation
             if (!animationEnded)
             {
                 delayTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (delayTime > Animation.Delay)
+                if (delayTime > Animator.Delay)
                 {
                     totalElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     if (totalElapsed > timePerFrame)
                     {
                         totalElapsed -= timePerFrame;
 
-                        if (Animation.RowsFrameCount[rowIndex].Equals(frameIndex + 1))
+                        if (Animator.RowsFrameCount[rowIndex].Equals(frameIndex + 1))
                             isNewRow = true;
                         else
                             isNewRow = false;
 
-                        if (Animation.IsLooping)
+                        if (Animator.IsLooping)
                         {                            
-                            if (Animation.LoopCount.Equals(-1))
+                            if (Animator.LoopCount.Equals(-1))
                             {
-                                frameIndex = (frameIndex + 1) % Animation.RowsFrameCount[rowIndex];
+                                frameIndex = (frameIndex + 1) % Animator.RowsFrameCount[rowIndex];
                             }
                             else
                             {
@@ -183,8 +183,8 @@ namespace Enginus.Animation
                                 }
                                 else
                                 {
-                                    frameIndex = (frameIndex + 1) % Animation.RowsFrameCount[rowIndex];
-                                    if (Animation.RowsFrameCount[rowIndex].Equals(frameIndex + 1) && Animation.RowsFrameCount.Length.Equals(rowIndex + 1))
+                                    frameIndex = (frameIndex + 1) % Animator.RowsFrameCount[rowIndex];
+                                    if (Animator.RowsFrameCount[rowIndex].Equals(frameIndex + 1) && Animator.RowsFrameCount.Length.Equals(rowIndex + 1))
                                         loopCounter++;
                                 }
                             }
@@ -193,44 +193,44 @@ namespace Enginus.Animation
                         {
                             if (!isFrameSet)
                             {
-                                frameIndex = Math.Min(frameIndex + 1, Animation.RowsFrameCount[rowIndex] - 1);
-                                if (frameIndex == Animation.RowsFrameCount[rowIndex] - 1)
+                                frameIndex = Math.Min(frameIndex + 1, Animator.RowsFrameCount[rowIndex] - 1);
+                                if (frameIndex == Animator.RowsFrameCount[rowIndex] - 1)
                                     animationEnded = true;
                             }
                         }
                         if (isNewRow && !animationEnded)
                         {
-                            if (Animation.RowsFrameCount.Length.Equals(rowIndex + 1))
+                            if (Animator.RowsFrameCount.Length.Equals(rowIndex + 1))
                                 rowIndex = 0;
                             else
                                 rowIndex++;
                         }
-                        if (Animation.RowsFrameCount[rowIndex].Equals(frameIndex + 1) && Animation.RowsFrameCount.Length.Equals(rowIndex + 1))
+                        if (Animator.RowsFrameCount[rowIndex].Equals(frameIndex + 1) && Animator.RowsFrameCount.Length.Equals(rowIndex + 1))
                             delayTime = 0;
                     }
                 }
             }
             // Calculate the source rectangle of the current frame.
             Rectangle source = new Rectangle(FrameIndex * spriteFile.Width, rowIndex * spriteFile.Height, spriteFile.Width, spriteFile.Height);
-            spriteBatch.Draw(spriteFile.Texture, destRectangle, source, Color.White, 0, origin, spriteEffects, Animation.LayerDepth);
+            spriteBatch.Draw(spriteFile.Texture, destRectangle, source, Color.White, 0, origin, spriteEffects, Animator.LayerDepth);
         }
         private void DrawSeprateLinear(GameTime gameTime, SpriteBatch spriteBatch, Rectangle destRectangle, SpriteEffects spriteEffects)
         {
             if (!animationEnded)
             {
                 delayTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (delayTime > Animation.Delay)
+                if (delayTime > Animator.Delay)
                 {
                     totalElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
                     if (totalElapsed > timePerFrame)
                     {
                         totalElapsed -= timePerFrame;
 
-                        if (Animation.IsLooping)
+                        if (Animator.IsLooping)
                         {
-                            if (Animation.LoopCount.Equals(-1))
+                            if (Animator.LoopCount.Equals(-1))
                             {
-                                frameIndex = (frameIndex + 1) % Animation.SpriteFiles.Length;
+                                frameIndex = (frameIndex + 1) % Animator.SpriteFiles.Length;
                             }
                             else
                             {
@@ -240,25 +240,25 @@ namespace Enginus.Animation
                                 }
                                 else
                                 {
-                                    frameIndex = (frameIndex + 1) % Animation.SpriteFiles.Length;
-                                    if (Animation.SpriteFiles.Length.Equals(frameIndex + 1))
+                                    frameIndex = (frameIndex + 1) % Animator.SpriteFiles.Length;
+                                    if (Animator.SpriteFiles.Length.Equals(frameIndex + 1))
                                         loopCounter++;
                                 }
                             }
                         }
                         else
                         {
-                            frameIndex = Math.Min(frameIndex + 1, Animation.SpriteFiles.Length - 1);
-                            if (frameIndex == Animation.SpriteFiles.Length - 1)
+                            frameIndex = Math.Min(frameIndex + 1, Animator.SpriteFiles.Length - 1);
+                            if (frameIndex == Animator.SpriteFiles.Length - 1)
                                 animationEnded = true;
                         }
-                        spriteFile = Animation.SpriteFiles[frameIndex];
-                        if (Animation.SpriteFiles.Length.Equals(frameIndex + 1))
+                        spriteFile = Animator.SpriteFiles[frameIndex];
+                        if (Animator.SpriteFiles.Length.Equals(frameIndex + 1))
                             delayTime = 0;
                     }
                 }
             }
-            spriteBatch.Draw(spriteFile.Texture, destRectangle, null, Color.White, 0, origin, spriteEffects, Animation.LayerDepth);
+            spriteBatch.Draw(spriteFile.Texture, destRectangle, null, Color.White, 0, origin, spriteEffects, Animator.LayerDepth);
         }
         /// <summary>
         /// Advances the time position and draws the correct sprite file of the animation.
@@ -266,15 +266,15 @@ namespace Enginus.Animation
         private void DrawSingleRandom(GameTime gameTime, SpriteBatch spriteBatch, Rectangle destRectangle, SpriteEffects spriteEffects)
         {
             delayTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (delayTime > Animation.Delay)
+            if (delayTime > Animator.Delay)
             {
                 totalElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (totalElapsed > timePerFrame)
                 {
                     totalElapsed -= timePerFrame;
 
-                    frameIndex = Math.Min(frameIndex + 1, Animation.RowsFrameCount[randomRow] - 1);
-                    if (frameIndex == Animation.RowsFrameCount[randomRow] - 1)
+                    frameIndex = Math.Min(frameIndex + 1, Animator.RowsFrameCount[randomRow] - 1);
+                    if (frameIndex == Animator.RowsFrameCount[randomRow] - 1)
                     {
                         delayTime = 0;
                         animationEnded = true;
@@ -288,20 +288,20 @@ namespace Enginus.Animation
             }
             // Calculate the source rectangle of the current frame.
             Rectangle source = new Rectangle(FrameIndex * spriteFile.Width, randomRow * spriteFile.Height, spriteFile.Width, spriteFile.Height);
-            spriteBatch.Draw(spriteFile.Texture, destRectangle, source, Color.White, 0, Origin, spriteEffects, Animation.LayerDepth);
+            spriteBatch.Draw(spriteFile.Texture, destRectangle, source, Color.White, 0, Origin, spriteEffects, Animator.LayerDepth);
         }
         private void DrawSeperateRandom(GameTime gameTime, SpriteBatch spriteBatch, Rectangle destRectangle, SpriteEffects spriteEffects)
         {
             delayTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (delayTime > Animation.Delay)
+            if (delayTime > Animator.Delay)
             {
                 totalElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (totalElapsed > timePerFrame)
                 {
                     totalElapsed -= timePerFrame;
 
-                    frameIndex = Math.Min(frameIndex + 1, Animation.RowsFrameCount[randomRow] - 1);
-                    if (frameIndex == Animation.RowsFrameCount[randomRow] - 1)
+                    frameIndex = Math.Min(frameIndex + 1, Animator.RowsFrameCount[randomRow] - 1);
+                    if (frameIndex == Animator.RowsFrameCount[randomRow] - 1)
                     {
                         delayTime = 0;
                         animationEnded = true;
@@ -311,10 +311,10 @@ namespace Enginus.Animation
                         else
                             randomRow = 0;
                     }
-                    spriteFile = Animation.SpriteFiles[frameIndex];
+                    spriteFile = Animator.SpriteFiles[frameIndex];
                 }
             }
-            spriteBatch.Draw(spriteFile.Texture, destRectangle, null, Color.White, 0, Origin, spriteEffects, Animation.LayerDepth);
+            spriteBatch.Draw(spriteFile.Texture, destRectangle, null, Color.White, 0, Origin, spriteEffects, Animator.LayerDepth);
         }
 
         #endregion

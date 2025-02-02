@@ -17,9 +17,9 @@ namespace Enginus
     {
         float layerDepth;
         // Animations
-        Animator currentAnimation;
-        Animator runAnimation, idleAnimation;
-        Animator northWalkAnimation, southWalkAnimation, westWalkAnimation, eastWalkAnimation, northWestWalkAnimation, southWestWalkAnimation, northEastWalkAnimation, southEastWalkAnimation;
+        AnimatoionManager currentAnimation;
+        AnimatoionManager runAnimation, idleAnimation;
+        AnimatoionManager northWalkAnimation, southWalkAnimation, westWalkAnimation, eastWalkAnimation, northWestWalkAnimation, southWestWalkAnimation, northEastWalkAnimation, southEastWalkAnimation;
         List<Point> path = new List<Point>();
         PathFinder pathFinder = new PathFinder();
         bool followingPath;
@@ -98,22 +98,22 @@ namespace Enginus
         public void LoadContent()
         {
             font = Scene.Content.Load<SpriteFont>("Fonts/DialoguesTahoma");
-            idleAnimation = new Animator("MizukiIdle", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/Idles", Width = playerWidth, Height = playerHeight } }, 0.1f, 0, 0, new int[1] { 8 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            idleAnimation = new AnimatoionManager("MizukiIdle", Scene.Content, new SpriteFile[1] { new SpriteFile { Texture = "Sprites/Idles", Width = playerWidth, Height = playerHeight } }, 0.1f, 0, 0, new int[1] { 8 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
 
-            northWalkAnimation = new Animator("MizukiNorthWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/North", Width = 185, Height = 690 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            southWalkAnimation = new Animator("MizukiSouthWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/South", Width = 214, Height = 700 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            westWalkAnimation = new Animator("MizukiWestWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/West", Width = 262, Height = 704 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            northWestWalkAnimation = new Animator("MizukiNorthWestWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/NorthWest", Width = 255, Height = 706 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            southWestWalkAnimation = new Animator("MizukiSouthWestWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/SouthWest", Width = 258, Height = 699 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            eastWalkAnimation = new Animator("MizukiEastWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/East", Width = 261, Height = 703 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            northEastWalkAnimation = new Animator("MizukiNorthEastWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/NorthEast", Width = 254, Height = 709 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
-            southEastWalkAnimation = new Animator("MizukiSouthEastWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/SouthEast", Width = 259, Height = 699 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            northWalkAnimation = new AnimatoionManager("MizukiNorthWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/North", Width = 185, Height = 690 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            southWalkAnimation = new AnimatoionManager("MizukiSouthWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/South", Width = 214, Height = 700 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            westWalkAnimation = new AnimatoionManager("MizukiWestWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/West", Width = 262, Height = 704 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            northWestWalkAnimation = new AnimatoionManager("MizukiNorthWestWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/NorthWest", Width = 255, Height = 706 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            southWestWalkAnimation = new AnimatoionManager("MizukiSouthWestWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/SouthWest", Width = 258, Height = 699 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            eastWalkAnimation = new AnimatoionManager("MizukiEastWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/East", Width = 261, Height = 703 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            northEastWalkAnimation = new AnimatoionManager("MizukiNorthEastWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/NorthEast", Width = 254, Height = 709 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
+            southEastWalkAnimation = new AnimatoionManager("MizukiSouthEastWalk", Scene.Content, new SpriteFile[1] { new() { Texture = "Sprites/SouthEast", Width = 259, Height = 699 } }, 12f, -1, 0, new int[2] { 6, 6 }, AnimationFileType.Single, AnimationType.Linear, layerDepth);
         }
         public void IdleAnimation()
         {
             currentAnimation = idleAnimation;
             scene.AnimationPlayer.LoadPlayer(idleAnimation);
-            scene.AnimationPlayer.Origin = new Vector2(scene.AnimationPlayer.Animation.FrameWidth / 2, scene.AnimationPlayer.Animation.FrameHeight - 10);
+            scene.AnimationPlayer.Origin = new Vector2(scene.AnimationPlayer.Animator.FrameWidth / 2, scene.AnimationPlayer.Animator.FrameHeight - 10);
 
             switch (normalizedDirection)
             {
@@ -148,7 +148,7 @@ namespace Enginus
         }
         public void RunAnimation()
         {
-            scene.AnimationPlayer.Origin = new Vector2(scene.AnimationPlayer.Animation.FrameWidth / 2, scene.AnimationPlayer.Animation.FrameHeight - 10);
+            scene.AnimationPlayer.Origin = new Vector2(scene.AnimationPlayer.Animator.FrameWidth / 2, scene.AnimationPlayer.Animator.FrameHeight - 10);
             scene.AnimationPlayer.LoadPlayer(runAnimation);
             currentAnimation = runAnimation;
         }

@@ -6,13 +6,7 @@ using System.Collections.Generic;
 
 namespace Enginus.Animation
 {
-    public struct FrameRange
-    {
-        public int StartNumber { get; set; }
-        public int EndNumber { get; set; }
-    }
-
-    public class Animator
+    public class AnimatoionManager
     {
         #region Properties
 
@@ -118,7 +112,7 @@ namespace Enginus.Animation
 
         #region Methods
 
-        public Animator(string name, ContentManager content, SpriteFile[] spriteFiles, float fps, int loopCount, float delay, int[] rowsFrameCount, AnimationFileType animationFileType, AnimationType animType, float layerDepth)
+        public AnimatoionManager(string name, ContentManager content, SpriteFile[] spriteFiles, float fps, int loopCount, float delay, int[] rowsFrameCount, AnimationFileType animationFileType, AnimationType animType, float layerDepth)
         {
             Name = name;
             LayerDepth = layerDepth;
@@ -145,7 +139,7 @@ namespace Enginus.Animation
             this.spriteFiles = tempSpriteFiles.ToArray();
             tempSpriteFiles.Clear();
         }
-        public Animator(string name, Rectangle rectangle, ContentManager content, SpriteFile spriteFile, FrameRange frameRange, float fps, int loopCount, float delay, int[] rowsFrameCount, AnimationFileType animationFileType, AnimationType animType, bool isMoving, float moveSpeed, Vector2 destination, float layerDepth)
+        public AnimatoionManager(string name, Rectangle rectangle, ContentManager content, SpriteFile spriteFile, FrameRange frameRange, float fps, int loopCount, float delay, int[] rowsFrameCount, AnimationFileType animationFileType, AnimationType animType, bool isMoving, float moveSpeed, Vector2 destination, float layerDepth)
         {
             Name = name;
             LayerDepth = layerDepth;

@@ -60,6 +60,12 @@ public enum AnimationType
     Random
 }
 
+public struct FrameRange
+{
+    public int StartNumber { get; set; }
+    public int EndNumber { get; set; }
+}
+
 public enum CursorTexturType
 {
     Pointer,
