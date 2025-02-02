@@ -1,5 +1,6 @@
 using Enginus.Core.Utilities;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -13,9 +14,11 @@ namespace Enginus.Control
 	/// query methods for high level input actions such as "move up through the menu"
 	/// or "pause the game".
 	/// </summary>
-	public class InputState
+	public class InputManager : GameComponent
     {
         #region Fields
+
+        private readonly GraphicsDeviceManager _graphicsDeviceManager;
 
         public const int MaxInputs = 4;
 
@@ -72,12 +75,13 @@ namespace Enginus.Control
         /// <summary>
         /// Constructs a new input state.
         /// </summary>
-        public InputState(Viewport GameViewport, bool IsFullScreen)
+        public InputManager(Game game) : base(game)
         {
-            isFullScreen = IsFullScreen;
+            _graphicsDeviceManager = (GraphicsDeviceManager)game.Services.GetService<IGraphicsDeviceManager>();
+            isFullScreen = _graphicsDeviceManager.IsFullScreen;
             CurrentKeyboardStates = new KeyboardState[MaxInputs];
             LastKeyboardStates = new KeyboardState[MaxInputs];
-            gameViewport = GameViewport;
+            gameViewport = game.GraphicsDevice.Viewport;
 
             mouseClickedPoint = Point.Zero;
         }
@@ -89,7 +93,7 @@ namespace Enginus.Control
         /// <summary>
         /// Reads the latest state of the keyboard and Mouse.
         /// </summary>
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             for (int i = 0; i < MaxInputs; i++)
             {

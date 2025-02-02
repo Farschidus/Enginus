@@ -90,7 +90,7 @@ namespace Enginus.Dialogue
             //Voice = Content.Load<Song>(ConversationSpeakers[currentSpeakerIndex].VoiceFileName);
             //MediaPlayer.Play(Voice);
         }
-        public static void HandleInput(InputState input)
+        public static void HandleInput(InputManager input)
         {
             if (input.MouseClicked && !Expired)
             {

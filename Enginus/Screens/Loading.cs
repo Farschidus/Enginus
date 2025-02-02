@@ -71,7 +71,7 @@ namespace Enginus.Screen
         /// <summary>
         /// Updates the loading screen.
         /// </summary>
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputState input)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
 

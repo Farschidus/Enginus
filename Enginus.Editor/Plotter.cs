@@ -89,7 +89,7 @@ namespace Enginus.Editor
         {
             PolygonLinks.Add(link);
         }
-        public void Update(InputState input, GameScreen scene)
+        public void Update(InputManager input, GameScreen scene)
         {
             doubleClick = input.DoubleClick;
 

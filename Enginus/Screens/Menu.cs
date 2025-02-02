@@ -58,7 +58,7 @@ namespace Enginus.Screen
         /// Responds to user input, changing the selected entry and accepting
         /// or cancelling the menu.
         /// </summary>
-        public override void HandleInput(InputState input)
+        public override void HandleInput(InputManager input)
         {
             // Move to the previous menu entry?
             if (input.IsMenuUp())
@@ -150,7 +150,7 @@ namespace Enginus.Screen
         /// <summary>
         /// Updates the menu.
         /// </summary>
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputState input)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
 

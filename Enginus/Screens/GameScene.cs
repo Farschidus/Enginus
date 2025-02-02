@@ -101,7 +101,7 @@ namespace Enginus.Screen
         {
             content.Unload();
         }
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputState input)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
         {
             base.Update(gameTime, otherScreenHasFocus, false, input);
             elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -114,7 +114,7 @@ namespace Enginus.Screen
             else
                 pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
         }
-        public override void HandleInput(InputState input)
+        public override void HandleInput(InputManager input)
         {
             if (input == null)
                 throw new ArgumentNullException("InputState Is Null");

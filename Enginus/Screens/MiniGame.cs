@@ -51,7 +51,7 @@ namespace Enginus.Screen
         {
             base.UnloadContent();
         }
-        public override void HandleInput(InputState input)
+        public override void HandleInput(InputManager input)
         {
             if (input.IsPauseGame(null) || (input.MouseClicked && closeRectangle.Contains(input.MouseClickedPoint)))
                 ExitScreen();
@@ -60,7 +60,7 @@ namespace Enginus.Screen
                 InteractiveObj.HandleInput(input, ScreenManager.Cursor);
             }
         }
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputState input)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
             if (IsActive)

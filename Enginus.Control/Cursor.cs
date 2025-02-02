@@ -41,7 +41,7 @@ namespace Enginus.Control
             }
         }
 
-        public void Update(InputState input)
+        public void Update(InputManager input)
         {
             if (!isVisible) 
             { 

@@ -34,7 +34,7 @@ namespace Enginus.Screen
                                                 inventoryWidth, 
                                                 inventoryHeight);
         }
-        public override void HandleInput(InputState input)
+        public override void HandleInput(InputManager input)
         {
             if (input.IsPauseGame(null) || (input.MouseClicked && !backgroundRectangle.Contains(input.MouseClickedPoint)))
                 ExitScreen();

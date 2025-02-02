@@ -22,7 +22,7 @@ namespace Enginus.InventorySystem
             icon = content.Load<Texture2D>(Constants.Image_MapIcon);
             iconRectangle = new Rectangle(1710, 980, 110, 110);
         }
-        public void HandleInput(InputState input)
+        public void HandleInput(InputManager input)
         {
             if (iconRectangle.Contains(input.CurrentMousePoint))
             {

@@ -34,7 +34,7 @@ namespace Enginus.Screen
             lake = content.Load<Texture2D>(Constants.Image_PlaceHolder);
             LakeRectangle = new Rectangle(mapRectangle.X + 341, mapRectangle.Y + 230, 124, 84);
         }
-        public override void HandleInput(InputState input)
+        public override void HandleInput(InputManager input)
         {
             if (input.IsPauseGame(null) || (input.MouseClicked && !mapRectangle.Contains(input.MouseClickedPoint)))
                 ExitScreen();

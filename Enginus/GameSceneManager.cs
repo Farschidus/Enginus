@@ -81,7 +81,7 @@ namespace Enginus
             ScreenManager.JSEngine.SetValue("State", State);
             base.UnloadContent();
         }
-        public override void HandleInput(InputState input)
+        public override void HandleInput(InputManager input)
         {
             base.HandleInput(input); 
             //Dialogue.HandleInput(input);
@@ -117,7 +117,7 @@ namespace Enginus
                 ScreenManager.AddScreen(new Map());
             }
         }
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputState input)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
         {
             base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
             if (IsActive)

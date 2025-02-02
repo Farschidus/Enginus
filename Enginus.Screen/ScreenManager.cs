@@ -22,7 +22,7 @@ namespace Enginus.Screen
     {
         #region Fields
 
-        private InputState input;
+        private InputManager input;
         private bool isInitialized;
         private Texture2D blankTexture;
         private readonly List<GameScreen> screens = [];
@@ -87,7 +87,7 @@ namespace Enginus.Screen
             Font = Game.Content.Load<SpriteFont>("Fonts/MenuTahoma");
             blankTexture = Game.Content.Load<Texture2D>("Images/blank");
 
-            input = new InputState(Resolution.GameViewPort, Resolution.IsFullScreen);
+            input = new InputManager(Resolution.GameViewPort, Resolution.IsFullScreen);
             Cursor = new Cursor(Game.Content);
             InventoryManager = InventoryManager.Instance(Game.Content);
             

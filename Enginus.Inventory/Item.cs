@@ -58,14 +58,14 @@ namespace Enginus.Inventory
             this.layerDepth = layerDepth;
         }
 
-        public virtual void HandleInput(InputState input, Cursor cursor)
+        public virtual void HandleInput(InputManager input, Cursor cursor)
         {
             if (itemRectangle.Contains(input.CurrentMousePoint))
             {
                 cursor.CursorType = CursorTexturType.Intract;
             }
         }
-        public void Update(InputState input, Cursor cursor, InventoryManager manager)
+        public void Update(InputManager input, Cursor cursor, InventoryManager manager)
         {
             if (input.MouseClicked && itemRectangle.Contains(input.MouseClickedPoint))
             {

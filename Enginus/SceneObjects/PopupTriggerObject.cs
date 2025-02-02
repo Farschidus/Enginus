@@ -14,7 +14,7 @@ namespace Enginus.SceneObject
         {
             this.Id = id;
         }
-        public override void HandleInput(InputState input, Cursor cursor)
+        public override void HandleInput(InputManager input, Cursor cursor)
         {
             base.HandleInput(input, cursor);
             if (input.MouseClicked && IsHover)

@@ -120,7 +120,7 @@ namespace Enginus.SceneObject
         {
             fsm.PerformTransition(tran);
         }
-        public virtual void HandleInput(InputState input, Cursor cursor)
+        public virtual void HandleInput(InputManager input, Cursor cursor)
         {
             if (!Render)
                 return;

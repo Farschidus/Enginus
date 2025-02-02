@@ -9,7 +9,7 @@ namespace Enginus.SceneObject
 {
     interface ISceneObject
     {
-        void HandleInput(InputState input, Cursor cursor);
+        void HandleInput(InputManager input, Cursor cursor);
         void Update(GameTime gameTime, Screen.GameScene scene);
         void Draw(GameTime gameTime, SpriteBatch spriteBatch);
     }

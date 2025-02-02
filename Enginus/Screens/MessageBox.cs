@@ -71,7 +71,7 @@ namespace Enginus.Screen
         /// <summary>
         /// Responds to user input, accepting or cancelling the message box.
         /// </summary>
-        public override void HandleInput(InputState input)
+        public override void HandleInput(InputManager input)
         {
             if (input.IsMenuSelect())
             {

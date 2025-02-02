@@ -152,7 +152,7 @@ namespace Enginus
             scene.AnimationPlayer.LoadPlayer(runAnimation);
             currentAnimation = runAnimation;
         }
-        public void Update(GameTime gameTime, float elapsedTime, InputState input, NavMesh sceneNavMesh)
+        public void Update(GameTime gameTime, float elapsedTime, InputManager input, NavMesh sceneNavMesh)
         {
             if (input.MouseClicked)
             {

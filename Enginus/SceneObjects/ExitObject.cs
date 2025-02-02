@@ -26,7 +26,7 @@ namespace Enginus.SceneObject
             return (rectPlayer.Right > rectangle.Left && rectPlayer.Left < rectangle.Right &&
                     rectPlayer.Bottom > rectangle.Top && rectPlayer.Top < rectangle.Bottom);
         }
-        public override void HandleInput(InputState input, Cursor cursor)
+        public override void HandleInput(InputManager input, Cursor cursor)
         {
             if (Render)
             {

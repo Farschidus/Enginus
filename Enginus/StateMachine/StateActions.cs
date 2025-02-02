@@ -11,7 +11,7 @@ namespace Enginus.StateMachine
             stateID = StateID.InitGroup;
             sceneObj = obj;
         }
-        public override void Reason(InputState input, SceneObject.SceneObject sceneObj)
+        public override void Reason(InputManager input, SceneObject.SceneObject sceneObj)
         {
             //if (input.MouseClicked && sceneObj.ObjectRectangle.Contains(input.MouseClickedPoint))
             //    sceneObj.mSetTransition(Transition.Idle);
@@ -33,7 +33,7 @@ namespace Enginus.StateMachine
             stateID = StateID.IdleGroup;
             sceneObj = obj;
         }
-        public override void Reason(InputState input, SceneObject.SceneObject sceneObj)
+        public override void Reason(InputManager input, SceneObject.SceneObject sceneObj)
         {
             if (input.MouseClicked && sceneObj.Rectangle.Contains(input.MouseClickedPoint))
                 sceneObj.SetTransition(Transition.Talk);
@@ -54,7 +54,7 @@ namespace Enginus.StateMachine
         {
             stateID = StateID.LookGroup;
         }
-        public override void Reason(InputState input, SceneObject.SceneObject sceneObj)
+        public override void Reason(InputManager input, SceneObject.SceneObject sceneObj)
         {
             if (input.MouseClicked && sceneObj.Rectangle.Contains(input.MouseClickedPoint))
                 sceneObj.SetTransition(Transition.Talk);
@@ -72,7 +72,7 @@ namespace Enginus.StateMachine
         {
             stateID = StateID.TalkGroup;
         }
-        public override void Reason(InputState input, SceneObject.SceneObject sceneObj)
+        public override void Reason(InputManager input, SceneObject.SceneObject sceneObj)
         {
             if (input.MouseClicked && sceneObj.Rectangle.Contains(input.MouseClickedPoint))
                 sceneObj.SetTransition(Transition.Use);
@@ -90,7 +90,7 @@ namespace Enginus.StateMachine
         {
             stateID = StateID.UseGroup;
         }
-        public override void Reason(InputState input, SceneObject.SceneObject sceneObj)
+        public override void Reason(InputManager input, SceneObject.SceneObject sceneObj)
         {
             if (input.MouseClicked && sceneObj.Rectangle.Contains(input.MouseClickedPoint))
                 sceneObj.SetTransition(Transition.Idle);
@@ -108,7 +108,7 @@ namespace Enginus.StateMachine
         {
             stateID = StateID.TakeGroup;
         }
-        public override void Reason(InputState input, SceneObject.SceneObject sceneObj)
+        public override void Reason(InputManager input, SceneObject.SceneObject sceneObj)
         {
             if (input.MouseClicked && sceneObj.Rectangle.Contains(input.MouseClickedPoint))
                 sceneObj.SetTransition(Transition.Idle);

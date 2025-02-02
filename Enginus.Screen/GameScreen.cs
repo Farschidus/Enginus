@@ -127,7 +127,7 @@ namespace Enginus.Screen
         /// Unlike HandleInput, this method is called regardless of whether the screen
         /// is active, hidden, or in the middle of a transition.
         /// </summary>
-        public virtual void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputState input)
+        public virtual void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
         {
             this.otherScreenHasFocus = otherScreenHasFocus;
          
@@ -203,7 +203,7 @@ namespace Enginus.Screen
         /// is only called when the screen is active, and not when some other
         /// screen has taken the focus.
         /// </summary>
-        public virtual void HandleInput(InputState input) { }
+        public virtual void HandleInput(InputManager input) { }
         /// <summary>
         /// This is called when the screen should draw itself.
         /// </summary>
