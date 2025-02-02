@@ -89,8 +89,8 @@ namespace Enginus.Screen
             backgroundTexture = content.Load<Texture2D>(BackgroundTexture);
             backgroundRectangle = new Rectangle(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
             player = new Player(this, playerPosition, playerDirection, playerLayerDepth);
-            ScreenManager.Audio.LoadSong(SceneMusic);
-            ScreenManager.Audio.PlaySong(SceneMusic, true);
+            ScreenManager.AudioManager.LoadSong(SceneMusic);
+            ScreenManager.AudioManager.PlaySong(SceneMusic, true);
             plotter = new Plotter(ScreenManager, content);
             foreach (ConvexPolygon poly in SceneMesh.PolygonList)
                 plotter.AddPolygon(poly);

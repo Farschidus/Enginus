@@ -22,7 +22,6 @@ namespace Enginus.Screen
     {
         #region Fields
 
-        private InputManager input;
         private bool isInitialized;
         private Texture2D blankTexture;
         private readonly List<GameScreen> screens = [];
@@ -46,8 +45,9 @@ namespace Enginus.Screen
         /// everything is being added and removed at the right times.
         /// </summary>
         public bool TraceEnabled { get; set; } = Constants.TraceEnabled;
-		public AudioManager Audio { get; }
-		public Engine JSEngine = new();
+		public AudioManager AudioManager { get; }
+		public InputManager InputManager { get; }
+        public Engine JSEngine = new();
         public StateManager State;
 
 		public InventoryManager InventoryManager { get; private set; }
@@ -60,9 +60,10 @@ namespace Enginus.Screen
 		/// <summary>
 		/// Constructs a new screen manager component.
 		/// </summary>
-		public ScreenManager(Game game, AudioManager audio) : base(game)
+		public ScreenManager(Game game, AudioManager audio, InputManager input) : base(game)
         {
-            Audio = audio;
+            AudioManager = audio;
+            InputManager = input;
         }
 
         /// <summary>
@@ -87,7 +88,6 @@ namespace Enginus.Screen
             Font = Game.Content.Load<SpriteFont>("Fonts/MenuTahoma");
             blankTexture = Game.Content.Load<Texture2D>("Images/blank");
 
-            input = new InputManager(Resolution.GameViewPort, Resolution.IsFullScreen);
             Cursor = new Cursor(Game.Content);
             InventoryManager = InventoryManager.Instance(Game.Content);
             
@@ -120,7 +120,7 @@ namespace Enginus.Screen
         public override void Update(GameTime gameTime)
         {
             // Read the keyboard and gamepad and Mouse.
-            input.Update(gameTime);
+            InputManager.Update(gameTime);
 
             // Make a copy of the master screen list, to avoid confusion if
             // the process of updating one screen adds or removes others.
@@ -140,17 +140,17 @@ namespace Enginus.Screen
                 screensToUpdate.RemoveAt(screensToUpdate.Count - 1);
 
                 // Update the screen.
-                screen.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
-                Cursor.Update(input);
+                screen.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, InputManager);
+                Cursor.Update(InputManager);
 
                 if (screen.ScreenState == ScreenState.TransitionOn ||
                     screen.ScreenState == ScreenState.Active)
                 {
                     // If this is the first active screen we came across,
-                    // give it a chance to handle input.
+                    // give it a chance to handle InputManager.
                     if (!otherScreenHasFocus)
                     {
-                        screen.HandleInput(input);
+                        screen.HandleInput(InputManager);
                         otherScreenHasFocus = true;
                     }
                     // If this is an active non-popup, inform any subsequent

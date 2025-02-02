@@ -1,4 +1,5 @@
-﻿using Enginus.Core;
+﻿using Enginus.Control;
+using Enginus.Core;
 using Enginus.Core.Utilities;
 using Enginus.MenuScreens;
 using Enginus.Screen;
@@ -9,11 +10,10 @@ namespace Enginus;
 
 public class Enginus : Game
 	{
-    #region Fields
-
     readonly GraphicsDeviceManager graphics;
-    readonly ScreenManager screenManager;
-    readonly AudioManager audio;
+    ScreenManager screenManager;
+    AudioManager audio;
+    InputManager input;
 
     // By preloading any assets used by UI rendering, we avoid framerate glitches
     // when they suddenly need to be loaded in the middle of a menu transition.
@@ -23,14 +23,9 @@ public class Enginus : Game
         Constants.ASSET_BG_MAIN_MENU 
     };
 
-    #endregion
-
-    #region Initialization
-
     public Enginus()
     {
         IsMouseVisible = false;
-        audio = new AudioManager(this, "Content");
 
         graphics = new GraphicsDeviceManager(this)
         {
@@ -42,18 +37,22 @@ public class Enginus : Game
 
         Resolution.SetVirtualResolution(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         Resolution.SetResolution(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, Constants.FULL_SCREEN);
-        screenManager = new ScreenManager(this, audio);
 
-        Components.Add(screenManager);
-        Components.Add(audio);
-
-        // Activate the first screens.
-        screenManager.AddScreen(new Background());
-        screenManager.AddScreen(new MainMenu());
+        audio = new AudioManager(this, "Content");
+        input = new InputManager(this);
+        screenManager = new ScreenManager(this, audio, input);
     }
 
     protected override void Initialize()
     {
+        Components.Add(screenManager);
+        Components.Add(audio);
+        Components.Add(input);
+
+        // Activate the first screens.
+        screenManager.AddScreen(new Background());
+        screenManager.AddScreen(new MainMenu());
+
         base.Initialize();
     }
 
@@ -65,10 +64,6 @@ public class Enginus : Game
         }
     }
 
-    #endregion
-
-    #region Draw
-
     protected override void Draw(GameTime gameTime)
     {
         //TODO: Remove Later because main menu will have it's own bg eventualy but maybe its good to have black screen always anyway!
@@ -76,6 +71,4 @@ public class Enginus : Game
         // The real drawing happens inside the screen manager component.
         base.Draw(gameTime);
     }
-
-    #endregion
 }
