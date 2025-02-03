@@ -1,6 +1,5 @@
-using Microsoft.Xna.Framework;
-using Enginus.Screen;
 using Enginus.Core.Utilities;
+using Enginus.Screen;
 
 namespace Enginus.MenuScreens;
 

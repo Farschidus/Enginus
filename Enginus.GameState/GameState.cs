@@ -11,7 +11,7 @@ public class StateManager
     public float PlayerLayerDepth => PalyerProfile.PlayerLayerDepth;
     public bool VarA { get; set; }
 
-		private PalyerProfile profile;
+	private PalyerProfile profile;
     private static StateManager instance;
     private readonly static object syncLock = new();
 

@@ -3,36 +3,35 @@ using Enginus.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
-namespace Enginus.SceneObject
+namespace Enginus.SceneObject;
+
+public class InteractiveObject : SceneObject
 {
-	public class InteractiveObject : SceneObject
+    public InteractiveObject(string name, Rectangle recSprite, string texture, ContentManager content, float layerDepth)
+        : base(name, recSprite, texture, content, CursorTexturType.Intract, layerDepth, string.Empty)
     {
-        public InteractiveObject(string name, Rectangle recSprite, string texture, ContentManager content, float layerDepth)
-            : base(name, recSprite, texture, content, CursorTexturType.Intract, layerDepth, string.Empty)
+    }
+    public override void HandleInput(InputManager input, MouseCursor mouseCursor)
+    {
+        base.HandleInput(input, mouseCursor);
+        if (input.MouseClicked && IsHover)
         {
+            Activated = true;
         }
-        public override void HandleInput(InputManager input, MouseCursor mouseCursor)
+        if (input.MouseClicked && !IsHover)
         {
-            base.HandleInput(input, mouseCursor);
-            if (input.MouseClicked && IsHover)
+            Activated = false;
+        }
+    }
+    public override void Update(GameTime gameTime, Screen.GameScene scene)
+    {
+        if (Render)
+        {
+            base.Update(gameTime, scene);
+            if (Activated)
             {
-                Activated = true;
-            }
-            if (input.MouseClicked && !IsHover)
-            {
+                scene.ScreenManager.State.ChangeState("BakeryFirstVisit", true);
                 Activated = false;
-            }
-        }
-        public override void Update(GameTime gameTime, Screen.GameScene scene)
-        {
-            if (Render)
-            {
-                base.Update(gameTime, scene);
-                if (Activated)
-                {
-                    scene.ScreenManager.State.ChangeState("BakeryFirstVisit", true);
-                    Activated = false;
-                }
             }
         }
     }

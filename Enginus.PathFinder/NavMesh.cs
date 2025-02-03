@@ -1,48 +1,45 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
 
-namespace Enginus.Navigation
+namespace Enginus.Navigation;
+
+/// <summary>
+/// A navigation mesh is a simple list of convex polygons and the connections between them.
+/// </summary>
+public class NavMesh
 {
-    /// <summary>
-    /// A navigation mesh is a simple list of convex polygons and the connections between them.
-    /// </summary>
-    public class NavMesh
+    List<ConvexPolygon> _polygonList = new List<ConvexPolygon>();
+    List<PolygonLink> _links = new List<PolygonLink>();
+    public List<ConvexPolygon> PolygonList
     {
-        List<ConvexPolygon> _polygonList = new List<ConvexPolygon>();
-        List<PolygonLink> _links = new List<PolygonLink>();
-        public List<ConvexPolygon> PolygonList
-        {
-            get { return _polygonList; }
-        }
-        public List<PolygonLink> Links
-        {
-            get { return _links; }
-        }
+        get { return _polygonList; }
+    }
+    public List<PolygonLink> Links
+    {
+        get { return _links; }
+    }
 
-        public void AddPolygon(ConvexPolygon polygon)
+    public void AddPolygon(ConvexPolygon polygon)
+    {
+        _polygonList.Add(polygon); 
+    }
+    public void AddLink(PolygonLink link)
+    {
+        _links.Add(link);
+    }
+    public ConvexPolygon FindNearestPolygon(Point mousePos)
+    {
+        ConvexPolygon nearestPolygon = null;
+        float minDistance = float.MaxValue;
+        foreach (ConvexPolygon poly in _polygonList)
         {
-            _polygonList.Add(polygon); 
-        }
-        public void AddLink(PolygonLink link)
-        {
-            _links.Add(link);
-        }
-        public ConvexPolygon FindNearestPolygon(Point mousePos)
-        {
-            ConvexPolygon nearestPolygon = null;
-            float minDistance = float.MaxValue;
-            foreach (ConvexPolygon poly in _polygonList)
+            float distance = poly.GetClosestEdgeDistance(mousePos);
+            if (distance < minDistance)
             {
-                float distance = poly.GetClosestEdgeDistance(mousePos);
-                if (distance < minDistance)
-                {
-                    minDistance = distance;
-                    nearestPolygon = poly;
-                }
+                minDistance = distance;
+                nearestPolygon = poly;
             }
-            return nearestPolygon;
         }
+        return nearestPolygon;
     }
 }

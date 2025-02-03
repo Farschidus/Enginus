@@ -1,47 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
-namespace Enginus.Navigation
+namespace Enginus.Navigation;
+
+/// <summary>
+/// A link between two polygons passing through two edges.
+/// </summary>
+public class PolygonLink
 {
-    /// <summary>
-    /// A link between two polygons passing through two edges.
-    /// </summary>
-    public class PolygonLink
+    public ConvexPolygon StartPoly { get; set; }
+    public ConvexPolygon EndPoly { get; set; }
+    public IndexedEdge StartEdgeIndex { get; set; }
+    public IndexedEdge EndEdgeIndex { get; set; }
+
+    public PolygonLink(ConvexPolygon startPoly, IndexedEdge startEdge, ConvexPolygon endPoly, IndexedEdge endEdge)
     {
-        public ConvexPolygon StartPoly { get; set; }
-        public ConvexPolygon EndPoly { get; set; }
-        public IndexedEdge StartEdgeIndex { get; set; }
-        public IndexedEdge EndEdgeIndex { get; set; }
+        StartPoly = startPoly;
+        StartEdgeIndex = startEdge;
+        EndPoly = endPoly;
+        EndEdgeIndex = endEdge;
+    }
 
-        public PolygonLink(ConvexPolygon startPoly, IndexedEdge startEdge, ConvexPolygon endPoly, IndexedEdge endEdge)
+    public LineSegment GetShortestEdge()
+    {
+        Point firstStart = StartPoly.Vertices[StartEdgeIndex.Start];
+        Point firstEnd = StartPoly.Vertices[StartEdgeIndex.End];
+        float length1 = LineSegment.Length(firstStart, firstEnd);
+
+        Point secondStart = EndPoly.Vertices[EndEdgeIndex.Start];
+        Point secondEnd = EndPoly.Vertices[EndEdgeIndex.End];
+        float length2 = LineSegment.Length(secondStart, secondEnd);
+
+        if (length1 <= length2)
         {
-            StartPoly = startPoly;
-            StartEdgeIndex = startEdge;
-            EndPoly = endPoly;
-            EndEdgeIndex = endEdge;
+            return new LineSegment(firstStart, firstEnd);
         }
-
-        public LineSegment GetShortestEdge()
+        else
         {
-            Point firstStart = StartPoly.Vertices[StartEdgeIndex.Start];
-            Point firstEnd = StartPoly.Vertices[StartEdgeIndex.End];
-            float length1 = LineSegment.Length(firstStart, firstEnd);
-
-            Point secondStart = EndPoly.Vertices[EndEdgeIndex.Start];
-            Point secondEnd = EndPoly.Vertices[EndEdgeIndex.End];
-            float length2 = LineSegment.Length(secondStart, secondEnd);
-
-            if (length1 <= length2)
-            {
-                return new LineSegment(firstStart, firstEnd);
-            }
-            else
-            {
-                return new LineSegment(secondStart, secondEnd);
-            }
+            return new LineSegment(secondStart, secondEnd);
         }
     }
 }
