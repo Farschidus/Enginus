@@ -124,7 +124,7 @@ public class GameSceneManager : GameScene
         {
             //Dialogue.Update(gameTime);
             if(plotter.Mizuki)
-                player.Update(gameTime, elapsedTime, SceneMesh);
+                player.Update(elapsedTime, SceneMesh);
 
             foreach (ExitObject exit in SceneExits)
             {

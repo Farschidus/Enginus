@@ -91,7 +91,7 @@ namespace Enginus.Editor
         }
         public void Update(InputManager input, GameScreen scene)
         {
-            doubleClick = input.DoubleClick;
+            doubleClick = input.DoubleClicked;
 
             if (input.KeyE())
                 enable = !enable;

@@ -18,7 +18,6 @@ public class InputManager
     #region Fields
 
     private double timePassed;
-    private bool singleClick;
     private bool isFullScreen;
     private Viewport gameViewport;
     private MouseState lastMouseStates;
@@ -28,7 +27,6 @@ public class InputManager
     private Point mouseClickedPoint;
 
     public Point CurrentMousePoint;
-    public bool DoubleClick;
     public const int MaxInputs = 1;
     public readonly KeyboardState[] CurrentKeyboardStates;
     public readonly KeyboardState[] LastKeyboardStates;
@@ -53,6 +51,8 @@ public class InputManager
             return (lastMouseStates.RightButton == ButtonState.Pressed && currentMouseStates.RightButton == ButtonState.Released);
         }
     }
+    public bool DoubleClicked;
+
     public Point MouseClickedPoint { get => mouseClickedPoint; }
     //TODO: for picking up items from inventory
     public object MouseActiveInventoryItem { get; set; }
@@ -231,20 +231,8 @@ public class InputManager
     private void CheckMouseClick(GameTime gameTime)
     {
         timePassed = gameTime.TotalGameTime.Milliseconds - previousGameTime;
-        DoubleClick = ((singleClick &&
-            (currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed)) &&
-            (timePassed > 0 && timePassed < TimerDelay));
-
-        if (DoubleClick)
-        {
-            singleClick = false;
-            DoubleClick = true;
-        }
-        else if (currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed)
-        {
-            singleClick = true;
-            mouseClickedPoint = CurrentMousePoint;
-        }
+        DoubleClicked = timePassed > 0 && timePassed < TimerDelay &&
+            currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed;
     }
 
     public void CenterMousePosition()

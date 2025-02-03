@@ -108,9 +108,9 @@ namespace Enginus.SceneObject
             else
                 IsHover = false;
 
-            if (input.MouseClicked && IsHover)
+            if (IsHover && input.MouseClicked)
                 Activated = true;
-            if (input.MouseClicked && !IsHover)
+            if (!IsHover && input.MouseClicked)
                 Activated = false;
 
             if (fsm != null && fsm.CurrentState != null)

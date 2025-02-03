@@ -107,10 +107,15 @@ namespace Enginus.Animation
         public bool IsMoving { get; set; }
         public float MoveSpeed { get; set; }
         public Vector2 Destination { get; set; }
-        
+
         #endregion
 
         #region Methods
+
+        public AnimatoionManager(string name, ContentManager content, SpriteFile spriteFiles, float fps, int loopCount, float delay, int[] rowsFrameCount, AnimationFileType animationFileType, AnimationType animType, float layerDepth) :
+            this(name, content, [spriteFiles], fps, loopCount, delay, rowsFrameCount, animationFileType, animType, layerDepth)
+        {
+        }
 
         public AnimatoionManager(string name, ContentManager content, SpriteFile[] spriteFiles, float fps, int loopCount, float delay, int[] rowsFrameCount, AnimationFileType animationFileType, AnimationType animType, float layerDepth)
         {

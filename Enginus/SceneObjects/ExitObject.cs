@@ -32,7 +32,7 @@ namespace Enginus.SceneObject
             {
                 base.HandleInput(input, mouseCursor);
 
-                if (input.DoubleClick && IsHover)
+                if (IsHover && input.DoubleClicked)
                     quickExit = true;
             }
         }
