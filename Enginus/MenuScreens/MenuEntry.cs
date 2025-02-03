@@ -1,3 +1,4 @@
+using Enginus.Core;
 using Enginus.Core.Utilities;
 using Enginus.Screen;
 using Microsoft.Xna.Framework;
@@ -124,7 +125,7 @@ class MenuEntry
         // Pulsate the size of the selected menu entry.
         double time = gameTime.TotalGameTime.TotalSeconds;
         
-        float pulsate = (float)Math.Sin(time * 6) + 1;
+        float pulsate = (float)Math.Sin(time * Constants.MENU_POLSATION_SPEED) + 1;
 
         float scale = 1 + pulsate * 0.05f * selectionFade;
 
@@ -155,6 +156,6 @@ class MenuEntry
     {
         return (int)screen.ScreenManager.Font.MeasureString(Text).X;
     }
-    
+
     #endregion
 }

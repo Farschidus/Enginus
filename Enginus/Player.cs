@@ -15,6 +15,7 @@ namespace Enginus
     /// </summary>
     public class Player
     {
+        #region Fields
         float layerDepth;
         // Animations
         AnimatoionManager currentAnimation;
@@ -29,6 +30,7 @@ namespace Enginus
         Vector2 direction;
         float MizukiScale;
 
+        #endregion
         #region Properties
 
         private const int playerWidth = 225;
@@ -152,16 +154,15 @@ namespace Enginus
             scene.AnimationPlayer.LoadPlayer(runAnimation);
             currentAnimation = runAnimation;
         }
-        public void Update(GameTime gameTime, float elapsedTime, InputManager input, NavMesh sceneNavMesh)
+        public void Update(GameTime gameTime, float elapsedTime, NavMesh sceneNavMesh)
         {
-            if (input.MouseClicked)
+            if (scene.ScreenManager.InputManager.MouseClicked)
             {
-                canWalkMousePosition = sceneNavMesh.PolygonList.Any(x => x.Intersects(input.MouseClickedPoint));
-                if (canWalkMousePosition)
+                if (sceneNavMesh.PolygonList.Any(x => x.Intersects(scene.ScreenManager.InputManager.MouseClickedPoint)))
                 {
                     currentPathIndex = 1;
                     path.Clear();
-                    path = pathFinder.GetPath(currentPosition, input.MouseClickedPoint, sceneNavMesh);
+                    path = pathFinder.GetPath(currentPosition, scene.ScreenManager.InputManager.MouseClickedPoint, sceneNavMesh);
                     if (path.Count >= 2)
                     {
                         followingPath = true;

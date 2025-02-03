@@ -6,45 +6,22 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Enginus.Control
 {
-	public class Cursor(ContentManager Content)
+    public class MouseCursor(ContentManager Content)
     {
-        private Texture2D cursorTexture = Content.Load<Texture2D>(Constants.Cursor_Pointer);
-        private CursorTexturType cursorType = CursorTexturType.Pointer;
         private Vector2 cursorPosition;
-        private bool isVisible = false;
-        private object activeInventoryItemName;
+        private bool isVisible = Constants.MOUSE_VISIBLE;
+        private CursorTexturType cursorType = CursorTexturType.Pointer;
+        private Texture2D cursorTexture = Content.Load<Texture2D>(Constants.Cursor_Pointer);
 
-        public Texture2D CursorTexture;
-        public CursorTexturType CursorType
-        {
-            set
-            {
-                cursorType = value;
-            }
-        }        
-        public bool IsVisible
-        {
-            set
-            {
-                isVisible = value;
-            }
-        }
-        public object ActiveInventoryItemName
-        {
-            get
-            {
-                return activeInventoryItemName;
-            }
-            set
-            {
-                activeInventoryItemName = value;
-            }
-        }
+        public Texture2D CursorTexture { get => cursorTexture; set => cursorTexture = value; }
+        public CursorTexturType CursorType { set => cursorType = value; }
+        public bool IsVisible { set => isVisible = value; }
+        public object ActiveInventoryItem { get; set; }
 
         public void Update(InputManager input)
         {
-            if (!isVisible) 
-            { 
+            if (!isVisible)
+            {
                 isVisible = true;
             }
             cursorPosition.Y = input.CurrentMousePoint.Y;
@@ -52,14 +29,14 @@ namespace Enginus.Control
 
             SetCursorTexture();
         }
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (isVisible)
-            {
-                spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
-                spriteBatch.Draw(cursorTexture, cursorPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
-                spriteBatch.End();
-            }
+            if (!isVisible) return;
+
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
+            spriteBatch.Draw(cursorTexture, cursorPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            spriteBatch.End();
         }
 
         private void SetCursorTexture()

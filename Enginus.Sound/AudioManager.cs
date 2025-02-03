@@ -71,7 +71,7 @@ public class AudioManager : GameComponent
     /// <param name="game">The Game</param>
     public AudioManager(Game game) : base(game)
     {
-        _content = new ContentManager(game.Services);
+        _content = new ContentManager(game.Content.ServiceProvider, game.Content.RootDirectory);
     }
     /// <summary>
     /// Creates a new Audio Manager. Add this to the Components collection of your Game.

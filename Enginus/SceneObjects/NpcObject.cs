@@ -52,10 +52,10 @@ namespace Enginus.SceneObject
             rectangle = currentAnimation.AnimRectangle;
             AnimationPlayer.LoadPlayer(currentAnimation);
         }
-        public override void HandleInput(InputManager input, Cursor cursor)
+        public override void HandleInput(InputManager input, MouseCursor mouseCursor)
         {
             
-            base.HandleInput(input, cursor);
+            base.HandleInput(input, mouseCursor);
             if (Render)
             {
                 if (AnimationPlayer.AnimationEnded)

@@ -11,9 +11,9 @@ namespace Enginus.SceneObject
             : base(name, recSprite, texture, content, CursorTexturType.Intract, layerDepth, string.Empty)
         {
         }
-        public override void HandleInput(InputManager input, Cursor cursor)
+        public override void HandleInput(InputManager input, MouseCursor mouseCursor)
         {
-            base.HandleInput(input, cursor);
+            base.HandleInput(input, mouseCursor);
             if (input.MouseClicked && IsHover)
             {
                 Activated = true;

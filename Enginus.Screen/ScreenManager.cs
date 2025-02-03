@@ -23,47 +23,43 @@ public class ScreenManager : DrawableGameComponent
     #region Fields
 
     private bool isInitialized;
+    public InputManager InputManager { get; private set; }
     private Texture2D blankTexture;
     private readonly List<GameScreen> screens = [];
     private readonly List<GameScreen> screensToUpdate = [];
 
-		/// <summary>
-		/// A default SpriteBatch shared by all the screens. This saves
-		/// each screen having to bother creating their own local instance.
-		/// </summary>
-		public SpriteBatch SpriteBatch { get; private set; }
-
-		/// <summary>
-		/// A default font shared by all the screens. This saves
-		/// each screen having to bother loading their own local copy.
-		/// </summary>
-		public SpriteFont Font { get; private set; }
-
+	/// <summary>
+	/// A default SpriteBatch shared by all the screens. This saves
+	/// each screen having to bother creating their own local instance.
+	/// </summary>
+	public SpriteBatch SpriteBatch { get; private set; }
+	/// <summary>
+	/// A default font shared by all the screens. This saves
+	/// each screen having to bother loading their own local copy.
+	/// </summary>
+	public SpriteFont Font { get; private set; }
     /// <summary>
     /// If true, the manager prints out a list of all the screens
     /// each time it is updated. This can be useful for making sure
     /// everything is being added and removed at the right times.
     /// </summary>
     public bool TraceEnabled { get; set; } = Constants.TraceEnabled;
-		public AudioManager AudioManager { get; }
-		public InputManager InputManager { get; }
+	public AudioManager AudioManager { get; }
+	public InventoryManager InventoryManager { get; private set; }
+	public MouseCursor Cursor { get; private set; }
     public Engine JSEngine = new();
     public StateManager State;
 
-		public InventoryManager InventoryManager { get; private set; }
-		public Cursor Cursor { get; private set; }
+    #endregion
 
-		#endregion
+    #region Initialization
 
-		#region Initialization
-
-		/// <summary>
-		/// Constructs a new screen manager component.
-		/// </summary>
-		public ScreenManager(Game game, AudioManager audio, InputManager input) : base(game)
+    /// <summary>
+    /// Constructs a new screen manager component.
+    /// </summary>
+    public ScreenManager(Game game, AudioManager audio) : base(game)
     {
         AudioManager = audio;
-        InputManager = input;
     }
 
     /// <summary>
@@ -88,7 +84,8 @@ public class ScreenManager : DrawableGameComponent
         Font = Game.Content.Load<SpriteFont>("Fonts/MenuTahoma");
         blankTexture = Game.Content.Load<Texture2D>("Images/blank");
 
-        Cursor = new Cursor(Game.Content);
+        InputManager = new InputManager(Resolution.GameViewPort, Resolution.IsFullScreen);
+        Cursor = new MouseCursor(Game.Content);
         InventoryManager = InventoryManager.Instance(Game.Content);
         
         // Tell each of the screens to load their content.
@@ -119,7 +116,7 @@ public class ScreenManager : DrawableGameComponent
     /// </summary>
     public override void Update(GameTime gameTime)
     {
-        // Read the keyboard and gamepad and Mouse.
+        // Read the keyboard, gamepad and Mouse.
         InputManager.Update(gameTime);
 
         // Make a copy of the master screen list, to avoid confusion if
@@ -140,7 +137,7 @@ public class ScreenManager : DrawableGameComponent
             screensToUpdate.RemoveAt(screensToUpdate.Count - 1);
 
             // Update the screen.
-            screen.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, InputManager);
+            screen.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             Cursor.Update(InputManager);
 
             if (screen.ScreenState == ScreenState.TransitionOn ||
@@ -157,10 +154,6 @@ public class ScreenManager : DrawableGameComponent
                 // screens that they are covered by it.
                 if (!screen.IsPopup)
                     coveredByOtherScreen = true;
-            }
-            else
-            {
-                Cursor.IsVisible = false;
             }
         }
 
@@ -189,11 +182,11 @@ public class ScreenManager : DrawableGameComponent
     {
         foreach (GameScreen screen in screens)
         {
-            if (screen.ScreenState == ScreenState.Hidden)
-                continue;
-            screen.Draw(gameTime, this.SpriteBatch);
+            if (screen.ScreenState == ScreenState.Hidden) continue;
+
+            screen.Draw(gameTime, SpriteBatch);
         }
-        Cursor.Draw(this.SpriteBatch);
+        Cursor.Draw(SpriteBatch);
     }
 
     #endregion

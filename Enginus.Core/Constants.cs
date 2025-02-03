@@ -10,7 +10,8 @@ public class Constants
     public const float ANIMATION_FPS = 20f;
     public const float PHYSIC_FPS = 60f;
     public const bool MOUSE_VISIBLE = true;
-
+    public const int MENU_POLSATION_SPEED = 0; //6;
+    public const int DOUBLE_CLICK_SPEED = 350;
     //Animation loop constants
     public const float FAN_SPEED = 0.070f;
 

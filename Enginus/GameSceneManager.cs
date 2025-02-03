@@ -1,4 +1,4 @@
-﻿using Enginus.Control;
+using Enginus.Control;
 using Enginus.Core;
 using Enginus.Core.Utilities;
 using Enginus.Inventory;
@@ -117,14 +117,14 @@ public class GameSceneManager : GameScene
             ScreenManager.AddScreen(new Map());
         }
     }
-    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
+    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
     {
-        base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
+        base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
         if (IsActive)
         {
             //Dialogue.Update(gameTime);
             if(plotter.Mizuki)
-                player.Update(gameTime, elapsedTime, input, SceneMesh);
+                player.Update(gameTime, elapsedTime, SceneMesh);
 
             foreach (ExitObject exit in SceneExits)
             {

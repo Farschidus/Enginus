@@ -65,9 +65,9 @@ class Background : GameScreen
     /// coveredByOtherScreen parameter to false in order to stop the base
     /// Update method wanting to transition off.
     /// </summary>
-    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
+    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
     {
-        base.Update(gameTime, otherScreenHasFocus, false, input);
+        base.Update(gameTime, otherScreenHasFocus, false);
     }
         
     /// <summary>

@@ -36,7 +36,7 @@ namespace Enginus.Screen
         }
         public override void HandleInput(InputManager input)
         {
-            if (input.IsPauseGame(null) || (input.MouseClicked && !backgroundRectangle.Contains(input.MouseClickedPoint)))
+            if (input.IsPauseGame() || (input.MouseClicked && !backgroundRectangle.Contains(input.MouseClickedPoint)))
                 ExitScreen();
 
             foreach (Item item in ScreenManager.InventoryManager.ItemsCollection.Values)
@@ -45,9 +45,10 @@ namespace Enginus.Screen
                 {
                     ScreenManager.Cursor.CursorType = CursorTexturType.Texture;
                     ScreenManager.Cursor.CursorTexture = item.ItemTexture;
-                    ScreenManager.Cursor.ActiveInventoryItemName = this;
+                    //TODO: future implementation
+                    ScreenManager.Cursor.ActiveInventoryItem = this;
                 }
-                item.Update(input, ScreenManager.Cursor, ScreenManager.InventoryManager);
+                item.Update(input, ScreenManager.InventoryManager);
             }
         }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

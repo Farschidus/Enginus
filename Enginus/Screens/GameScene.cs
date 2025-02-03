@@ -59,7 +59,7 @@ public abstract class GameScene : GameScreen
     #region Methods
 
     public GameScene(string sceneName, string background, string sceneMusic, Vector2 playerPosition, Direction playerDirection, float playerLayerDepth)
-    { 
+    {
         SceneName = sceneName;
         BackgroundTexture = background;
         this.playerPosition = playerPosition;
@@ -101,9 +101,31 @@ public abstract class GameScene : GameScreen
     {
         content.Unload();
     }
-    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
+    public override void HandleInput(InputManager input)
     {
-        base.Update(gameTime, otherScreenHasFocus, false, input);
+        if (input == null)
+            throw new ArgumentNullException("InputState Is Null");
+
+        if (input.IsPauseGame())
+        {
+            ScreenManager.AddScreen(new PauseMenu());
+            isGamePause = true;
+        }
+        else
+        {
+            isGamePause = false;
+        }
+
+        if (input.MouseClicked)
+        {
+            player.Destination = new Vector2(input.MouseClickedPoint.X, input.MouseClickedPoint.Y);
+        }
+
+        plotter.Update(input, this);
+    }
+    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
+    {
+        base.Update(gameTime, otherScreenHasFocus, false);
         elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
         // Gradually fade in or out depending on whether we are covered by the pause screen.
@@ -113,26 +135,6 @@ public abstract class GameScene : GameScreen
         }
         else
             pauseAlpha = Math.Max(pauseAlpha - 1f / 32, 0);
-    }
-    public override void HandleInput(InputManager input)
-    {
-        if (input == null)
-            throw new ArgumentNullException("InputState Is Null");
-
-        if (input.IsPauseGame(null))
-        {
-            ScreenManager.AddScreen(new PauseMenu());
-            isGamePause = true;
-        }
-        else
-        {
-            isGamePause = false;
-        }
-        if (input.MouseClicked)
-        {
-            player.Destination = new Vector2(input.MouseClickedPoint.X, input.MouseClickedPoint.Y);
-        }
-        plotter.Update(input, this);
     }
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {

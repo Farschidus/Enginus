@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
+using Enginus.Control;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using Enginus.Control;
 
 namespace Enginus.SceneObject
 {
     interface ISceneObject
     {
-        void HandleInput(InputManager input, Cursor cursor);
+        void HandleInput(InputManager input, MouseCursor mouseCursor);
         void Update(GameTime gameTime, Screen.GameScene scene);
         void Draw(GameTime gameTime, SpriteBatch spriteBatch);
     }

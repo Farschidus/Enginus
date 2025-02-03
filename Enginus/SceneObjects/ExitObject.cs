@@ -26,11 +26,11 @@ namespace Enginus.SceneObject
             return (rectPlayer.Right > rectangle.Left && rectPlayer.Left < rectangle.Right &&
                     rectPlayer.Bottom > rectangle.Top && rectPlayer.Top < rectangle.Bottom);
         }
-        public override void HandleInput(InputManager input, Cursor cursor)
+        public override void HandleInput(InputManager input, MouseCursor mouseCursor)
         {
             if (Render)
             {
-                base.HandleInput(input, cursor);
+                base.HandleInput(input, mouseCursor);
 
                 if (input.DoubleClick && IsHover)
                     quickExit = true;

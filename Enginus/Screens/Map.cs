@@ -36,7 +36,7 @@ namespace Enginus.Screen
         }
         public override void HandleInput(InputManager input)
         {
-            if (input.IsPauseGame(null) || (input.MouseClicked && !mapRectangle.Contains(input.MouseClickedPoint)))
+            if (input.IsPauseGame() || (input.MouseClicked && !mapRectangle.Contains(input.MouseClickedPoint)))
                 ExitScreen();
             if (LakeRectangle.Contains(input.CurrentMousePoint))
             {

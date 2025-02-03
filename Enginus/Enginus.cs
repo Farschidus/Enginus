@@ -10,7 +10,6 @@ namespace Enginus;
 
 public class Enginus : Game
 	{
-    InputManager input;
     AudioManager audio;
     ScreenManager screenManager;
     readonly GraphicsDeviceManager graphics;
@@ -25,7 +24,7 @@ public class Enginus : Game
     public Enginus()
     {
         IsFixedTimeStep = true;
-        IsMouseVisible = Constants.MOUSE_VISIBLE;
+        IsMouseVisible = false;
 
         graphics = new GraphicsDeviceManager(this)
         {
@@ -38,16 +37,14 @@ public class Enginus : Game
         Resolution.SetVirtualResolution(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         Resolution.SetResolution(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, Constants.FULL_SCREEN);
 
-        audio = new AudioManager(this, "Content");
-        input = new InputManager(this);
-        screenManager = new ScreenManager(this, audio, input);
+        audio = new AudioManager(this);
+        screenManager = new ScreenManager(this, audio);
     }
 
     protected override void Initialize()
     {
         Components.Add(screenManager);
         Components.Add(audio);
-        Components.Add(input);
 
         // Activate the first screens.
         screenManager.AddScreen(new Background());

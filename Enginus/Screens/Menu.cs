@@ -20,6 +20,7 @@ abstract class Menu : GameScreen
     private int selectedEntry = 0;
     private readonly string menuTitle;
 
+    private bool isHoverOnMenuEntry;
 
     private readonly List<MenuEntry> menuEntries = [];
     /// <summary>
@@ -86,6 +87,25 @@ abstract class Menu : GameScreen
         {
             OnCancel();
         }
+
+        for (int i = 0; i < menuEntries.Count; i++)
+        {
+            if (new Rectangle((int)menuEntries[i].Position.X, (int)menuEntries[i].Position.Y, menuEntries[i].GetWidth(this), menuEntries[i].GetHeight(this)).Contains(input.CurrentMousePoint))
+            {
+                selectedEntry = i;
+                isHoverOnMenuEntry = true;
+                break;
+            }
+            else
+            {
+                isHoverOnMenuEntry = false;
+            }
+        }
+
+        if(input.MouseClicked && isHoverOnMenuEntry)
+        {
+            OnSelectEntry(selectedEntry);
+        }
     }
     /// <summary>
     /// Handler for when the user has chosen a menu entry.
@@ -150,9 +170,9 @@ abstract class Menu : GameScreen
     /// <summary>
     /// Updates the menu.
     /// </summary>
-    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
+    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
     {
-        base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
+        base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
 
         // Update each nested MenuEntry object.
         for (int i = 0; i < menuEntries.Count; i++)

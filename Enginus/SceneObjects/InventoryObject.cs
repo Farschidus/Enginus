@@ -13,11 +13,11 @@ namespace Enginus.SceneObject
         {
             itemId = id;
         }
-        public override void HandleInput(InputManager input, Cursor cursor)
+        public override void HandleInput(InputManager input, MouseCursor mouseCursor)
         {
             if (Render)
             {
-                base.HandleInput(input, cursor);
+                base.HandleInput(input, mouseCursor);
             }
         }
         public void Update(Scene gameScene)

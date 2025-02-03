@@ -53,16 +53,16 @@ namespace Enginus.Screen
         }
         public override void HandleInput(InputManager input)
         {
-            if (input.IsPauseGame(null) || (input.MouseClicked && closeRectangle.Contains(input.MouseClickedPoint)))
+            if (input.IsPauseGame() || (input.MouseClicked && closeRectangle.Contains(input.MouseClickedPoint)))
                 ExitScreen();
             foreach (InteractiveObject InteractiveObj in MiniInteractives)
             {
                 InteractiveObj.HandleInput(input, ScreenManager.Cursor);
             }
         }
-        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
         {
-            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
             if (IsActive)
             {
                 foreach (InteractiveObject InteractiveObj in MiniInteractives)

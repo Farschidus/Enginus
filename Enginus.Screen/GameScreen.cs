@@ -15,35 +15,35 @@ namespace Enginus.Screen;
 /// </summary>
 public abstract class GameScreen
 {
-		#region Properties
+    #region Properties
 
-		/// <summary>
-		/// Normally when one screen is brought up over the top of another,
-		/// the first screen will transition off to make room for the new
-		/// one. This property indicates whether the screen is only a small
-		/// popup, in which case screens underneath it do not need to bother
-		/// transitioning off.
-		/// </summary>
-		public bool IsPopup { get; protected set; } = false;
+    /// <summary>
+    /// Normally when one screen is brought up over the top of another,
+    /// the first screen will transition off to make room for the new
+    /// one. This property indicates whether the screen is only a small
+    /// popup, in which case screens underneath it do not need to bother
+    /// transitioning off.
+    /// </summary>
+    public bool IsPopup { get; protected set; } = false;
 
-		/// <summary>
-		/// Indicates how long the screen takes to
-		/// transition on when it is activated.
-		/// </summary>
-		public TimeSpan TransitionOnTime { get; protected set; } = TimeSpan.Zero;
+    /// <summary>
+    /// Indicates how long the screen takes to
+    /// transition on when it is activated.
+    /// </summary>
+    public TimeSpan TransitionOnTime { get; protected set; } = TimeSpan.Zero;
 
-		/// <summary>
-		/// Indicates how long the screen takes to
-		/// transition off when it is deactivated.
-		/// </summary>
-		public TimeSpan TransitionOffTime { get; protected set; } = TimeSpan.Zero;
+    /// <summary>
+    /// Indicates how long the screen takes to
+    /// transition off when it is deactivated.
+    /// </summary>
+    public TimeSpan TransitionOffTime { get; protected set; } = TimeSpan.Zero;
 
-		/// <summary>
-		/// Gets the current position of the screen transition, ranging
-		/// from zero (fully active, no transition) to one (transitioned
-		/// fully off to nothing).
-		/// </summary>
-		public float TransitionPosition
+    /// <summary>
+    /// Gets the current position of the screen transition, ranging
+    /// from zero (fully active, no transition) to one (transitioned
+    /// fully off to nothing).
+    /// </summary>
+    public float TransitionPosition
     {
         get { return transitionPosition; }
         protected set { transitionPosition = value; }
@@ -58,25 +58,25 @@ public abstract class GameScreen
     {
         get { return 1f - TransitionPosition; }
     }
-		/// <summary>
-		/// Gets the current screen transition state.
-		/// </summary>
-		public ScreenState ScreenState { get; protected set; } = ScreenState.TransitionOn;
+    /// <summary>
+    /// Gets the current screen transition state.
+    /// </summary>
+    public ScreenState ScreenState { get; protected set; } = ScreenState.TransitionOn;
 
-		/// <summary>
-		/// There are two possible reasons why a screen might be transitioning
-		/// off. It could be temporarily going away to make room for another
-		/// screen that is on top of it, or it could be going away for good.
-		/// This property indicates whether the screen is exiting for real:
-		/// if set, the screen will automatically remove itself as soon as the
-		/// transition finishes.
-		/// </summary>
-		public bool IsExiting { get; protected internal set; } = false;
+    /// <summary>
+    /// There are two possible reasons why a screen might be transitioning
+    /// off. It could be temporarily going away to make room for another
+    /// screen that is on top of it, or it could be going away for good.
+    /// This property indicates whether the screen is exiting for real:
+    /// if set, the screen will automatically remove itself as soon as the
+    /// transition finishes.
+    /// </summary>
+    public bool IsExiting { get; protected internal set; } = false;
 
-		/// <summary>
-		/// Checks whether this screen is active and can respond to user input.
-		/// </summary>
-		public bool IsActive
+    /// <summary>
+    /// Checks whether this screen is active and can respond to user input.
+    /// </summary>
+    public bool IsActive
     {
         get
         {
@@ -86,33 +86,33 @@ public abstract class GameScreen
         }
     }
     bool otherScreenHasFocus;
-		/// <summary>
-		/// Gets the manager that this screen belongs to.
-		/// </summary>
-		public ScreenManager ScreenManager { get; internal set; }
+    /// <summary>
+    /// Gets the manager that this screen belongs to.
+    /// </summary>
+    public ScreenManager ScreenManager { get; internal set; }
 
-		///// <summary>
-		///// set two viewport: one for screen and another for game,
-		///// </summary>
-		//public Viewport DefaultViewport
-		//{
-		//    get { return defaultViewport; }
-		//}
-		//Viewport defaultViewport;
-		//public Viewport GameViewport
-		//{
-		//    get { return gameViewport; }
-		//}
-		//Viewport gameViewport;
+    ///// <summary>
+    ///// set two viewport: one for screen and another for game,
+    ///// </summary>
+    //public Viewport DefaultViewport
+    //{
+    //    get { return defaultViewport; }
+    //}
+    //Viewport defaultViewport;
+    //public Viewport GameViewport
+    //{
+    //    get { return gameViewport; }
+    //}
+    //Viewport gameViewport;
 
-		#endregion
+    #endregion
 
-		#region Initialization
+    #region Initialization
 
-		/// <summary>
-		/// Load graphics content for the screen.
-		/// </summary>
-		public virtual void LoadContent() { }
+    /// <summary>
+    /// Load graphics content for the screen.
+    /// </summary>
+    public virtual void LoadContent() { }
     /// <summary>
     /// Unload content for the screen.
     /// </summary>
@@ -127,10 +127,10 @@ public abstract class GameScreen
     /// Unlike HandleInput, this method is called regardless of whether the screen
     /// is active, hidden, or in the middle of a transition.
     /// </summary>
-    public virtual void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
+    public virtual void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
     {
         this.otherScreenHasFocus = otherScreenHasFocus;
-     
+
         if (IsExiting)
         {
             // If the screen is going away to die, it should transition off.

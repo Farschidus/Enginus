@@ -71,9 +71,9 @@ class Loading : GameScreen
     /// <summary>
     /// Updates the loading screen.
     /// </summary>
-    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen, InputManager input)
+    public override void Update(GameTime gameTime, bool otherScreenHasFocus, bool coveredByOtherScreen)
     {
-        base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen, input);
+        base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
 
         // If all the previous screens have finished transitioning
         // off, it is time to actually perform the load.
