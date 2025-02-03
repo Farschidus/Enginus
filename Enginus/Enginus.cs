@@ -10,11 +10,10 @@ namespace Enginus;
 
 public class Enginus : Game
 	{
-    readonly GraphicsDeviceManager graphics;
-    ScreenManager screenManager;
-    AudioManager audio;
     InputManager input;
-
+    AudioManager audio;
+    ScreenManager screenManager;
+    readonly GraphicsDeviceManager graphics;
     // By preloading any assets used by UI rendering, we avoid framerate glitches
     // when they suddenly need to be loaded in the middle of a menu transition.
     static readonly string[] preloadAssets =
@@ -25,16 +24,17 @@ public class Enginus : Game
 
     public Enginus()
     {
-        IsMouseVisible = false;
+        IsFixedTimeStep = true;
+        IsMouseVisible = Constants.MOUSE_VISIBLE;
 
         graphics = new GraphicsDeviceManager(this)
         {
             SynchronizeWithVerticalRetrace = true
         };
-        this.IsFixedTimeStep = true;
-        Resolution.Init(ref graphics);
+
         Content.RootDirectory = "Content";
 
+        Resolution.Init(ref graphics);
         Resolution.SetVirtualResolution(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         Resolution.SetResolution(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, Constants.FULL_SCREEN);
 

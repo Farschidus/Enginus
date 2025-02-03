@@ -88,7 +88,7 @@
   <Class Name="Enginus.Enginus">
     <Position X="3.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAwAAAAAAAAABAAAAAAgAAAAAAEAAAAQ=</HashCode>
+      <HashCode>AAIAAAAAAAAAAwAAAAAAAAABAAAAABgAAAAAAEAAAAQ=</HashCode>
       <FileName>Enginus.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -262,6 +262,10 @@
       <HashCode>gAYAQYCAAMAC4gFggEwTIIACAIAAAgCEAogAbAEAAAQ=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="Enginus.Control.InputManager">
+    <Position X="41.25" Y="1" Width="3" />
+    <TypeIdentifier />
   </Class>
   <Interface Name="Enginus.SceneObject.ISceneObject" Collapsed="true">
     <Position X="23.75" Y="0.5" Width="1.75" />

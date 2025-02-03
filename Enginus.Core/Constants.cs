@@ -9,6 +9,7 @@ public class Constants
     public const bool FULL_SCREEN = false;
     public const float ANIMATION_FPS = 20f;
     public const float PHYSIC_FPS = 60f;
+    public const bool MOUSE_VISIBLE = true;
 
     //Animation loop constants
     public const float FAN_SPEED = 0.070f;
