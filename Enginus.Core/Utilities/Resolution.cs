@@ -1,18 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Enginus.Core.Utilities;
 
 public static class Resolution
 {
-    static private GraphicsDeviceManager _Device = null;
+    static private GraphicsDeviceManager _Device;
 
     static private int _Width;
     static private int _Height;
     static private int _VWidth = Constants.SCREEN_WIDTH;
     static private int _VHeight = Constants.SCREEN_HEIGHT;
     static private Matrix _ScaleMatrix;
-		static private bool _dirtyMatrix = true;
+    static private bool _dirtyMatrix = true;
     static public Viewport GameViewPort
     {
         get
@@ -89,8 +89,9 @@ public static class Resolution
     static public Matrix GetScaleMatrix()
     {
         if (_dirtyMatrix)
+        {
             RecreateScaleMatrix();
-
+        }
         return _ScaleMatrix;
     }
     /// <summary>
@@ -159,7 +160,7 @@ public static class Resolution
     /// <returns>aspect ratio</returns>
     static public float GetVirtualAspectRatio()
     {
-        return (float)_VWidth / (float)_VHeight;
+        return _VWidth / _VHeight;
     }
     static public void SetVirtualResolution(int Width, int Height)
     {

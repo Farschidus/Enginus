@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Enginus;
 
@@ -11,4 +11,3 @@ public static class Program
         enginus.Run();
     }
 }
-

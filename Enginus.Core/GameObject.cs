@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Collections.ObjectModel;
 
 namespace Enginus.Core;
 
@@ -13,7 +14,7 @@ public class GameObject
     /// <summary>
     /// Tells if the GameObject is active.
     /// </summary>
-    public bool IsActive;
+    public bool IsActive { get; set; }
 
     /// <summary>
     /// Initializes a new instance of the GameObject class.
@@ -32,13 +33,12 @@ public class GameObject
     public void AddComponent(IComponent component)
     {
         Type type = component.GetType();
-        if (!_components.ContainsKey(type))
+        if (!_components.TryAdd(type, component))
         {
-            _components.Add(type, component);
-        }
-        else if (Constants.EntityDebugMessages)
-        {
-            Console.WriteLine($"Component of type {type} already exists!");
+            if (Constants.EntityDebugMessages)
+            {
+                Console.WriteLine($"Component of type {type} already exists!");
+            }
         }
     }
 
@@ -49,13 +49,12 @@ public class GameObject
     public void RemoveComponent<T>() where T : IComponent
     {
         Type type = typeof(T);
-        if (_components.ContainsKey(type))
+        if (!_components.Remove(type))
         {
-            _components.Remove(type);
-        }
-        else if (Constants.EntityDebugMessages)
-        {
-            Console.WriteLine("Tried to remove a component that doesn't exist!");
+            if (Constants.EntityDebugMessages)
+            {
+                Console.WriteLine("Tried to remove a component that doesn't exist!");
+            }
         }
     }
 
@@ -82,9 +81,8 @@ public class GameObject
     /// Gets all the components of the GameObject.
     /// </summary>
     /// <returns>A list of all the components of the GameObject.</returns>
-    public List<IComponent> GetAllComponents()
+    public IDictionary<Type, IComponent> AllComponents
     {
-        List<IComponent> componentList = new(_components.Values);
-        return componentList;
+        get { return new ReadOnlyDictionary<Type, IComponent>(_components); }
     }
 }
