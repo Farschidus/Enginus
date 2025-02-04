@@ -1,0 +1,41 @@
+<Project>
+    <PropertyGroup>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType> <!-- Default output type -->
+    </PropertyGroup>
+        <!-- If building for Windows, set OutputType to WinExe -->
+        <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'win-x64' OR '$(OS)' == 'Windows_NT'">
+        <OutputType>WinExe</OutputType>
+    </PropertyGroup>
+        <!-- If building for Linux/macOS, set OutputType to Console application -->
+        <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'linux-x64' OR '$(RuntimeIdentifier)' == 'osx-x64'">
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <RollForward>Major</RollForward>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <JintVersion>2.11.58</JintVersion>
+        <MonoGameFrameworkDesktopGLVersion>3.8.2.1105</MonoGameFrameworkDesktopGLVersion>
+        <MonoGameContentBuilderTaskVersion>3.8.2.1105</MonoGameContentBuilderTaskVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild> <!-- Enforce styles at build time -->
+        <AnalysisMode>All</AnalysisMode> <!-- Enable all .NET analyzers -->
+        <AnalysisLevel>latest</AnalysisLevel> <!-- Use the latest rules -->
+        <!-- <CodeAnalysisRuleSet>$(MSBuildProjectDirectory)\CodeAnalysis.ruleset</CodeAnalysisRuleSet> !!! Optional: Use a custom ruleset -->
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+        <WarningsAsErrors>CS0028</WarningsAsErrors> <!-- Keep only critical warnings as errors -->
+    </PropertyGroup>  
+</Project>

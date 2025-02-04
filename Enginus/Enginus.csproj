@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <RollForward>Major</RollForward>
+    <TargetFramework>$(TargetFramework)</TargetFramework>
+    <RollForward>$(RollForward)</RollForward>
     <PublishReadyToRun>false</PublishReadyToRun>
     <TieredCompilation>false</TieredCompilation>
   </PropertyGroup>
@@ -31,8 +30,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.2.1105" />
-    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.2.1105" />
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="$(MonoGameFrameworkDesktopGLVersion)" />
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="$(MonoGameContentBuilderTaskVersion)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enginus.Animation\Enginus.Animation.csproj" />
