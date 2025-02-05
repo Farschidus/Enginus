@@ -122,7 +122,7 @@ public static class Resolution
     }
     static public void ResetViewport()
     {
-        float targetAspectRatio = GetVirtualAspectRatio();
+        float targetAspectRatio = VirtualAspectRatio;
         // figure out the largest area that fits in this resolution at the desired aspect ratio
         int width = _Device.PreferredBackBufferWidth;
         int height = (int)(width / targetAspectRatio + .5f);
@@ -158,10 +158,7 @@ public static class Resolution
     /// Get virtual Mode Aspect Ratio
     /// </summary>
     /// <returns>aspect ratio</returns>
-    static public float GetVirtualAspectRatio()
-    {
-        return _VWidth / _VHeight;
-    }
+    static public float VirtualAspectRatio => _VWidth / _VHeight;
     static public void SetVirtualResolution(int Width, int Height)
     {
         _VWidth = Width;
