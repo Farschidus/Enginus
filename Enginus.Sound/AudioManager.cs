@@ -19,12 +19,12 @@ public class AudioManager : GameComponent
     private Dictionary<string, Song> _songs = new Dictionary<string, Song>();
     private Dictionary<string, SoundEffect> _sounds = new Dictionary<string, SoundEffect>();
 
-    private Song _currentSong = null;
+    private Song _currentSong;
     private SoundEffectInstance[] _playingSounds = new SoundEffectInstance[MaxSounds];
 
-    private bool _isMusicPaused = false;
+    private bool _isMusicPaused;
 
-    private bool _isFading = false;
+    private bool _isFading;
     private MusicFadeEffect _fadeEffect;
 
     // Change MaxSounds to set the maximum number of simultaneous sounds that can be playing.
@@ -41,7 +41,7 @@ public class AudioManager : GameComponent
     /// <summary>
     /// Gets or sets the volume to play songs. 1.0f is max volume.
     /// </summary>
-    public float MusicVolume
+    public static float MusicVolume
     {
         get { return MediaPlayer.Volume; }
         set { MediaPlayer.Volume = value; }
@@ -49,7 +49,7 @@ public class AudioManager : GameComponent
     /// <summary>
     /// Gets or sets the master volume for all sounds. 1.0f is max volume.
     /// </summary>
-    public float SoundVolume
+    public static float SoundVolume
     {
         get { return SoundEffect.MasterVolume; }
         set { SoundEffect.MasterVolume = value; }
@@ -190,7 +190,11 @@ public class AudioManager : GameComponent
     {
         if (_currentSong != null && !_isMusicPaused)
         {
-            if (Enabled) MediaPlayer.Pause();
+            if (Enabled)
+            {
+                MediaPlayer.Pause();
+            }
+
             _isMusicPaused = true;
         }
     }
@@ -202,7 +206,11 @@ public class AudioManager : GameComponent
     {
         if (_currentSong != null && _isMusicPaused)
         {
-            if (Enabled) MediaPlayer.Resume();
+            if (Enabled)
+            {
+                MediaPlayer.Resume();
+            }
+
             _isMusicPaused = false;
         }
     }

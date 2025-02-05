@@ -1,17 +1,17 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using System;
 
 namespace Enginus.Sound;
 
 public class Music
 {
-    public string Name;
-    public string File;
+    public string Name { get; set; }
+    public string File { get; set; }
 }
 struct MusicFadeEffect
 {
-    public float SourceVolume;
-    public float TargetVolume;
+    public float SourceVolume { get; private set; }
+    public float TargetVolume { get; private set; }
 
     private TimeSpan _time;
     private TimeSpan _duration;
