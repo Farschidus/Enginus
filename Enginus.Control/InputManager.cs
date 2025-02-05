@@ -18,7 +18,7 @@ public class InputManager
     #region Fields
 
     private double timePassed;
-    private bool isFullScreen;
+    private readonly bool isFullScreen;
     private Viewport gameViewport;
     private MouseState lastMouseStates;
     private MouseState currentMouseStates;
@@ -26,10 +26,10 @@ public class InputManager
     private const double TimerDelay = Constants.DOUBLE_CLICK_SPEED; 
     private Point mouseClickedPoint;
 
-    public Point CurrentMousePoint;
     public const int MaxInputs = 1;
-    public readonly KeyboardState[] CurrentKeyboardStates;
-    public readonly KeyboardState[] LastKeyboardStates;
+    public Point CurrentMousePoint { get; private set; }
+    public KeyboardState[] CurrentKeyboardStates { get; private set; }
+    public KeyboardState[] LastKeyboardStates { get; private set; }
     public bool MouseClicked
     {
         get
@@ -39,9 +39,8 @@ public class InputManager
                 mouseClickedPoint = Mouse.GetState().Position;
                 return true;
             }
-            else
-                return false;
-
+            
+            return false;
         }
     }
     public bool MouseRightClicked
@@ -51,8 +50,7 @@ public class InputManager
             return (lastMouseStates.RightButton == ButtonState.Pressed && currentMouseStates.RightButton == ButtonState.Released);
         }
     }
-    public bool DoubleClicked;
-
+    public bool DoubleClicked { get; private set; }
     public Point MouseClickedPoint { get => mouseClickedPoint; }
     //TODO: for picking up items from inventory
     public object MouseActiveInventoryItem { get; set; }
@@ -64,12 +62,12 @@ public class InputManager
     /// <summary>
     /// Constructs a new input state.
     /// </summary>
-    public InputManager(Viewport gameViewPort, bool isFullScreen)
+    public InputManager(Viewport gameViewport, bool isFullScreen)
     {
         this.isFullScreen = isFullScreen;
         CurrentKeyboardStates = new KeyboardState[MaxInputs];
         LastKeyboardStates = new KeyboardState[MaxInputs];
-        this.gameViewport = gameViewPort;
+        this.gameViewport = gameViewport;
 
         mouseClickedPoint = Point.Zero;
     }
@@ -81,6 +79,7 @@ public class InputManager
     /// <summary>
     /// Reads the latest state of the keyboard and Mouse.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0011:Add braces", Justification = "<Pending>")]
     public void Update(GameTime gameTime)
     {
         for (int i = 0; i < MaxInputs; i++)
@@ -93,10 +92,13 @@ public class InputManager
         {
             if (Mouse.GetState().Y <= gameViewport.Y)
                 Mouse.SetPosition(Mouse.GetState().X, gameViewport.Y);
+
             if (Mouse.GetState().Y >= gameViewport.Y + gameViewport.Height - 1)
                 Mouse.SetPosition(Mouse.GetState().X, gameViewport.Y + gameViewport.Height - 1);
+
             if (Mouse.GetState().X <= gameViewport.X)
                 Mouse.SetPosition(gameViewport.X, Mouse.GetState().Y);
+
             if (Mouse.GetState().X >= gameViewport.X + gameViewport.Width)
                 Mouse.SetPosition(gameViewport.X + gameViewport.Width, Mouse.GetState().Y);
         }
@@ -233,6 +235,7 @@ public class InputManager
         timePassed = gameTime.TotalGameTime.Milliseconds - previousGameTime;
         DoubleClicked = timePassed > 0 && timePassed < TimerDelay &&
             currentMouseStates.LeftButton == ButtonState.Released && lastMouseStates.LeftButton == ButtonState.Pressed;
+        previousGameTime = gameTime.TotalGameTime.Milliseconds;
     }
 
     public void CenterMousePosition()
