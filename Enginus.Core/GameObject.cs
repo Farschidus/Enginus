@@ -35,10 +35,7 @@ public class GameObject
         Type type = component.GetType();
         if (!_components.TryAdd(type, component))
         {
-            if (Constants.EntityDebugMessages)
-            {
-                Console.WriteLine($"Component of type {type} already exists!");
-            }
+            Console.WriteLine($"Component of type {type} already exists!");
         }
     }
 
@@ -51,10 +48,7 @@ public class GameObject
         Type type = typeof(T);
         if (!_components.Remove(type))
         {
-            if (Constants.EntityDebugMessages)
-            {
-                Console.WriteLine("Tried to remove a component that doesn't exist!");
-            }
+            Console.WriteLine("Tried to remove a component that doesn't exist!");
         }
     }
 
@@ -70,7 +64,7 @@ public class GameObject
         {
             return tComponent;
         }
-        else if (Constants.EntityDebugMessages)
+        else // if (Constants.EntityDebugMessages)
         {
             Console.WriteLine("Tried to get a component that doesn't exist!");
         }
