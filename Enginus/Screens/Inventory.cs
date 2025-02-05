@@ -58,6 +58,7 @@ class Inventory : GameScreen
         // Fade the popup alpha during transitions.
         Color color = Color.White * TransitionAlpha;
         spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
+
         spriteBatch.Draw(backgroundTexture, backgroundRectangle, null, color, 0, Vector2.Zero, SpriteEffects.None, 0);
 
         int xCounter, yCounter, recX, recY;

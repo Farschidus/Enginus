@@ -8,7 +8,7 @@ namespace Enginus.Inventory;
 
 public class Item
 {
-    public ItemsEnum ItemName
+    public InventoryItems ItemName
     {
         get { return itemName; }
         set { itemName = value; }
@@ -29,12 +29,12 @@ public class Item
     }
 
     string textureName;
-    ItemsEnum itemName;
+    InventoryItems itemName;
     Texture2D itemTexture;
     Rectangle itemRectangle;
     bool isCombinable;
-    ItemsEnum? combinePair;
-    ItemsEnum target;
+    InventoryItems? combinePair;
+    InventoryItems target;
     Point position;
     const int ItemWithAndHeight = 70;
     bool inInventory;
@@ -44,7 +44,7 @@ public class Item
         : this(item.itemName, item.isCombinable, item.combinePair, item.target, item.position, item.textureName, content, 0.89f)
     {
     }
-    public Item(ItemsEnum itemName, bool isCombinable, ItemsEnum? combinePair, ItemsEnum target, Point position, string textureName, ContentManager content, float layerDepth)
+    public Item(InventoryItems itemName, bool isCombinable, InventoryItems? combinePair, InventoryItems target, Point position, string textureName, ContentManager content, float layerDepth)
     {
         this.textureName = textureName;
         this.itemName = itemName;

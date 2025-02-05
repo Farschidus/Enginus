@@ -130,7 +130,7 @@ public struct AnimationPlayer
 
         switch (animation.AnimationFileType)
         {
-            case AnimationFileType.Single:
+            case AnimationFileType.Joined:
                 {
                     if (animation.AnimationType.Equals(AnimationType.Linear))
                         this.DrawSingleLinear(gameTime, spriteBatch, destinationRectangle, spriteEffects);

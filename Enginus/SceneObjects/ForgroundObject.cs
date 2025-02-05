@@ -7,7 +7,7 @@ namespace Enginus.SceneObject;
 public class ForgroundObject : SceneObject
 {
     public ForgroundObject(string name, Rectangle recSprite, string texture, ContentManager content, float layerDepth)
-        : base(name, recSprite, texture, content, CursorTexturType.Pointer, layerDepth, string.Empty)
+        : base(name, recSprite, texture, content, CursorTexturType.Default, layerDepth, string.Empty)
     {
     }
 }

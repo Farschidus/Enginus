@@ -8,8 +8,8 @@ public sealed class InventoryManager
 {
     #region Properties
 
-    public Dictionary<ItemsEnum, Item> ItemsCollection;
-    public List<ItemsEnum> InInventory;
+    public Dictionary<InventoryItems, Item> ItemsCollection;
+    public List<InventoryItems> InInventory;
 
     ContentManager content;
     static InventoryManager instance;
@@ -28,8 +28,8 @@ public sealed class InventoryManager
     }
     private InventoryManager(ContentManager content)
     {
-        ItemsCollection = new Dictionary<ItemsEnum, Item>();
-        InInventory = new List<ItemsEnum>();
+        ItemsCollection = new Dictionary<InventoryItems, Item>();
+        InInventory = new List<InventoryItems>();
         this.content = content;
     }
 
@@ -42,7 +42,7 @@ public sealed class InventoryManager
             InInventory.Add(newItem.ItemName);
         }
     }
-    public void RemoveItem(ItemsEnum itemName)
+    public void RemoveItem(InventoryItems itemName)
     {
         ItemsCollection.Remove(itemName);
     }

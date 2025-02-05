@@ -97,16 +97,16 @@ public class Player
     public void LoadContent()
     {
         font = Scene.Content.Load<SpriteFont>("Fonts/DialoguesTahoma");
-        idleAnimation = new AnimatoionManager("MizukiIdle", Scene.Content, new SpriteFile { Texture = "Sprites/Idles", Width = playerWidth, Height = playerHeight }, 0.1f, 0, 0, [ 8 ], AnimationFileType.Single, AnimationType.Linear, layerDepth);
+        idleAnimation = new AnimatoionManager("MizukiIdle", Scene.Content, new SpriteFile { Texture = "Sprites/Idles", Width = playerWidth, Height = playerHeight }, 0.1f, 0, 0, [ 8 ], AnimationFileType.Joined, AnimationType.Linear, layerDepth);
 
-        northWalkAnimation = new AnimatoionManager("MizukiNorthWalk", Scene.Content, new SpriteFile { Texture = "Sprites/North", Width = 185, Height = 690 }, 12f, -1, 0, [ 6, 6 ], AnimationFileType.Single, AnimationType.Linear, layerDepth);
-        southWalkAnimation = new AnimatoionManager("MizukiSouthWalk", Scene.Content, new SpriteFile { Texture = "Sprites/South", Width = 214, Height = 700 }, 12f, -1, 0, [ 6, 6 ], AnimationFileType.Single, AnimationType.Linear, layerDepth);
-        westWalkAnimation = new AnimatoionManager("MizukiWestWalk", Scene.Content, new SpriteFile { Texture = "Sprites/West", Width = 262, Height = 704 }, 12f, -1, 0, [ 6, 6 ], AnimationFileType.Single, AnimationType.Linear, layerDepth);
-        northWestWalkAnimation = new AnimatoionManager("MizukiNorthWestWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/NorthWest", Width = 255, Height = 706 }, 12f, -1, 0, [ 6, 6 ], AnimationFileType.Single, AnimationType.Linear, layerDepth);
-        southWestWalkAnimation = new AnimatoionManager("MizukiSouthWestWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/SouthWest", Width = 258, Height = 699 }, 12f, -1, 0, [6, 6], AnimationFileType.Single, AnimationType.Linear, layerDepth);
-        eastWalkAnimation = new AnimatoionManager("MizukiEastWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/East", Width = 261, Height = 703 }, 12f, -1, 0, [6, 6], AnimationFileType.Single, AnimationType.Linear, layerDepth);
-        northEastWalkAnimation = new AnimatoionManager("MizukiNorthEastWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/NorthEast", Width = 254, Height = 709 }, 12f, -1, 0, [6, 6], AnimationFileType.Single, AnimationType.Linear, layerDepth);
-        southEastWalkAnimation = new AnimatoionManager("MizukiSouthEastWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/SouthEast", Width = 259, Height = 699 }, 12f, -1, 0, [6, 6], AnimationFileType.Single, AnimationType.Linear, layerDepth);
+        northWalkAnimation = new AnimatoionManager("MizukiNorthWalk", Scene.Content, new SpriteFile { Texture = "Sprites/North", Width = 185, Height = 690 }, 12f, -1, 0, [ 6, 6 ], AnimationFileType.Joined, AnimationType.Linear, layerDepth);
+        southWalkAnimation = new AnimatoionManager("MizukiSouthWalk", Scene.Content, new SpriteFile { Texture = "Sprites/South", Width = 214, Height = 700 }, 12f, -1, 0, [ 6, 6 ], AnimationFileType.Joined, AnimationType.Linear, layerDepth);
+        westWalkAnimation = new AnimatoionManager("MizukiWestWalk", Scene.Content, new SpriteFile { Texture = "Sprites/West", Width = 262, Height = 704 }, 12f, -1, 0, [ 6, 6 ], AnimationFileType.Joined, AnimationType.Linear, layerDepth);
+        northWestWalkAnimation = new AnimatoionManager("MizukiNorthWestWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/NorthWest", Width = 255, Height = 706 }, 12f, -1, 0, [ 6, 6 ], AnimationFileType.Joined, AnimationType.Linear, layerDepth);
+        southWestWalkAnimation = new AnimatoionManager("MizukiSouthWestWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/SouthWest", Width = 258, Height = 699 }, 12f, -1, 0, [6, 6], AnimationFileType.Joined, AnimationType.Linear, layerDepth);
+        eastWalkAnimation = new AnimatoionManager("MizukiEastWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/East", Width = 261, Height = 703 }, 12f, -1, 0, [6, 6], AnimationFileType.Joined, AnimationType.Linear, layerDepth);
+        northEastWalkAnimation = new AnimatoionManager("MizukiNorthEastWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/NorthEast", Width = 254, Height = 709 }, 12f, -1, 0, [6, 6], AnimationFileType.Joined, AnimationType.Linear, layerDepth);
+        southEastWalkAnimation = new AnimatoionManager("MizukiSouthEastWalk", Scene.Content, new SpriteFile() { Texture = "Sprites/SouthEast", Width = 259, Height = 699 }, 12f, -1, 0, [6, 6], AnimationFileType.Joined, AnimationType.Linear, layerDepth);
     }
     public void IdleAnimation()
     {
