@@ -62,7 +62,8 @@ class MenuEntry
     /// <summary>
     /// Event raised when the menu entry is selected.
     /// </summary>
-    public event EventHandler<PlayerIndexEventArgs> Selected;        
+    public event EventHandler<PlayerIndexEventArgs> Selected;
+    public event EventHandler<PlayerIndexEventArgs> Changed;
     /// <summary>
     /// Method for raising the Selected event.
     /// </summary>
@@ -70,11 +71,14 @@ class MenuEntry
     {
         Selected?.Invoke(this, new PlayerIndexEventArgs(PlayerIndex.One));
     }
-    
+    protected internal virtual void OnChangedEntry()
+    {
+        Changed?.Invoke(this, new PlayerIndexEventArgs(PlayerIndex.One));
+    }
     #endregion
 
     #region Initialization
-    
+
     /// <summary>
     /// Constructs a new menu entry with the specified text.
     /// </summary>

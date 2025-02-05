@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Diagnostics;
 
 namespace Enginus.Core.Utilities;
 
@@ -13,6 +15,8 @@ public static class Resolution
     static private int _VHeight = Constants.SCREEN_HEIGHT;
     static private Matrix _ScaleMatrix;
     static private bool _dirtyMatrix = true;
+
+    static public float VirtualAspectRatio => _VWidth / _VHeight;
     static public Viewport GameViewPort
     {
         get
@@ -20,11 +24,10 @@ public static class Resolution
             return _Device.GraphicsDevice.Viewport;
         }
     }
-    static public bool IsFullScreen { get; private set; } = true;
+    static public bool IsFullScreen { get; private set; }
 
     static public void Init(ref GraphicsDeviceManager device)
     {
-        IsFullScreen = true;
         _Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width; //  device.PreferredBackBufferWidth;
         _Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height; // device.PreferredBackBufferHeight;
         _Device = device;
@@ -36,13 +39,12 @@ public static class Resolution
     {
         _dirtyMatrix = false;
         _ScaleMatrix = Matrix.CreateScale(
-                       (float)_Device.GraphicsDevice.Viewport.Width / _VWidth,
-                       (float)_Device.GraphicsDevice.Viewport.Height / _VHeight,
-                       1f);
+            (float)_Device.GraphicsDevice.Viewport.Width / _VWidth,
+            (float)_Device.GraphicsDevice.Viewport.Height / _VHeight,
+            1f);
     }
     static private void ApplyResolutionSettings()
     {
-
 #if XBOX360
        _FullScreen = true;
 #endif
@@ -76,6 +78,7 @@ public static class Resolution
                     _Device.PreferredBackBufferHeight = _Height;
                     _Device.IsFullScreen = IsFullScreen;
                     _Device.ApplyChanges();
+                    break;
                 }
             }
         }
@@ -84,6 +87,8 @@ public static class Resolution
 
         _Width = _Device.PreferredBackBufferWidth;
         _Height = _Device.PreferredBackBufferHeight;
+
+        Debug.WriteLine($"Fullscreen: {IsFullScreen}, Resolution: {_Width}x{_Height}");
     }
 
     static public Matrix GetScaleMatrix()
@@ -91,6 +96,7 @@ public static class Resolution
         if (_dirtyMatrix)
         {
             RecreateScaleMatrix();
+            _dirtyMatrix = false;
         }
         return _ScaleMatrix;
     }
@@ -125,14 +131,14 @@ public static class Resolution
         float targetAspectRatio = VirtualAspectRatio;
         // figure out the largest area that fits in this resolution at the desired aspect ratio
         int width = _Device.PreferredBackBufferWidth;
-        int height = (int)(width / targetAspectRatio + .5f);
+        int height = (int)(width / targetAspectRatio);
         bool changed = false;
 
         if (height > _Device.PreferredBackBufferHeight)
         {
             height = _Device.PreferredBackBufferHeight;
             // PillarBox
-            width = (int)(height * targetAspectRatio + .5f);
+            width = (int)(height * targetAspectRatio);
             changed = true;
         }
 
@@ -158,7 +164,6 @@ public static class Resolution
     /// Get virtual Mode Aspect Ratio
     /// </summary>
     /// <returns>aspect ratio</returns>
-    static public float VirtualAspectRatio => _VWidth / _VHeight;
     static public void SetVirtualResolution(int Width, int Height)
     {
         _VWidth = Width;

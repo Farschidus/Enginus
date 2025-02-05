@@ -75,6 +75,7 @@ class Background : GameScreen
     /// </summary>
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
+        ScreenManager.GraphicsDevice.Clear(Color.Black);
         spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, null, null, null, null, Resolution.GetScaleMatrix());
 
         spriteBatch.Draw(backgroundTexture, backgroundRectangle, new Color(TransitionAlpha, TransitionAlpha, TransitionAlpha));

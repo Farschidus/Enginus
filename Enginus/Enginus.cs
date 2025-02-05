@@ -1,4 +1,4 @@
-﻿using Enginus.Core;
+using Enginus.Core;
 using Enginus.Core.Utilities;
 using Enginus.MenuScreens;
 using Enginus.Screen;
@@ -7,17 +7,17 @@ using Microsoft.Xna.Framework;
 
 namespace Enginus;
 
-public class Enginus : Game
+internal class Enginus : Game
 	{
-    AudioManager audio;
-    ScreenManager screenManager;
+    readonly AudioManager audio;
+    readonly ScreenManager screenManager;
     readonly GraphicsDeviceManager graphics;
     // By preloading any assets used by UI rendering, we avoid framerate glitches
     // when they suddenly need to be loaded in the middle of a menu transition.
     static readonly string[] preloadAssets =
     {
         Constants.ASSET_BG_MESSAGE_BOX,
-        Constants.ASSET_BG_MAIN_MENU 
+        Constants.ASSET_BG_MAIN_MENU
     };
 
     public Enginus()
@@ -27,7 +27,9 @@ public class Enginus : Game
 
         graphics = new GraphicsDeviceManager(this)
         {
-            SynchronizeWithVerticalRetrace = true
+            SynchronizeWithVerticalRetrace = true,
+            PreferredBackBufferWidth = Constants.SCREEN_WIDTH,
+            PreferredBackBufferHeight = Constants.SCREEN_HEIGHT,
         };
 
         Content.RootDirectory = "Content";
@@ -62,8 +64,6 @@ public class Enginus : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        //TODO: Remove Later because main menu will have it's own bg eventualy but maybe its good to have black screen always anyway!
-        graphics.GraphicsDevice.Clear(Color.Black);
         // The real drawing happens inside the screen manager component.
         base.Draw(gameTime);
     }

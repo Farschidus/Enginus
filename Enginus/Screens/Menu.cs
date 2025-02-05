@@ -17,7 +17,7 @@ abstract class Menu : GameScreen
 {
     #region Fields and Properties
 
-    private int selectedEntry = 0;
+    private int selectedEntry;
     private readonly string menuTitle;
 
     private bool isHoverOnMenuEntry;
@@ -83,7 +83,13 @@ abstract class Menu : GameScreen
         {
             OnSelectEntry(selectedEntry);
         }
-        else if (input.IsMenuCancel())
+
+        if (input.IsMenuRight() || input.IsMenuLeft())
+        {
+            OnChangeEntry(selectedEntry);
+        }
+
+        if (input.IsMenuCancel())
         {
             OnCancel();
         }
@@ -113,6 +119,13 @@ abstract class Menu : GameScreen
     protected virtual void OnSelectEntry(int entryIndex)
     {
         menuEntries[entryIndex].OnSelectEntry();
+    }
+    /// <summary>
+    /// Handler for when the user change a menu entry.
+    /// </summary>
+    protected virtual void OnChangeEntry(int entryIndex)
+    {
+        menuEntries[entryIndex].OnChangedEntry();
     }
     /// <summary>
     /// Handler for when the user has cancelled the menu.

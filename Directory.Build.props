@@ -35,7 +35,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
         <WarningsAsErrors>CS0028</WarningsAsErrors> <!-- Keep only critical warnings as errors -->
     </PropertyGroup>  
 </Project>

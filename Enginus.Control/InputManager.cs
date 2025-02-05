@@ -186,6 +186,8 @@ public class InputManager
     /// input for. If this is null, it will accept input from any player.
     /// </summary>
     public bool IsMenuDown() => IsNewKeyPress(Keys.Down);
+    public bool IsMenuLeft() => IsNewKeyPress(Keys.Left);
+    public bool IsMenuRight() => IsNewKeyPress(Keys.Right);
     /// <summary>
     /// Checks for a "pause the game" input action.
     /// The controllingPlayer parameter specifies which player to read
