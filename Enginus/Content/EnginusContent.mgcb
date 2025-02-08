@@ -1,16 +1,16 @@
 
 #----------------------------- Global Properties ----------------------------#
 
-/outputDir:bin
-/intermediateDir:obj
-/platform:Windows
+/outputDir:obj/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:DesktopGL
 /config:
 /profile:Reach
 /compress:False
 
 #-------------------------------- References --------------------------------#
 
-/reference:..\bin\Debug\net8.0\Enginus.dll
+/reference:../bin/Debug/net8.0/Enginus.dll
 
 #---------------------------------- Content ---------------------------------#
 
